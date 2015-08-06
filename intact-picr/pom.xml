@@ -7,7 +7,6 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>intact-picr</artifactId>
-
     <name>IntAct Bridges :: PICR</name>
     <version>2.1.12-SNAPSHOT</version>
 

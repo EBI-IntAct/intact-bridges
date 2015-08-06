@@ -8,11 +8,9 @@
         <groupId>uk.ac.ebi.intact.bridges</groupId>
         <version>2.1.12-SNAPSHOT</version>
     </parent>
-
-    <groupId>uk.ac.ebi.intact.bridges</groupId>
+    
     <artifactId>intact-ols-light</artifactId>
     <version>2.1.12-SNAPSHOT</version>
-
     <name>IntAct Bridges :: OLS Light</name>
 
     <dependencies>

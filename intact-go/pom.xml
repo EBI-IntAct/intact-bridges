@@ -7,7 +7,6 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>intact-go</artifactId>
     <packaging>jar</packaging>
     <version>2.1.12-SNAPSHOT</version>

@@ -11,9 +11,7 @@
     <artifactId>intact-google</artifactId>
     <packaging>jar</packaging>
     <version>2.1.12-SNAPSHOT</version>
-
     <name>IntAct Bridges :: Google</name>
-
     <description>Google GData Helpers</description>
 
     <dependencies>
