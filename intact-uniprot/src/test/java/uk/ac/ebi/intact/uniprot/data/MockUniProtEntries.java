@@ -22,6 +22,8 @@ import uk.ac.ebi.kraken.model.factories.DefaultCommentFactory;
 import uk.ac.ebi.kraken.model.factories.DefaultFeatureFactory;
 import uk.ac.ebi.kraken.model.factories.DefaultUniProtFactory;
 import uk.ac.ebi.kraken.model.factories.DefaultXRefFactory;
+import uk.ac.ebi.kraken.model.uniprot.EvidencedValueImpl;
+import uk.ac.ebi.kraken.model.uniprot.comments.IsoformNoteImpl;
 import uk.ac.ebi.kraken.model.uniprot.dbx.DatabaseCrossReferenceImpl;
 
 import java.text.ParseException;
@@ -213,7 +215,7 @@ public class MockUniProtEntries {
         return vf;
     }
 
-    private static AlternativeProductsIsoform buildIsoform( String[] acs, String syn, String note, String[] sequenceIds ) {
+    private static AlternativeProductsIsoform buildIsoform( String[] acs, String syn, IsoformNote note, String[] sequenceIds ) {
         DefaultCommentFactory factory = DefaultCommentFactory.getInstance();
 
         AlternativeProductsIsoform isoform = factory.buildAlternativeProductsIsoform();
@@ -229,7 +231,7 @@ public class MockUniProtEntries {
 
         isoform.setIds( Arrays.asList( factory.buildIsoformId( sb.toString() ) ) );
 
-        if ( note != null && note.trim().length() > 0 ) {
+        if ( note != null ) {
             isoform.setNote( factory.buildIsoformNote( note ) );
         }
 
@@ -266,7 +268,6 @@ public class MockUniProtEntries {
     /*
     * from http://www.ebi.uniprot.org/entry/Q9VGX3?format=text&ascii
     */
-
     public static UniProtEntry build_Q9VGX3() {
 
         DefaultUniProtFactory factory = DefaultUniProtFactory.getInstance();
@@ -291,16 +292,16 @@ public class MockUniProtEntries {
         entry.setDatabaseCrossReferences( crs );
 
         entry.setSequence( factory.buildSequence( "MVYESGFTTRRTYSSRPVTTSYAVTYPSVEKVTRVYKSSYPIYSSYSVPRRVYGATRVVT" +
-                                                  "SPIRVVTSPARVVSRVIHSPSPVRVVRTTTRVISSPERTTYSYTTPSTYYSPSYLPSTYT" +
-                                                  "STYIPTSYTTYTPSYAYSPTTVTRVYAPRSSLSPLRITPSPVRVITSPVRSVPSYLKRLP" +
-                                                  "PGYGARALTNYLNTEPFTTFSEETSRIRNRAQSLIRDLHTPVVRRARSCTPFPVTGYTYE" +
-                                                  "PASQLALDAYVARVTNPVRHIAKEVHNISHYPRPAVKYVDAELDPNRPSRKFSAPRPLED" +
-                                                  "PLDVEAKEKQRLRQERLLTVNEEALDEVDLEKKRAQKADEAKRREERALKEERDRLTAEA" +
-                                                  "EKQAAAKAKKAAEEAAKIAAEEALLAEAAAQKAAEEAKALKAAEDAAQKAAEEARLAEEA" +
-                                                  "AAQKVAEEAAQKAAEEARLAEEAAAQKAAEEAAQKAAEEAALKAAEEARLAEEAAQKAAE" +
-                                                  "EAALKAVEEARAAEEAAQKAAEEARVAEEARLEEEQRVREQELERLAEIEKESEGELARQ" +
-                                                  "AAELAEIARQESELAAQELQAIQKNENETSEPVVEEPVTPVEEQEPIIELGSNVTPTGGN" +
-                                                  "SYEEDLDAEEEEDEEEEEE" ) );
+                "SPIRVVTSPARVVSRVIHSPSPVRVVRTTTRVISSPERTTYSYTTPSTYYSPSYLPSTYT" +
+                "STYIPTSYTTYTPSYAYSPTTVTRVYAPRSSLSPLRITPSPVRVITSPVRSVPSYLKRLP" +
+                "PGYGARALTNYLNTEPFTTFSEETSRIRNRAQSLIRDLHTPVVRRARSCTPFPVTGYTYE" +
+                "PASQLALDAYVARVTNPVRHIAKEVHNISHYPRPAVKYVDAELDPNRPSRKFSAPRPLED" +
+                "PLDVEAKEKQRLRQERLLTVNEEALDEVDLEKKRAQKADEAKRREERALKEERDRLTAEA" +
+                "EKQAAAKAKKAAEEAAKIAAEEALLAEAAAQKAAEEAKALKAAEDAAQKAAEEARLAEEA" +
+                "AAQKVAEEAAQKAAEEARLAEEAAAQKAAEEAAQKAAEEAALKAAEEARLAEEAAQKAAE" +
+                "EAALKAVEEARAAEEAAQKAAEEARVAEEARLEEEQRVREQELERLAEIEKESEGELARQ" +
+                "AAELAEIARQESELAAQELQAIQKNENETSEPVVEEPVTPVEEQEPIIELGSNVTPTGGN" +
+                "SYEEDLDAEEEEDEEEEEE" ) );
         entry.getSequence().setCRC64( "7DDCB26AD1AB9CEE" );
 
         //////////////////////
@@ -309,23 +310,30 @@ public class MockUniProtEntries {
         // create features
         entry.setFeatures( Arrays.asList(
                 buildVariantFeature( "VSP_004048", 26, 163,
-                                     "YPSVEKVTRVYKSSYPIYSSYSVPRRVYGATRVVTSPIRVVTSPARVVSRVIHSPSPVRVVRTTTRVISSPERTTYSYTTPSTYYSPSYLPSTYTSTYIPTSYTTYTPSYAYSPTTVTRVYAPRSSLSPLRITPSPVR",
-                                     "RTKRTPIDWEKVPFVPRPSLISDPVTAFGVRRPDLERRQRSILDPINRASIKPDYKLAYEPIEPYVSTRDKNRTRILGMVRQHIDTVEAGGNTAGRTFRDSLDAQLPRLHRAVSESLPVRRETYRNERSGAMVTKYSY" ),
+                        "YPSVEKVTRVYKSSYPIYSSYSVPRRVYGATRVVTSPIRVVTSPARVVSRVIHSPSPVRVVRTTTRVISSPERTTYSYTTPSTYYSPSYLPSTYTSTYIPTSYTTYTPSYAYSPTTVTRVYAPRSSLSPLRITPSPVR",
+                        "RTKRTPIDWEKVPFVPRPSLISDPVTAFGVRRPDLERRQRSILDPINRASIKPDYKLAYEPIEPYVSTRDKNRTRILGMVRQHIDTVEAGGNTAGRTFRDSLDAQLPRLHRAVSESLPVRRETYRNERSGAMVTKYSY" ),
                 buildVariantFeature( "VSP_004049", 164, 619, null, null )
         ) );
+
+        //Create evidence values
+        IsoformNote isoformNote = new IsoformNoteImpl();
+        List<EvidencedValue> evidencedValues = new ArrayList<EvidencedValue>();
+        EvidencedValue evidencedValue = new EvidencedValueImpl();
+        evidencedValue.setValue("No experimental confirmation available");
+        evidencedValues.add(evidencedValue);
+        isoformNote.setTexts(evidencedValues);
 
         // create comments
         List<AlternativeProductsComment> comments = new ArrayList<AlternativeProductsComment>();
         comments.add( buildSpliceVariant( Arrays.asList(
-                buildIsoform( new String[]{"Q9VGX3-5"}, "", "No experimental confirmation available", null )
-                , buildIsoform( new String[]{"Q9VGX3-2"}, "", "No experimental confirmation available", new String[]{"VSP_004048", "VSP_004049"} )
+                buildIsoform( new String[]{"Q9VGX3-5"}, "", isoformNote, null )
+                , buildIsoform( new String[]{"Q9VGX3-2"}, "", isoformNote, new String[]{"VSP_004048", "VSP_004049"} )
         ) ) );
         entry.setComments( new ArrayList<Comment>() );
         entry.getComments().addAll( comments );
 
         return entry;
     }
-
 
     /*
     * from http://www.ebi.uniprot.org/entry/Q9VGX3?format=text&ascii
@@ -360,9 +368,9 @@ public class MockUniProtEntries {
         entry.setDatabaseCrossReferences( crs );
 
         entry.setSequence( factory.buildSequence( "MQTIKCVVVGDGAVGKTCLLISYTTNKFPSEYVPTVFDNYAVTVMIGGEPYTLGLFDTAG" +
-                                                  "QEDYDRLRPLSYPQTDVFLVCFSVVSPSSFENVKEKWVPEITHHCPKTPFLLVGTQIDLR" +
-                                                  "DDPSTIEKLAKNKQKPITPETAEKLARDLKAVKYVECSALTQRGLKNVFDEAILAALEPP" +
-                                                  "ETQPKRKCCIF" ) );
+                "QEDYDRLRPLSYPQTDVFLVCFSVVSPSSFENVKEKWVPEITHHCPKTPFLLVGTQIDLR" +
+                "DDPSTIEKLAKNKQKPITPETAEKLARDLKAVKYVECSALTQRGLKNVFDEAILAALEPP" +
+                "ETQPKRKCCIF" ) );
         entry.getSequence().setCRC64( "34B44F9225EC106B" );
 
         //////////////////////
@@ -374,15 +382,33 @@ public class MockUniProtEntries {
                 buildVariantFeature( "VSP_010078", 163, 163, "R", "K" )
         ) );
 
+        //Create evidence values
+        IsoformNote isoformNote = new IsoformNoteImpl();
+        List<EvidencedValue> evidencedValues = new ArrayList<EvidencedValue>();
+        EvidencedValue evidencedValue = new EvidencedValueImpl();
+        evidencedValue.setValue("Has not been isolated in dog so far");
+        evidencedValues.add(evidencedValue);
+        isoformNote.setTexts(evidencedValues);
+
+
+        //Create evidence values
+        IsoformNote isoformNote1 = new IsoformNoteImpl();
+        List<EvidencedValue> evidencedValues1 = new ArrayList<EvidencedValue>();
+        EvidencedValue evidencedValue1 = new EvidencedValueImpl();
+        evidencedValue1.setValue("");
+        evidencedValues1.add(evidencedValue1);
+        isoformNote1.setTexts(evidencedValues1);
+
         // create comments
         List<AlternativeProductsComment> comments = new ArrayList<AlternativeProductsComment>();
         comments.add( buildSpliceVariant( Arrays.asList(
-                buildIsoform( new String[]{"P60952-1", "P21181-1"}, "Brain", "Has not been isolated in dog so far", null )
-                , buildIsoform( new String[]{"P60952-2", "P21181-4"}, "Placental", "", new String[]{"VSP_010078", "VSP_010079"} )
+                buildIsoform( new String[]{"P60952-1", "P21181-1"}, "Brain", isoformNote, null )
+                , buildIsoform( new String[]{"P60952-2", "P21181-4"}, "Placental", isoformNote1, new String[]{"VSP_010078", "VSP_010079"} )
         ) ) );
         entry.setComments( new ArrayList<Comment>() );
         entry.getComments().addAll( comments );
 
         return entry;
     }
+
 }

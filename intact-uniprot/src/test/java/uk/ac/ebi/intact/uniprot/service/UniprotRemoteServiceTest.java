@@ -45,7 +45,6 @@ public class UniprotRemoteServiceTest {
 
     ////////////////////
     // Tests
-
     @Test
     public void convert_CDC42_CANFA() throws Exception {
         UniProtEntry entry = MockUniProtEntries.build_P60952();
@@ -57,7 +56,7 @@ public class UniprotRemoteServiceTest {
         UniprotSpliceVariant sv1 = searchSpliceVariantByIsoId( "P60952-1", protein );
         assertNotNull( sv1 );
         assertTrue( sv1.getSecondaryAcs().contains( "P21181-1" ) );
-        assertEquals( "Has not been isolated in dog so far", sv1.getNote() );
+        assertEquals( "Has not been isolated in dog so far ", sv1.getNote() );
         assertEquals( 1, sv1.getSynomyms().size() );
         assertEquals( "Brain", sv1.getSynomyms().iterator().next() );
         assertEquals( protein.getSequence(), sv1.getSequence() );
@@ -65,7 +64,7 @@ public class UniprotRemoteServiceTest {
         UniprotSpliceVariant sv2 = searchSpliceVariantByIsoId( "P60952-2", protein );
         assertNotNull( sv2 );
         assertTrue( sv2.getSecondaryAcs().contains( "P21181-4" ) );
-        assertEquals( "", sv2.getNote() );
+        assertEquals( " ", sv2.getNote() );
         assertEquals( 1, sv2.getSynomyms().size() );
         assertEquals( "Placental", sv2.getSynomyms().iterator().next() );
     }
@@ -296,7 +295,7 @@ public class UniprotRemoteServiceTest {
         assertEquals( 8, protein.getKeywords().size() );
 
         // cross references
-        assertEquals( 12, protein.getCrossReferences().size() );
+        assertEquals( 13, protein.getCrossReferences().size() );
 
         // splice variants
         assertEquals( 0, protein.getSpliceVariants().size() );
@@ -550,7 +549,7 @@ public class UniprotRemoteServiceTest {
 
         // check that we have not so many cross references
         // cross references
-        assertEquals( 10, protein.getCrossReferences().size() );
+        assertEquals( 11, protein.getCrossReferences().size() );
 
         assertTrue( protein.getCrossReferences().contains( new UniprotXref( "1TG0", "PDB" ) ) );
         assertTrue( protein.getCrossReferences().contains( new UniprotXref( "1WDX", "PDB" ) ) );

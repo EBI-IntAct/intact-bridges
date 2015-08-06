@@ -763,11 +763,14 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
                 }
 
                 // process note
-                sv.setNote( isoform.getNote().getValue() );
+                List<EvidencedValue> evidencedValues = isoform.getNote().getTexts();
+                StringBuilder stringBuffer = new StringBuilder("");
+                for (EvidencedValue evidencedValue : evidencedValues) {
+                    stringBuffer.append(evidencedValue.getValue()).append(" ");
+                }
+                sv.setNote(stringBuffer.toString());
 
                 spliceVariants.add(sv);
-
-
             } // for isoform
         } // for comments
 
