@@ -6,7 +6,6 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>uk.ac.ebi.intact.bridges</groupId>
     <artifactId>intact-picr</artifactId>
 
     <name>IntAct Bridges :: PICR</name>
