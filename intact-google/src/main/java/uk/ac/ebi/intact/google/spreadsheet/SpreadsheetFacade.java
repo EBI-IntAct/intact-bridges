@@ -30,7 +30,7 @@ public class SpreadsheetFacade {
      *                             If an application-level protocol error occurs while trying to communicate with Spreadsheets
      */
     public static SpreadsheetEntry getSpreadsheetWithKey( SpreadsheetService service, String key ) throws IOException, ServiceException {
-        URL metafeedUrl = new URL( "http://spreadsheets.google.com/feeds/spreadsheets/private/full" );
+        URL metafeedUrl = new URL( "https://spreadsheets.google.com/feeds/spreadsheets/private/full" );
         SpreadsheetFeed spreadsheetFeed = service.getFeed( metafeedUrl, SpreadsheetFeed.class );
 
         List<SpreadsheetEntry> spreadsheets = spreadsheetFeed.getEntries();
@@ -54,7 +54,7 @@ public class SpreadsheetFacade {
      *                             If an application-level protocol error occurs while trying to communicate with Spreadsheets
      */
     public static SpreadsheetEntry getSpreadsheetWithName( SpreadsheetService service, String name ) throws IOException, ServiceException {
-        URL metafeedUrl = new URL( "http://spreadsheets.google.com/feeds/spreadsheets/private/full" );
+        URL metafeedUrl = new URL( "https://spreadsheets.google.com/feeds/spreadsheets/private/full" );
         SpreadsheetFeed spreadsheetFeed = service.getFeed( metafeedUrl, SpreadsheetFeed.class );
 
         List<SpreadsheetEntry> spreadsheets = spreadsheetFeed.getEntries();
