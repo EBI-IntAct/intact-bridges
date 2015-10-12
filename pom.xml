@@ -12,7 +12,7 @@
     <groupId>uk.ac.ebi.intact.bridges</groupId>
     <artifactId>bridges-master</artifactId>
     <packaging>pom</packaging>
-    <version>2.1.15-SNAPSHOT</version>
+    <version>2.1.15</version>
 
     <name>IntAct Bridges</name>
     <description>Bridges Master POM</description>
@@ -32,7 +32,7 @@
         <connection>scm:git:https://bitbucket.org/intact-ebi/intact-bridges.git</connection>
         <developerConnection>scm:git:https://bitbucket.org/intact-ebi/intact-bridges.git</developerConnection>
         <url>https://bitbucket.org/intact-ebi/intact-bridges</url>
-        <tag>HEAD</tag>
+        <tag>bridges-master-2.1.15</tag>
     </scm>
 
     <modules>
