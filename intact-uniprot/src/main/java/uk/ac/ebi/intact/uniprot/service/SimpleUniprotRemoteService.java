@@ -16,7 +16,13 @@ import uk.ac.ebi.kraken.interfaces.uniprot.features.*;
 import uk.ac.ebi.kraken.interfaces.uniprot.genename.GeneNameSynonym;
 import uk.ac.ebi.kraken.interfaces.uniprot.genename.ORFName;
 import uk.ac.ebi.kraken.interfaces.uniprot.genename.OrderedLocusName;
-import uk.ac.ebi.kraken.uuw.services.remoting.*;
+import uk.ac.ebi.uniprot.dataservice.client.Client;
+import uk.ac.ebi.uniprot.dataservice.client.QueryResult;
+import uk.ac.ebi.uniprot.dataservice.client.ServiceFactory;
+import uk.ac.ebi.uniprot.dataservice.client.exception.ServiceException;
+import uk.ac.ebi.uniprot.dataservice.client.uniprot.UniProtQueryBuilder;
+import uk.ac.ebi.uniprot.dataservice.client.uniprot.UniProtService;
+import uk.ac.ebi.uniprot.dataservice.query.Query;
 
 import java.util.*;
 
@@ -35,7 +41,7 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
      */
     public static final Log log = LogFactory.getLog(UniprotRemoteService.class);
 
-    protected UniProtQueryService uniProtQueryService;
+    protected UniProtService uniProtQueryService;
 
     protected final static String FEATURE_CHAIN_FIELD = "feature.chain:";
     protected final static String FEATURE_PEPTIDE_FIELD = "feature.peptide:";
@@ -43,12 +49,16 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
 
     public SimpleUniprotRemoteService() {
         super();
-        uniProtQueryService = UniProtJAPI.factory.getUniProtQueryService();
+//        uniProtQueryService = UniProtJAPI.factory.getUniProtQueryService();
+        ServiceFactory serviceFactoryInstance = Client.getServiceFactoryInstance();
+        uniProtQueryService = serviceFactoryInstance.getUniProtQueryService();
     }
 
     public SimpleUniprotRemoteService(CrossReferenceFilter filter) {
         super(filter);
-        uniProtQueryService = UniProtJAPI.factory.getUniProtQueryService();
+        ServiceFactory serviceFactoryInstance = Client.getServiceFactoryInstance();
+        uniProtQueryService = serviceFactoryInstance.getUniProtQueryService();
+//        uniProtQueryService = UniProtJAPI.factory.getUniProtQueryService();
     }
 
     public Collection<UniprotProtein> retrieve( String ac ) {
@@ -145,16 +155,10 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
         return variants;
     }
 
-    @Override
-    public void close() {
-        // nothing to close
-    }
-
     public Collection<UniprotProtein> retrieve( String ac, boolean processSpliceVars ) {
         if (log.isDebugEnabled()) {
             log.debug("Retrieving from UniProt: "+ac);
         }
-
         Collection<UniprotProtein> proteins = new ArrayList<UniprotProtein>();
 
         Iterator<UniProtEntry> it = getUniProtEntry( ac );
@@ -222,8 +226,12 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
         if ( IdentifierChecker.isSpliceVariantId( upperCaseAc ) ) {
 
             // we only use this search for splice variants
-            Query query = UniProtQueryBuilder.buildExactMatchIdentifierQuery(upperCaseAc);
-            iterator = uniProtQueryService.getEntryIterator( query );
+            Query query = UniProtQueryBuilder.id(upperCaseAc);
+            try {
+                iterator = uniProtQueryService.getEntries(query);
+            } catch (ServiceException e) {
+                e.printStackTrace();
+            }
 
         }
         else if (IdentifierChecker.isFeatureChainId( upperCaseAc )){
@@ -234,8 +242,14 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
                 acFixed = upperCaseAc.substring(index);
             }
             // we only use this search for feature chains
-            Query query = UniProtQueryBuilder.buildFullTextSearch( FEATURE_CHAIN_FIELD + acFixed + " OR " + FEATURE_PEPTIDE_FIELD + acFixed + " OR " + FEATURE_PRO_PEPTIDE_FIELD + acFixed );
-            iterator = uniProtQueryService.getEntryIterator( query );
+
+//            Query query = UniProtQueryBuilder.buildFullTextSearch( FEATURE_CHAIN_FIELD + acFixed + " OR " + FEATURE_PEPTIDE_FIELD + acFixed + " OR " + FEATURE_PRO_PEPTIDE_FIELD + acFixed );
+            Query query = UniProtQueryBuilder.features(FeatureType.typeOf(FEATURE_CHAIN_FIELD), acFixed).or(UniProtQueryBuilder.features(FeatureType.typeOf(FEATURE_PEPTIDE_FIELD), acFixed)).or(UniProtQueryBuilder.features(FeatureType.typeOf(FEATURE_PRO_PEPTIDE_FIELD), acFixed));
+            try {
+                iterator = uniProtQueryService.getEntries(query);
+            } catch (ServiceException e) {
+                e.printStackTrace();
+            }
         }
         else {
             iterator = getUniProtEntryForProteinEntry( upperCaseAc );
@@ -254,15 +268,25 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
         //IndexField.UNIPROT_EXPIRED_IDENTIFIER.getValue() + ":" + ac +
         //" OR " +
         //IndexField.UNIPROT_ID.getValue() + ":" + ac;
+        QueryResult<UniProtEntry> iterator = null;
 
-        return uniProtQueryService.getEntryIterator( UniProtQueryBuilder.buildExactMatchIdentifierQuery( ac ) );
+        try {
+            iterator = uniProtQueryService.getEntries( UniProtQueryBuilder.accession( ac ) );
+        } catch (ServiceException e) {
+            e.printStackTrace();
+        }
+
+        return iterator;
     }
 
-    public static void main(String[] args) {
-        final UniProtQueryService uniProtQueryService = UniProtJAPI.factory.getUniProtQueryService();
-        final EntryIterator<UniProtEntry> iterator = uniProtQueryService.getEntryIterator(UniProtQueryBuilder.buildQuery("P43063"));
+    public static void main(String[] args) throws ServiceException {
+        final UniProtService uniProtQueryService = Client.getServiceFactoryInstance().getUniProtQueryService();
+//        final EntryIterator<UniProtEntry> iterator = uniProtQueryService.getEntryIterator(UniProtQueryBuilder.buildQuery("P43063"));
+        final Query query = UniProtQueryBuilder.accession("P43063");
+        final QueryResult<UniProtEntry> iterator = uniProtQueryService.getEntries(query);
 
-        for (UniProtEntry protEntry : iterator) {
+
+        for (UniProtEntry protEntry : iterator.getCurrentPage().getResults()) {
             System.out.println(protEntry.getPrimaryUniProtAccession().getValue());
         }
     }
@@ -789,4 +813,11 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
         return svId.substring( 0, index );
     }
 
+    public void start() {
+        uniProtQueryService.start();
+    }
+
+    public void close() {
+        uniProtQueryService.stop();
+    }
 }
