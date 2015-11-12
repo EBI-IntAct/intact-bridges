@@ -98,4 +98,10 @@ public interface UniprotService {
      * Close the service and any caching system used
      */
     public void close();
+
+
+    /**
+     * Start the service and any caching system used
+     */
+    public void start();
 }
