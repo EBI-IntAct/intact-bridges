@@ -12,10 +12,12 @@ import uk.ac.ebi.intact.uniprot.model.UniprotProtein;
 import uk.ac.ebi.intact.uniprot.model.UniprotSpliceVariant;
 import uk.ac.ebi.intact.uniprot.service.referenceFilter.CrossReferenceFilter;
 import uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry;
-import uk.ac.ebi.kraken.uuw.services.remoting.EntryIterator;
-import uk.ac.ebi.kraken.uuw.services.remoting.UniProtJAPI;
-import uk.ac.ebi.kraken.uuw.services.remoting.UniProtQueryBuilder;
-import uk.ac.ebi.kraken.uuw.services.remoting.UniProtQueryService;
+import uk.ac.ebi.uniprot.dataservice.client.Client;
+import uk.ac.ebi.uniprot.dataservice.client.QueryResult;
+import uk.ac.ebi.uniprot.dataservice.client.exception.ServiceException;
+import uk.ac.ebi.uniprot.dataservice.client.uniprot.UniProtQueryBuilder;
+import uk.ac.ebi.uniprot.dataservice.client.uniprot.UniProtService;
+import uk.ac.ebi.uniprot.dataservice.query.Query;
 
 import java.util.*;
 
@@ -147,12 +149,6 @@ public class UniprotRemoteService extends SimpleUniprotRemoteService {
         return variants;
     }
 
-    @Override
-    public void close() {
-        this.retrievalCache.clear();
-        this.getErrors().clear();
-    }
-
     public Collection<UniprotProtein> retrieve( String ac, boolean processSpliceVars ) {
         if (log.isDebugEnabled()) {
             log.debug("Retrieving from UniProt: "+ac);
@@ -162,7 +158,7 @@ public class UniprotRemoteService extends SimpleUniprotRemoteService {
             if (log.isDebugEnabled()) log.debug("\tFound in cache");
             return retrievalCache.get(ac);
         }
-
+        start();
         Collection<UniprotProtein> proteins = new ArrayList<UniprotProtein>();
 
         Iterator<UniProtEntry> it = getUniProtEntry( ac );
@@ -181,12 +177,17 @@ public class UniprotRemoteService extends SimpleUniprotRemoteService {
 
         return proteins;
     }
+    
+    public static void main(String[] args) throws ServiceException {
+        final UniProtService uniProtQueryService = Client.getServiceFactoryInstance().getUniProtQueryService();
+        uniProtQueryService.start();
+//        final EntryIterator<UniProtEntry> iterator = uniProtQueryService.getEntryIterator(UniProtQueryBuilder.buildQuery("P43063"));
+        final Query query = UniProtQueryBuilder.accession("P43063");
+        final QueryResult<UniProtEntry> iterator = uniProtQueryService.getEntries(query);
+        uniProtQueryService.stop();
 
-    public static void main(String[] args) {
-        final UniProtQueryService uniProtQueryService = UniProtJAPI.factory.getUniProtQueryService();
-        final EntryIterator<UniProtEntry> iterator = uniProtQueryService.getEntryIterator(UniProtQueryBuilder.buildQuery("P43063"));
 
-        for (UniProtEntry protEntry : iterator) {
+        for (UniProtEntry protEntry : iterator.getCurrentPage().getResults()) {
             System.out.println(protEntry.getPrimaryUniProtAccession().getValue());
         }
     }
