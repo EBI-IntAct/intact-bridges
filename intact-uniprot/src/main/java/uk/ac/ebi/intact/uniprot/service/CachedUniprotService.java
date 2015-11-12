@@ -208,6 +208,12 @@ public class CachedUniprotService extends AbstractUniprotService implements Unip
         if (cacheManager != null){
             cacheManager.clearAll();
         }
+        service.close();
+    }
+
+    @Override
+    public void start() {
+        service.start();
     }
 
     /////////////////////////
