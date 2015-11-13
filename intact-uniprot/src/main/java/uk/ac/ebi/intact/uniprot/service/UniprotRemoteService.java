@@ -54,7 +54,7 @@ public class UniprotRemoteService extends SimpleUniprotRemoteService {
         }
         Collection<UniprotSpliceVariant> variants = new ArrayList<UniprotSpliceVariant>();
         Collection<String> variantAcProcessed = new ArrayList<String>();
-
+        start();
         if (retrievalCache.containsKey(ac)) {
             if (log.isDebugEnabled()) log.debug("\tFound in cache");
             Collection<UniprotProtein> uniprotProteins = retrievalCache.get(ac);
@@ -96,7 +96,7 @@ public class UniprotRemoteService extends SimpleUniprotRemoteService {
         }
 
         retrievalCache.put(ac, proteins);
-
+        close();
         return variants;
     }
 
@@ -106,7 +106,7 @@ public class UniprotRemoteService extends SimpleUniprotRemoteService {
             log.debug("Retrieving feature chains from UniProt: "+ac);
         }
         Collection<UniprotFeatureChain> variants = new ArrayList<UniprotFeatureChain>();
-
+        start();
         if (retrievalCache.containsKey(ac)) {
             if (log.isDebugEnabled()) log.debug("\tFound in cache");
             Collection<UniprotProtein> uniprotProteins = retrievalCache.get(ac);
@@ -145,7 +145,7 @@ public class UniprotRemoteService extends SimpleUniprotRemoteService {
         }
 
         retrievalCache.put(ac, proteins);
-
+        close();
         return variants;
     }
 
