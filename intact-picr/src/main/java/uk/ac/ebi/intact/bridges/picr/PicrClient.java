@@ -8,17 +8,25 @@ import uk.ac.ebi.intact.bridges.picr.resultParsing.PicrParsingException;
 import uk.ac.ebi.intact.bridges.picr.resultParsing.PicrRESTResultParser;
 import uk.ac.ebi.kraken.interfaces.uniparc.UniParcEntry;
 import uk.ac.ebi.kraken.interfaces.uniprot.UniProtEntry;
-import uk.ac.ebi.kraken.uuw.services.remoting.*;
 import uk.ac.ebi.picr.accessionmappingservice.AccessionMapperInterface;
 import uk.ac.ebi.picr.accessionmappingservice.AccessionMapperService;
 import uk.ac.ebi.picr.model.CrossReference;
 import uk.ac.ebi.picr.model.UPEntry;
+import uk.ac.ebi.uniprot.dataservice.client.Client;
+import uk.ac.ebi.uniprot.dataservice.client.ServiceFactory;
+import uk.ac.ebi.uniprot.dataservice.client.exception.ServiceException;
+import uk.ac.ebi.uniprot.dataservice.client.uniparc.UniParcQueryBuilder;
+import uk.ac.ebi.uniprot.dataservice.client.uniparc.UniParcService;
+import uk.ac.ebi.uniprot.dataservice.client.uniprot.UniProtQueryBuilder;
+import uk.ac.ebi.uniprot.dataservice.client.uniprot.UniProtService;
+import uk.ac.ebi.uniprot.dataservice.query.Query;
 
 import javax.xml.namespace.QName;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -270,17 +278,29 @@ public class PicrClient {
      * @return A list of UniprotEntry instances for this identifier
      */
     public List<UniProtEntry> getUniprotEntryForAccession(String accession) {
+        ServiceFactory serviceFactoryInstance = Client.getServiceFactoryInstance();
+        UniProtService uniProtQueryService = serviceFactoryInstance.getUniProtQueryService();
+        
+        Iterator<UniProtEntry> iterator = null;
 
-        Query query = UniProtQueryBuilder.buildExactMatchIdentifierQuery( accession );
-        UniProtQueryService uniProtQueryService = UniProtJAPI.factory.getUniProtQueryService();
-
+        uniProtQueryService.start();
+        
         List<UniProtEntry> uniProtEntries = new ArrayList<UniProtEntry>();
+        Query query = UniProtQueryBuilder.accession(accession);
 
-        EntryIterator<UniProtEntry> protEntryIterator = uniProtQueryService.getEntryIterator(query);
-
-        for (UniProtEntry uniProtEntry : protEntryIterator) {
-            uniProtEntries.add(uniProtEntry);
+        try {
+            iterator = uniProtQueryService.getEntries(query);
+        } catch (ServiceException e) {
+            e.printStackTrace();
         }
+
+        if (iterator != null) {
+            while (iterator.hasNext()) {
+                UniProtEntry uniProtEntry = iterator.next();
+                uniProtEntries.add(uniProtEntry);
+            }
+        }
+        uniProtQueryService.stop();
         return uniProtEntries;
     }
 
@@ -290,17 +310,29 @@ public class PicrClient {
      * @return a list of UniparcEntry instances for this accession
      */
     public List<UniParcEntry> getUniparcEntryForAccession(String accession) {
-
-        Query query = UniParcQueryBuilder.buildFullTextSearch( accession );
-        UniParcQueryService uniParcQueryService = UniProtJAPI.factory.getUniParcQueryService();
+        ServiceFactory serviceFactoryInstance = Client.getServiceFactoryInstance();
+        UniParcService uniParcQueryService = serviceFactoryInstance.getUniParcQueryService();
+        
+        Iterator<UniParcEntry> iterator = null;
+        
+        uniParcQueryService.start();
 
         List<UniParcEntry> uniParcEntries = new ArrayList<UniParcEntry>();
+        Query query = UniParcQueryBuilder.accession(accession);
 
-        EntryIterator<UniParcEntry> protEntryIterator = uniParcQueryService.getEntryIterator(query);
-
-        for (UniParcEntry uniParcEntry : protEntryIterator) {
-            uniParcEntries.add(uniParcEntry);
+        try {
+            iterator = uniParcQueryService.getEntries(query);
+        } catch (ServiceException e) {
+            e.printStackTrace();
         }
+
+        if (iterator != null) {
+            while (iterator.hasNext()) {
+                UniParcEntry uniParcEntry = iterator.next();
+                uniParcEntries.add(uniParcEntry);
+            }
+        }
+        uniParcQueryService.stop();
         return uniParcEntries;
     }
 
