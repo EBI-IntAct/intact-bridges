@@ -16,6 +16,7 @@
 package uk.ac.ebi.intact.bridges.citexplore;
 
 import uk.ac.ebi.cdb.webservice.*;
+
 import javax.xml.namespace.QName;
 import java.net.MalformedURLException;
 import java.net.URL;
