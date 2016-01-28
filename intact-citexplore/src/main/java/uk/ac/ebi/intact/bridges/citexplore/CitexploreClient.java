@@ -16,7 +16,6 @@
 package uk.ac.ebi.intact.bridges.citexplore;
 
 import uk.ac.ebi.cdb.webservice.*;
-
 import javax.xml.namespace.QName;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -65,7 +64,7 @@ public class CitexploreClient {
             // ex : extId1 coresponds to 2 publication in citexplore one from medline, one from CiteSeer.
             // Putting : core allow to get a lighter object just with the title, authors name...
             // we can choose between metadata for citations or full text for full text searches
-            ResponseWrapper wrapper = getPort().searchPublications(query, "core", 0, "0", false, "intact-dev@ebi.ac.uk");
+            ResponseWrapper wrapper = getPort().searchPublications(query, "core", "0", 0, false, "intact-dev@ebi.ac.uk");
 
             return  wrapper.getResultList();//"core"
         } catch (QueryException_Exception e) {
