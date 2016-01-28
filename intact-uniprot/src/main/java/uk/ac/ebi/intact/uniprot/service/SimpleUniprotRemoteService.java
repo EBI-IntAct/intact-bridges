@@ -273,7 +273,7 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
         QueryResult<UniProtEntry> iterator = null;
 
         try {
-            iterator = uniProtQueryService.getEntries(UniProtQueryBuilder.id(ac).or(UniProtQueryBuilder.accession(ac)));
+            iterator = uniProtQueryService.getEntries(UniProtQueryBuilder.id(ac).or(UniProtQueryBuilder.accession(ac)).or(UniProtQueryBuilder.secondaryAccession(ac)));
         } catch (ServiceException e) {
             e.printStackTrace();
         }
