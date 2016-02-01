@@ -271,13 +271,14 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
         //" OR " +
         //IndexField.UNIPROT_ID.getValue() + ":" + ac;
         QueryResult<UniProtEntry> iterator = null;
-
+        uniProtQueryService.start();
         try {
             iterator = uniProtQueryService.getEntries(UniProtQueryBuilder.id(ac).or(UniProtQueryBuilder.accession(ac)).or(UniProtQueryBuilder.secondaryAccession(ac)));
         } catch (ServiceException e) {
+            uniProtQueryService.stop();
             e.printStackTrace();
         }
-
+        uniProtQueryService.stop();
         return iterator;
     }
 
