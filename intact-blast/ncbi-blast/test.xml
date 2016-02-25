@@ -2,13 +2,13 @@
 <EBIApplicationResult xmlns="http://www.ebi.ac.uk/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.ebi.ac.uk/Tools/common/schema/ApplicationResult.xsd">
  <Header>
   <program name="blastp" version="BLASTP 2.2.29+"/>
-  <commandLine command="/nfs/public/ro/es/appbin/linux-x86_64/ncbi-blast-2.2.29+/bin/blastp -db &quot;uniprotkb&quot; -query ncbiblast-S20150806-154307-0442-64044662-oy.sequence  -num_threads 16 -outfmt 11 -out ncbiblast-S20150806-154307-0442-64044662-oy.archive -matrix BLOSUM62 -num_alignments 50 -evalue 10 -gapopen 11 -gapextend 1 -seg no -comp_based_stats F"/>
+  <commandLine command="/ebi/extserv/bin/ncbi-blast-2.2.29+/bin/blastp -db &quot;uniprotkb&quot; -query ncbiblast-S20160225-115327-0297-1742434-es.sequence  -num_threads 16 -outfmt 11 -out ncbiblast-S20160225-115327-0297-1742434-es.archive -matrix BLOSUM62 -num_alignments 50 -evalue 10 -gapopen 11 -gapextend 1 -seg no -comp_based_stats F"/>
   <parameters>
    <sequences total="1">
     <sequence number="1" name="EMBOSS_001" type="PROTEIN" length="242"/>
    </sequences>
-   <databases total="1" sequences="50598902" letters="16815223308">
-    <database number="1" name="uniprotkb" type="PROTEIN" created="2015-07-20T11:40:00+01:00"/>
+   <databases total="1" sequences="61561117" letters="20555784459">
+    <database number="1" name="uniprotkb" type="PROTEIN" created="2016-02-15T11:39:00+00:00"/>
    </databases>
    <alignments>50</alignments>
    <expectationUpper>10.0</expectationUpper>
@@ -18,7 +18,7 @@
    <matrix>BLOSUM62</matrix>
    <scores>100</scores>
   </parameters>
-  <timeInfo start="2015-08-06T15:43:07+01:00" end="2015-08-06T15:43:32+01:00" search="P0Y0M0DT0H0M25.000S"/>
+  <timeInfo start="2016-02-25T11:53:27+00:00" end="2016-02-25T11:54:06+00:00" search="P0Y0M0DT0H0M39.000S"/>
  </Header>
  <SequenceSimilaritySearchResult>
   <hits total="50">
@@ -27,7 +27,7 @@
      <alignment number="1">
       <score>1166</score>
       <bits>453.751</bits>
-      <expectation>1.2E-149</expectation>
+      <expectation>1.5E-149</expectation>
       <identity>93.3</identity>
       <positives>97.1</positives>
       <gaps>0</gaps>
@@ -43,7 +43,7 @@
      <alignment number="1">
       <score>1166</score>
       <bits>453.751</bits>
-      <expectation>8.9E-149</expectation>
+      <expectation>1.1E-148</expectation>
       <identity>93.3</identity>
       <positives>97.1</positives>
       <gaps>0</gaps>
@@ -59,7 +59,7 @@
      <alignment number="1">
       <score>1154</score>
       <bits>449.129</bits>
-      <expectation>1.1E-141</expectation>
+      <expectation>1.4E-141</expectation>
       <identity>92.9</identity>
       <positives>96.7</positives>
       <gaps>0</gaps>
@@ -75,7 +75,7 @@
      <alignment number="1">
       <score>860</score>
       <bits>335.88</bits>
-      <expectation>1.3E-101</expectation>
+      <expectation>1.6E-101</expectation>
       <identity>66.5</identity>
       <positives>85.4</positives>
       <gaps>0</gaps>
@@ -91,7 +91,7 @@
      <alignment number="1">
       <score>856</score>
       <bits>334.339</bits>
-      <expectation>4.4E-101</expectation>
+      <expectation>5.4E-101</expectation>
       <identity>66.5</identity>
       <positives>84.1</positives>
       <gaps>0</gaps>
@@ -107,7 +107,7 @@
      <alignment number="1">
       <score>854</score>
       <bits>333.569</bits>
-      <expectation>8.1E-101</expectation>
+      <expectation>9.9E-101</expectation>
       <identity>66.5</identity>
       <positives>84.1</positives>
       <gaps>0</gaps>
@@ -123,7 +123,7 @@
      <alignment number="1">
       <score>854</score>
       <bits>333.569</bits>
-      <expectation>8.3E-101</expectation>
+      <expectation>1.0E-100</expectation>
       <identity>66.1</identity>
       <positives>84.1</positives>
       <gaps>0</gaps>
@@ -139,7 +139,7 @@
      <alignment number="1">
       <score>854</score>
       <bits>333.569</bits>
-      <expectation>8.3E-101</expectation>
+      <expectation>1.0E-100</expectation>
       <identity>66.5</identity>
       <positives>84.1</positives>
       <gaps>0</gaps>
@@ -155,7 +155,7 @@
      <alignment number="1">
       <score>853</score>
       <bits>333.183</bits>
-      <expectation>1.1E-100</expectation>
+      <expectation>1.4E-100</expectation>
       <identity>66.1</identity>
       <positives>84.5</positives>
       <gaps>0</gaps>
@@ -171,7 +171,7 @@
      <alignment number="1">
       <score>851</score>
       <bits>332.413</bits>
-      <expectation>2.1E-100</expectation>
+      <expectation>2.5E-100</expectation>
       <identity>65.7</identity>
       <positives>84.5</positives>
       <gaps>0</gaps>
@@ -187,7 +187,7 @@
      <alignment number="1">
       <score>850</score>
       <bits>332.028</bits>
-      <expectation>2.9E-100</expectation>
+      <expectation>3.5E-100</expectation>
       <identity>66.1</identity>
       <positives>83.7</positives>
       <gaps>0</gaps>
@@ -203,7 +203,7 @@
      <alignment number="1">
       <score>849</score>
       <bits>331.643</bits>
-      <expectation>3.9E-100</expectation>
+      <expectation>4.7E-100</expectation>
       <identity>65.7</identity>
       <positives>84.1</positives>
       <gaps>0</gaps>
@@ -219,7 +219,7 @@
      <alignment number="1">
       <score>846</score>
       <bits>330.487</bits>
-      <expectation>9.9E-100</expectation>
+      <expectation>1.2E-99</expectation>
       <identity>65.7</identity>
       <positives>84.1</positives>
       <gaps>0</gaps>
@@ -235,7 +235,7 @@
      <alignment number="1">
       <score>845</score>
       <bits>330.102</bits>
-      <expectation>1.3E-99</expectation>
+      <expectation>1.6E-99</expectation>
       <identity>65.3</identity>
       <positives>84.9</positives>
       <gaps>0</gaps>
@@ -251,7 +251,7 @@
      <alignment number="1">
       <score>845</score>
       <bits>330.102</bits>
-      <expectation>1.3E-99</expectation>
+      <expectation>1.6E-99</expectation>
       <identity>66.1</identity>
       <positives>83.7</positives>
       <gaps>0</gaps>
@@ -267,7 +267,7 @@
      <alignment number="1">
       <score>843</score>
       <bits>329.331</bits>
-      <expectation>2.5E-99</expectation>
+      <expectation>3.1E-99</expectation>
       <identity>65.7</identity>
       <positives>82.8</positives>
       <gaps>0</gaps>
@@ -283,7 +283,7 @@
      <alignment number="1">
       <score>841</score>
       <bits>328.561</bits>
-      <expectation>4.7E-99</expectation>
+      <expectation>5.7E-99</expectation>
       <identity>65.7</identity>
       <positives>83.3</positives>
       <gaps>0</gaps>
@@ -299,7 +299,7 @@
      <alignment number="1">
       <score>840</score>
       <bits>328.176</bits>
-      <expectation>6.3E-99</expectation>
+      <expectation>7.7E-99</expectation>
       <identity>65.7</identity>
       <positives>82.6</positives>
       <gaps>2</gaps>
@@ -315,7 +315,7 @@
      <alignment number="1">
       <score>840</score>
       <bits>328.176</bits>
-      <expectation>6.4E-99</expectation>
+      <expectation>7.8E-99</expectation>
       <identity>64.4</identity>
       <positives>83.7</positives>
       <gaps>0</gaps>
@@ -326,12 +326,28 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="20" database="TR" id="A0A093H532_STRCA" ac="A0A093H532" length="2211" description="Kinetochore-associated protein 1 (Fragment) OS=Struthio camelus australis GN=N308_04146 PE=4 SV=1">
+   <hit number="20" database="TR" id="A0A0Q4A573_ALLMI" ac="A0A0Q4A573" length="2196" description="Kinetochore associated 1 OS=Alligator mississippiensis GN=KNTC1 PE=4 SV=1">
+    <alignments total="1">
+     <alignment number="1">
+      <score>838</score>
+      <bits>327.405</bits>
+      <expectation>1.4E-98</expectation>
+      <identity>64.9</identity>
+      <positives>83.3</positives>
+      <gaps>0</gaps>
+      <strand>none/none</strand>
+      <querySeq start="4" end="242">ASKHVFEKNLRPKALKLKNAEHCSIITKETARTVLTIQSYLQSISNPEWAAAIAHKIAQELPTGPDKIHALKFCLHLAEKWKKNVSSENDAHEKADVFIKKLSVQYQRSATENVLITHKLNTPELLKQIGKPANLIVSLYEHSSVEQRIRHPTGRDYPDIHTAAKQISEVNNLNMSKICTLLLEKWICPPAVPQADKNKDVFGDIHGDEDLRRVIYLLQPYPVDYSSRMLYAIATSATS</querySeq>
+      <pattern>A++HVFEK L+PK  +++     S+I KET +TV TI SYL SI NPEWA AIAHKIAQELPTGPD+I ALK CL LAEKW  N ++++++H+KA+V +KKL +QYQRSATENVLITHKLNT E LK +GKPANLIV LYEHSS++QRI++PTG+DYPDIH AAK+++E+NN++M+KI  +LLEKW+CP  +P  ++ +++F D+  DEDLRRVIYLLQP P+DYSSR+L+AI TSATS</pattern>
+      <matchSeq start="1624" end="1861">AARHVFEKKLKPKVFEMRQCGCSSVINKETTKTVQTIHSYLLSIINPEWAVAIAHKIAQELPTGPDQIQALKVCLSLAEKWINNTTAKDESHQKAEVLLKKLRMQYQRSATENVLITHKLNTTEHLKLVGKPANLIVLLYEHSSIDQRIQNPTGKDYPDIHVAAKEVAEINNIDMNKIWDILLEKWLCPNILP-TERTQELFEDVQEDEDLRRVIYLLQPRPMDYSSRLLFAITTSATS</matchSeq>
+     </alignment>
+    </alignments>
+   </hit>
+   <hit number="21" database="TR" id="A0A093H532_STRCA" ac="A0A093H532" length="2211" description="Kinetochore-associated protein 1 (Fragment) OS=Struthio camelus australis GN=N308_04146 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>833</score>
       <bits>325.479</bits>
-      <expectation>5.6E-98</expectation>
+      <expectation>6.8E-98</expectation>
       <identity>64.9</identity>
       <positives>81.6</positives>
       <gaps>3</gaps>
@@ -342,12 +358,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="21" database="TR" id="A0A093H6Q1_PICPB" ac="A0A093H6Q1" length="2215" description="Kinetochore-associated protein 1 (Fragment) OS=Picoides pubescens GN=N307_00911 PE=4 SV=1">
+   <hit number="22" database="TR" id="A0A093H6Q1_PICPB" ac="A0A093H6Q1" length="2215" description="Kinetochore-associated protein 1 (Fragment) OS=Picoides pubescens GN=N307_00911 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>832</score>
       <bits>325.094</bits>
-      <expectation>7.6E-98</expectation>
+      <expectation>9.3E-98</expectation>
       <identity>64.9</identity>
       <positives>83.3</positives>
       <gaps>0</gaps>
@@ -358,12 +374,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="22" database="TR" id="A0A091G3I8_9AVES" ac="A0A091G3I8" length="2222" description="Kinetochore-associated protein 1 (Fragment) OS=Cuculus canorus GN=N303_14421 PE=4 SV=1">
+   <hit number="23" database="TR" id="A0A091G3I8_9AVES" ac="A0A091G3I8" length="2222" description="Kinetochore-associated protein 1 (Fragment) OS=Cuculus canorus GN=N303_14421 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>827</score>
       <bits>323.168</bits>
-      <expectation>3.6E-97</expectation>
+      <expectation>4.4E-97</expectation>
       <identity>64.0</identity>
       <positives>82.8</positives>
       <gaps>0</gaps>
@@ -374,12 +390,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="23" database="TR" id="U3IK31_ANAPL" ac="U3IK31" length="2211" description="Uncharacterized protein OS=Anas platyrhynchos GN=KNTC1 PE=4 SV=1">
+   <hit number="24" database="TR" id="U3IK31_ANAPL" ac="U3IK31" length="2211" description="Uncharacterized protein OS=Anas platyrhynchos GN=KNTC1 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>823</score>
       <bits>321.627</bits>
-      <expectation>1.2E-96</expectation>
+      <expectation>1.5E-96</expectation>
       <identity>64.9</identity>
       <positives>84.1</positives>
       <gaps>1</gaps>
@@ -390,12 +406,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="24" database="TR" id="F1NPK2_CHICK" ac="F1NPK2" length="2231" description="Uncharacterized protein OS=Gallus gallus GN=KNTC1 PE=4 SV=2">
+   <hit number="25" database="TR" id="F1NPK2_CHICK" ac="F1NPK2" length="2231" description="Uncharacterized protein OS=Gallus gallus GN=KNTC1 PE=4 SV=2">
     <alignments total="1">
      <alignment number="1">
       <score>822</score>
       <bits>321.242</bits>
-      <expectation>1.7E-96</expectation>
+      <expectation>2.1E-96</expectation>
       <identity>64.6</identity>
       <positives>82.5</positives>
       <gaps>1</gaps>
@@ -406,12 +422,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="25" database="TR" id="A0A091HRU3_BUCRH" ac="A0A091HRU3" length="2223" description="Kinetochore-associated protein 1 (Fragment) OS=Buceros rhinoceros silvestris GN=N320_10263 PE=4 SV=1">
+   <hit number="26" database="TR" id="A0A091HRU3_BUCRH" ac="A0A091HRU3" length="2223" description="Kinetochore-associated protein 1 (Fragment) OS=Buceros rhinoceros silvestris GN=N320_10263 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>815</score>
       <bits>318.546</bits>
-      <expectation>1.5E-95</expectation>
+      <expectation>1.8E-95</expectation>
       <identity>63.2</identity>
       <positives>82.4</positives>
       <gaps>0</gaps>
@@ -422,12 +438,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="26" database="TR" id="A0A091L0Y2_COLST" ac="A0A091L0Y2" length="2224" description="Kinetochore-associated protein 1 (Fragment) OS=Colius striatus GN=N325_12374 PE=4 SV=1">
+   <hit number="27" database="TR" id="A0A091L0Y2_COLST" ac="A0A091L0Y2" length="2224" description="Kinetochore-associated protein 1 (Fragment) OS=Colius striatus GN=N325_12374 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>814</score>
       <bits>318.161</bits>
-      <expectation>2.1E-95</expectation>
+      <expectation>2.5E-95</expectation>
       <identity>64.4</identity>
       <positives>81.6</positives>
       <gaps>0</gaps>
@@ -438,12 +454,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="27" database="TR" id="A0A091RHM1_9GRUI" ac="A0A091RHM1" length="2222" description="Kinetochore-associated protein 1 (Fragment) OS=Mesitornis unicolor GN=N332_05436 PE=4 SV=1">
+   <hit number="28" database="TR" id="A0A091RHM1_9GRUI" ac="A0A091RHM1" length="2222" description="Kinetochore-associated protein 1 (Fragment) OS=Mesitornis unicolor GN=N332_05436 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>798</score>
       <bits>311.997</bits>
-      <expectation>3.0E-93</expectation>
+      <expectation>3.6E-93</expectation>
       <identity>62.8</identity>
       <positives>81.2</positives>
       <gaps>0</gaps>
@@ -454,12 +470,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="28" database="TR" id="A0A099ZKR4_TINGU" ac="A0A099ZKR4" length="2216" description="Kinetochore-associated protein 1 (Fragment) OS=Tinamus guttatus GN=N309_05964 PE=4 SV=1">
+   <hit number="29" database="TR" id="A0A099ZKR4_TINGU" ac="A0A099ZKR4" length="2216" description="Kinetochore-associated protein 1 (Fragment) OS=Tinamus guttatus GN=N309_05964 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>792</score>
       <bits>309.686</bits>
-      <expectation>1.9E-92</expectation>
+      <expectation>2.3E-92</expectation>
       <identity>62.4</identity>
       <positives>80.4</positives>
       <gaps>3</gaps>
@@ -470,12 +486,28 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="29" database="TR" id="A0A091END1_CORBR" ac="A0A091END1" length="2196" description="Kinetochore-associated protein 1 (Fragment) OS=Corvus brachyrhynchos GN=N302_01347 PE=4 SV=1">
+   <hit number="30" database="TR" id="A0A0Q3PRF1_AMAAE" ac="A0A0Q3PRF1" length="1939" description="Kinetochore-associated protein 1 OS=Amazona aestiva GN=AAES_56518 PE=4 SV=1">
+    <alignments total="1">
+     <alignment number="1">
+      <score>786</score>
+      <bits>307.375</bits>
+      <expectation>1.1E-91</expectation>
+      <identity>61.1</identity>
+      <positives>79.5</positives>
+      <gaps>0</gaps>
+      <strand>none/none</strand>
+      <querySeq start="4" end="242">ASKHVFEKNLRPKALKLKNAEHCSIITKETARTVLTIQSYLQSISNPEWAAAIAHKIAQELPTGPDKIHALKFCLHLAEKWKKNVSSENDAHEKADVFIKKLSVQYQRSATENVLITHKLNTPELLKQIGKPANLIVSLYEHSSVEQRIRHPTGRDYPDIHTAAKQISEVNNLNMSKICTLLLEKWICPPAVPQADKNKDVFGDIHGDEDLRRVIYLLQPYPVDYSSRMLYAIATSATS</querySeq>
+      <pattern>A++HVFEK ++PK  +++   + SI++KE  +T+  IQSYL SI NPEWA AIAHK+AQE PTGPD I ALKFCLHL EKW K  ++++D+HEK  V  KKL +QY+RSATEN+LITH LNT E LK +GKPANLI  LYE  S++QRI++P GRDYPDIH AAK+I+E+N+L+M+KI   LL+KW+CP  +P ++K +++FGD   DE+LRRVIYLLQ  P+DYSSR+L+AI TSATS</pattern>
+      <matchSeq start="1457" end="1694">AAQHVFEKKVKPKIYEMRXTGYTSIVSKEITKTLQAIQSYLLSIVNPEWAVAIAHKMAQEFPTGPDHIQALKFCLHLTEKWLKKTTAKDDSHEKVKVLWKKLHMQYKRSATENILITHHLNTEEHLKSVGKPANLITLLYEXHSIDQRIQNPAGRDYPDIHMAAKEIAEINDLDMNKIWDKLLDKWLCPSILP-SEKTQEIFGDAQEDEELRRVIYLLQSRPMDYSSRLLFAITTSATS</matchSeq>
+     </alignment>
+    </alignments>
+   </hit>
+   <hit number="31" database="TR" id="A0A091END1_CORBR" ac="A0A091END1" length="2196" description="Kinetochore-associated protein 1 (Fragment) OS=Corvus brachyrhynchos GN=N302_01347 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>783</score>
       <bits>306.22</bits>
-      <expectation>3.0E-91</expectation>
+      <expectation>3.7E-91</expectation>
       <identity>61.5</identity>
       <positives>79.1</positives>
       <gaps>0</gaps>
@@ -486,12 +518,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="30" database="TR" id="A0A091Q5U6_LEPDC" ac="A0A091Q5U6" length="2223" description="Kinetochore-associated protein 1 (Fragment) OS=Leptosomus discolor GN=N330_14224 PE=4 SV=1">
+   <hit number="32" database="TR" id="A0A091Q5U6_LEPDC" ac="A0A091Q5U6" length="2223" description="Kinetochore-associated protein 1 (Fragment) OS=Leptosomus discolor GN=N330_14224 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>783</score>
       <bits>306.22</bits>
-      <expectation>3.1E-91</expectation>
+      <expectation>3.8E-91</expectation>
       <identity>61.1</identity>
       <positives>80.3</positives>
       <gaps>0</gaps>
@@ -502,12 +534,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="31" database="TR" id="H0Z7J9_TAEGU" ac="H0Z7J9" length="2192" description="Uncharacterized protein OS=Taeniopygia guttata GN=KNTC1 PE=4 SV=1">
+   <hit number="33" database="TR" id="H0Z7J9_TAEGU" ac="H0Z7J9" length="2192" description="Uncharacterized protein OS=Taeniopygia guttata GN=KNTC1 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>781</score>
       <bits>305.449</bits>
-      <expectation>5.6E-91</expectation>
+      <expectation>6.9E-91</expectation>
       <identity>61.9</identity>
       <positives>79.1</positives>
       <gaps>0</gaps>
@@ -518,12 +550,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="32" database="TR" id="F6XPG8_ORNAN" ac="F6XPG8" length="1847" description="Uncharacterized protein OS=Ornithorhynchus anatinus GN=KNTC1 PE=4 SV=2">
+   <hit number="34" database="TR" id="F6XPG8_ORNAN" ac="F6XPG8" length="1847" description="Uncharacterized protein OS=Ornithorhynchus anatinus GN=KNTC1 PE=4 SV=2">
     <alignments total="1">
      <alignment number="1">
       <score>771</score>
       <bits>301.597</bits>
-      <expectation>8.1E-90</expectation>
+      <expectation>9.9E-90</expectation>
       <identity>63.0</identity>
       <positives>76.5</positives>
       <gaps>1</gaps>
@@ -534,12 +566,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="33" database="TR" id="G1N0B5_MELGA" ac="G1N0B5" length="2219" description="Uncharacterized protein OS=Meleagris gallopavo GN=KNTC1 PE=4 SV=2">
+   <hit number="35" database="TR" id="G1N0B5_MELGA" ac="G1N0B5" length="2219" description="Uncharacterized protein OS=Meleagris gallopavo GN=KNTC1 PE=4 SV=2">
     <alignments total="1">
      <alignment number="1">
       <score>742</score>
       <bits>290.426</bits>
-      <expectation>1.0E-85</expectation>
+      <expectation>1.3E-85</expectation>
       <identity>59.6</identity>
       <positives>78.8</positives>
       <gaps>1</gaps>
@@ -550,12 +582,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="34" database="TR" id="U3K386_FICAL" ac="U3K386" length="2218" description="Uncharacterized protein OS=Ficedula albicollis GN=KNTC1 PE=4 SV=1">
+   <hit number="36" database="TR" id="U3K386_FICAL" ac="U3K386" length="2218" description="Uncharacterized protein OS=Ficedula albicollis GN=KNTC1 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>734</score>
       <bits>287.345</bits>
-      <expectation>1.2E-84</expectation>
+      <expectation>1.5E-84</expectation>
       <identity>58.3</identity>
       <positives>78.3</positives>
       <gaps>1</gaps>
@@ -566,12 +598,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="35" database="SP" id="P50748-2" ac="P50748" length="443" description="Isoform 2 of Kinetochore-associated protein 1 OS=Homo sapiens GN=KNTC1">
+   <hit number="37" database="SP" id="P50748-2" ac="P50748" length="443" description="Isoform 2 of Kinetochore-associated protein 1 OS=Homo sapiens GN=KNTC1">
     <alignments total="1">
      <alignment number="1">
       <score>689</score>
       <bits>270.011</bits>
-      <expectation>2.0E-84</expectation>
+      <expectation>2.5E-84</expectation>
       <identity>56.3</identity>
       <positives>73.9</positives>
       <gaps>1</gaps>
@@ -582,12 +614,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="36" database="TR" id="V9KF51_CALMI" ac="V9KF51" length="927" description="Kinetochore-associated protein 1 (Fragment) OS=Callorhinchus milii PE=2 SV=1">
+   <hit number="38" database="TR" id="V9KF51_CALMI" ac="V9KF51" length="927" description="Kinetochore-associated protein 1 (Fragment) OS=Callorhinchus milii PE=2 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>713</score>
       <bits>279.256</bits>
-      <expectation>9.3E-84</expectation>
+      <expectation>1.1E-83</expectation>
       <identity>57.9</identity>
       <positives>74.6</positives>
       <gaps>0</gaps>
@@ -598,12 +630,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="37" database="TR" id="G9K7L5_MUSPF" ac="G9K7L5" length="590" description="Kinetochore-associated protein 1 (Fragment) OS=Mustela putorius furo PE=2 SV=1">
+   <hit number="39" database="TR" id="G9K7L5_MUSPF" ac="G9K7L5" length="590" description="Kinetochore-associated protein 1 (Fragment) OS=Mustela putorius furo PE=2 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>691</score>
       <bits>270.781</bits>
-      <expectation>4.1E-83</expectation>
+      <expectation>5.0E-83</expectation>
       <identity>55.0</identity>
       <positives>75.6</positives>
       <gaps>1</gaps>
@@ -614,12 +646,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="38" database="TR" id="B4DDZ9_HUMAN" ac="B4DDZ9" length="726" description="cDNA FLJ55944, highly similar to Kinetochore-associated protein 1 OS=Homo sapiens PE=2 SV=1">
+   <hit number="40" database="TR" id="B4DDZ9_HUMAN" ac="B4DDZ9" length="726" description="cDNA FLJ55944, highly similar to Kinetochore-associated protein 1 OS=Homo sapiens PE=2 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>689</score>
       <bits>270.011</bits>
-      <expectation>1.3E-81</expectation>
+      <expectation>1.6E-81</expectation>
       <identity>56.3</identity>
       <positives>73.9</positives>
       <gaps>1</gaps>
@@ -630,12 +662,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="39" database="TR" id="W5ME13_LEPOC" ac="W5ME13" length="2173" description="Uncharacterized protein OS=Lepisosteus oculatus PE=4 SV=1">
+   <hit number="41" database="TR" id="W5ME13_LEPOC" ac="W5ME13" length="2173" description="Uncharacterized protein OS=Lepisosteus oculatus PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>703</score>
       <bits>275.404</bits>
-      <expectation>1.7E-80</expectation>
+      <expectation>2.1E-80</expectation>
       <identity>56.9</identity>
       <positives>74.1</positives>
       <gaps>1</gaps>
@@ -646,12 +678,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="40" database="TR" id="F6STV8_HORSE" ac="F6STV8" length="2203" description="Uncharacterized protein OS=Equus caballus GN=KNTC1 PE=4 SV=1">
+   <hit number="42" database="TR" id="F6STV8_HORSE" ac="F6STV8" length="2203" description="Uncharacterized protein OS=Equus caballus GN=KNTC1 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>703</score>
       <bits>275.404</bits>
-      <expectation>1.8E-80</expectation>
+      <expectation>2.2E-80</expectation>
       <identity>57.1</identity>
       <positives>75.2</positives>
       <gaps>1</gaps>
@@ -662,12 +694,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="41" database="TR" id="L8I2R0_9CETA" ac="L8I2R0" length="2205" description="Kinetochore-associated protein 1 (Fragment) OS=Bos mutus GN=M91_06141 PE=4 SV=1">
+   <hit number="43" database="TR" id="L8I2R0_9CETA" ac="L8I2R0" length="2205" description="Kinetochore-associated protein 1 (Fragment) OS=Bos mutus GN=M91_06141 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>703</score>
       <bits>275.404</bits>
-      <expectation>1.8E-80</expectation>
+      <expectation>2.2E-80</expectation>
       <identity>56.7</identity>
       <positives>74.4</positives>
       <gaps>1</gaps>
@@ -678,12 +710,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="42" database="TR" id="E1BBQ0_BOVIN" ac="E1BBQ0" length="2241" description="Uncharacterized protein OS=Bos taurus GN=KNTC1 PE=4 SV=2">
+   <hit number="44" database="TR" id="E1BBQ0_BOVIN" ac="E1BBQ0" length="2241" description="Uncharacterized protein OS=Bos taurus GN=KNTC1 PE=4 SV=2">
     <alignments total="1">
      <alignment number="1">
       <score>703</score>
       <bits>275.404</bits>
-      <expectation>1.8E-80</expectation>
+      <expectation>2.2E-80</expectation>
       <identity>56.7</identity>
       <positives>74.4</positives>
       <gaps>1</gaps>
@@ -694,12 +726,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="43" database="TR" id="G7PJ84_MACFA" ac="G7PJ84" length="2205" description="Putative uncharacterized protein (Fragment) OS=Macaca fascicularis GN=EGM_03867 PE=4 SV=1">
+   <hit number="45" database="TR" id="G7PJ84_MACFA" ac="G7PJ84" length="2205" description="Putative uncharacterized protein (Fragment) OS=Macaca fascicularis GN=EGM_03867 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>702</score>
       <bits>275.018</bits>
-      <expectation>2.4E-80</expectation>
+      <expectation>3.0E-80</expectation>
       <identity>56.7</identity>
       <positives>74.8</positives>
       <gaps>1</gaps>
@@ -710,12 +742,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="44" database="TR" id="L5KSA6_PTEAL" ac="L5KSA6" length="2131" description="Kinetochore-associated protein 1 OS=Pteropus alecto GN=PAL_GLEAN10008814 PE=4 SV=1">
+   <hit number="46" database="TR" id="L5KSA6_PTEAL" ac="L5KSA6" length="2131" description="Kinetochore-associated protein 1 OS=Pteropus alecto GN=PAL_GLEAN10008814 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>701</score>
       <bits>274.633</bits>
-      <expectation>3.1E-80</expectation>
+      <expectation>3.8E-80</expectation>
       <identity>56.3</identity>
       <positives>74.4</positives>
       <gaps>1</gaps>
@@ -726,12 +758,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="45" database="TR" id="A0A091CXS2_FUKDA" ac="A0A091CXS2" length="2092" description="Kinetochore-associated protein 1 OS=Fukomys damarensis GN=H920_15105 PE=4 SV=1">
+   <hit number="47" database="TR" id="A0A091CXS2_FUKDA" ac="A0A091CXS2" length="2092" description="Kinetochore-associated protein 1 OS=Fukomys damarensis GN=H920_15105 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>700</score>
       <bits>274.248</bits>
-      <expectation>4.1E-80</expectation>
+      <expectation>5.1E-80</expectation>
       <identity>55.9</identity>
       <positives>74.8</positives>
       <gaps>1</gaps>
@@ -742,12 +774,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="46" database="TR" id="G1M8G3_AILME" ac="G1M8G3" length="2167" description="Uncharacterized protein (Fragment) OS=Ailuropoda melanoleuca GN=KNTC1 PE=4 SV=1">
+   <hit number="48" database="TR" id="G1M8G3_AILME" ac="G1M8G3" length="2167" description="Uncharacterized protein (Fragment) OS=Ailuropoda melanoleuca GN=KNTC1 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>700</score>
       <bits>274.248</bits>
-      <expectation>4.4E-80</expectation>
+      <expectation>5.4E-80</expectation>
       <identity>55.5</identity>
       <positives>75.6</positives>
       <gaps>1</gaps>
@@ -758,12 +790,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="47" database="TR" id="D2GVY2_AILME" ac="D2GVY2" length="2205" description="Putative uncharacterized protein (Fragment) OS=Ailuropoda melanoleuca GN=PANDA_000918 PE=4 SV=1">
+   <hit number="49" database="TR" id="D2GVY2_AILME" ac="D2GVY2" length="2205" description="Putative uncharacterized protein (Fragment) OS=Ailuropoda melanoleuca GN=PANDA_000918 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>700</score>
       <bits>274.248</bits>
-      <expectation>4.5E-80</expectation>
+      <expectation>5.5E-80</expectation>
       <identity>55.5</identity>
       <positives>75.6</positives>
       <gaps>1</gaps>
@@ -774,12 +806,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="48" database="TR" id="G1M8F1_AILME" ac="G1M8F1" length="2205" description="Uncharacterized protein OS=Ailuropoda melanoleuca GN=KNTC1 PE=4 SV=1">
+   <hit number="50" database="TR" id="G1M8F1_AILME" ac="G1M8F1" length="2205" description="Uncharacterized protein OS=Ailuropoda melanoleuca GN=KNTC1 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>700</score>
       <bits>274.248</bits>
-      <expectation>4.5E-80</expectation>
+      <expectation>5.5E-80</expectation>
       <identity>55.5</identity>
       <positives>75.6</positives>
       <gaps>1</gaps>
@@ -787,38 +819,6 @@
       <querySeq start="5" end="242">SKHVFEKNLRPKALKLKNAEHCSIITKETARTVLTIQSYLQSISNPEWAAAIAHKIAQELPTGPDKIHALKFCLHLAEKWKKNVSSENDAHEKADVFIKKLSVQYQRSATENVLITHKLNTPELLKQIGKPANLIVSLYEHSSVEQRIRHPTGRDYPDIHTAAKQISEVNNLNMSKICTLLLEKWICPPAVPQADKNKDVFGDIHGDEDLRRVIYLLQPYPVDYSSRMLYAIATSATS</querySeq>
       <pattern>+KHVFEK L+PK LKL  A+  ++I KE  +   TI+SYL SI NPEWA AI   +AQ++P G  K+ +LKFCL+LAE+W +N+ S+++  EKA+  +KKL +QY+RS TE VLI HKLN+ E L+ IGKPA+L+VSLYEH S+ QRI++ +G+DYPDIHTAAK+I+EVN +N+ K+  +LLEKW+CP   P  +K  ++F ++  DE LRRV+YLL   P+DYSSRML+  ATSAT+</pattern>
       <matchSeq start="1639" end="1874">AKHVFEKKLKPKLLKLTQAKSSTLINKEITKITQTIESYLLSIVNPEWAVAIGISLAQDIPEGSFKMSSLKFCLYLAERWLQNIPSQDETREKAEALLKKLHIQYRRSGTEAVLIAHKLNSAEYLRVIGKPAHLLVSLYEHPSISQRIQNSSGKDYPDIHTAAKEIAEVNEINLEKVWDMLLEKWLCPSTKP-GEKPSELF-ELQEDEALRRVLYLLLSRPIDYSSRMLFVFATSATT</matchSeq>
-     </alignment>
-    </alignments>
-   </hit>
-   <hit number="49" database="TR" id="A0A061I9N3_CRIGR" ac="A0A061I9N3" length="1466" description="Kinetochore-associated protein 1 OS=Cricetulus griseus GN=H671_4g12373 PE=4 SV=1">
-    <alignments total="1">
-     <alignment number="1">
-      <score>696</score>
-      <bits>272.707</bits>
-      <expectation>5.1E-80</expectation>
-      <identity>55.9</identity>
-      <positives>74.8</positives>
-      <gaps>1</gaps>
-      <strand>none/none</strand>
-      <querySeq start="5" end="242">SKHVFEKNLRPKALKLKNAEHCSIITKETARTVLTIQSYLQSISNPEWAAAIAHKIAQELPTGPDKIHALKFCLHLAEKWKKNVSSENDAHEKADVFIKKLSVQYQRSATENVLITHKLNTPELLKQIGKPANLIVSLYEHSSVEQRIRHPTGRDYPDIHTAAKQISEVNNLNMSKICTLLLEKWICPPAVPQADKNKDVFGDIHGDEDLRRVIYLLQPYPVDYSSRMLYAIATSATS</querySeq>
-      <pattern>+KHVFEKNL+PK LKL  A+  ++++KE  +   TI+SYL SI NPEWA AIA  + QE+P GP K+ +LKFCL+LAE+W +N+ S+++  EKA   +KKL +Q++RS TE VLI HKLN PE L+ +GKPA+LIVSLYEH S+  R+R+ +G+DYPDIH AAK+I+EVN +N+ KI  +LLEKW+CP  VP    ++  F ++  DE L RV+YLLQ  P+DYSSRML+  A SATS</pattern>
-      <matchSeq start="887" end="1121">AKHVFEKNLKPKLLKLAQAQS-ALMSKEVDKLTQTIESYLLSIVNPEWAVAIAISLTQEIPEGPFKMTSLKFCLYLAERWLQNIPSQDETREKAQALLKKLYLQFRRSGTEAVLIAHKLNVPEYLRVVGKPAHLIVSLYEHPSISGRLRNTSGKDYPDIHEAAKEIAEVNEINLEKIWDMLLEKWLCPSTVPSEKASE--FFELEEDEVLHRVVYLLQSRPIDYSSRMLFVFAISATS</matchSeq>
-     </alignment>
-    </alignments>
-   </hit>
-   <hit number="50" database="TR" id="G1T674_RABIT" ac="G1T674" length="2194" description="Uncharacterized protein OS=Oryctolagus cuniculus GN=KNTC1 PE=4 SV=2">
-    <alignments total="1">
-     <alignment number="1">
-      <score>699</score>
-      <bits>273.863</bits>
-      <expectation>6.1E-80</expectation>
-      <identity>56.7</identity>
-      <positives>75.2</positives>
-      <gaps>1</gaps>
-      <strand>none/none</strand>
-      <querySeq start="5" end="242">SKHVFEKNLRPKALKLKNAEHCSIITKETARTVLTIQSYLQSISNPEWAAAIAHKIAQELPTGPDKIHALKFCLHLAEKWKKNVSSENDAHEKADVFIKKLSVQYQRSATENVLITHKLNTPELLKQIGKPANLIVSLYEHSSVEQRIRHPTGRDYPDIHTAAKQISEVNNLNMSKICTLLLEKWICPPAVPQADKNKDVFGDIHGDEDLRRVIYLLQPYPVDYSSRMLYAIATSATS</querySeq>
-      <pattern>+KHVFEKNL+PK LK   A+  ++I+KE ++   TI+SYL SI NPEWA AIA  + QE+P G  K+ +LKFCL+LAE+W +NV  +++  EKA   +KKL VQ++RS TE VLI HKLNT E L+ IGKPA+LIVSLYEH S+ QRI++ +G  YPDIH AAK+I+EVN +N+ KI  +LLEKW+CP A P  +K  ++F ++  DE L+RV+YLLQ  P+DYSSRML+  ATSAT+</pattern>
-      <matchSeq start="1626" end="1861">AKHVFEKNLKPKLLKFTQAKPSTLISKEVSKITQTIESYLLSIVNPEWAVAIAITLTQEIPEGSFKMSSLKFCLYLAERWLENVPPQDETREKAQALLKKLHVQFRRSGTEAVLIAHKLNTAEYLRGIGKPAHLIVSLYEHPSINQRIQNSSGNSYPDIHAAAKEIAEVNEINLEKIWDMLLEKWLCPSAAP-GEKPSELF-ELQEDEALQRVVYLLQSRPLDYSSRMLFVFATSATT</matchSeq>
      </alignment>
     </alignments>
    </hit>
