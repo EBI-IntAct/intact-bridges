@@ -33,11 +33,11 @@ public class UniprotTaxonomyServiceTest {
         assertNotNull( term );
 //        System.out.println(term);
         assertEquals( 9615, term.getTaxid() );
-        assertEquals( "CANFA", term.getMnemonic() );
+        assertEquals( "CANLF", term.getMnemonic() );
         assertEquals( "Dog", term.getCommonName() );
-        assertEquals( "Canis familiaris", term.getScientificName() );
+        assertEquals( "Canis lupus familiaris", term.getScientificName() );
         assertEquals( 1, term.getSynonyms().size() );
-        assertEquals( "Canis lupus familiaris", term.getSynonyms().iterator().next() );
+        assertEquals( "Canis familiaris", term.getSynonyms().iterator().next() );
     }
 
     @Test
