@@ -29,9 +29,9 @@
     <!--</scm>-->
 
     <scm>
-        <connection>scm:git:https://bitbucket.org/intact-ebi/intact-bridges.git</connection>
-        <developerConnection>scm:git:https://bitbucket.org/intact-ebi/intact-bridges.git</developerConnection>
-        <url>https://bitbucket.org/intact-ebi/intact-bridges</url>
+        <connection>scm:git:https://bitbucket.org/intact-ebi/intact-bridges-master.git</connection>
+        <developerConnection>scm:git:https://bitbucket.org/intact-ebi/intact-bridges-master.git</developerConnection>
+        <url>https://bitbucket.org/intact-ebi/intact-bridges-master</url>
         <tag>HEAD</tag>
     </scm>
 
