@@ -112,30 +112,7 @@ public class IntactOlsOntology extends AbstractOlsOntology<IntactOntologyTermI> 
      */
     @Override
     public Set<IntactOntologyTermI> getDirectParents( IntactOntologyTermI term ) {
-        Set<IntactOntologyTermI> directParents = super.getDirectParents(term);
-        Iterator<IntactOntologyTermI> parentIterator = directParents.iterator();
-
-        while (parentIterator.hasNext()){
-            IntactOntologyTermI parent = parentIterator.next();
-
-            try {
-                Map<String, String> relations = olsClient.getQuery().getTermRelations(parent.getTermAccession(), ontologyID);
-
-                if (relations.containsKey(term.getTermAccession())){
-                    String relation = relations.get(term.getTermAccession());
-                    // remove other parents to avoid cyclic dependencies
-                    if (relation == null || (!relation.equals("part_of") && !relation.equals("is_a"))){
-                        parentIterator.remove();
-                    }
-                }
-            } catch (ServiceException e) {
-                throw new IllegalStateException( "RemoteException while trying to connect to OLS." );
-            } catch (RemoteException e) {
-                throw new IllegalStateException( "RemoteException while trying to connect to OLS." );
-            }
-        }
-
-        return directParents;
+        return super.getDirectParents(term);
     }
 
     /**
@@ -149,29 +126,6 @@ public class IntactOlsOntology extends AbstractOlsOntology<IntactOntologyTermI> 
      */
     @Override
     public Set<IntactOntologyTermI> getDirectChildren( IntactOntologyTermI term ) {
-        Set<IntactOntologyTermI> directChildren = super.getDirectChildren(term);
-        Iterator<IntactOntologyTermI> childrenIterator = directChildren.iterator();
-
-        try {
-            Map<String, String> relations = olsClient.getQuery().getTermRelations(term.getTermAccession(), ontologyID);
-
-            while (childrenIterator.hasNext()){
-                IntactOntologyTermI child = childrenIterator.next();
-
-                if (relations.containsKey(child.getTermAccession())){
-                    String relation = relations.get(child.getTermAccession());
-                    // remove other parents to avoid cyclic dependencies
-                    if (relation == null || (!relation.equals("part_of") && !relation.equals("is_a"))){
-                        childrenIterator.remove();
-                    }
-                }
-            }
-        } catch (ServiceException e) {
-            throw new IllegalStateException( "RemoteException while trying to connect to OLS." );
-        } catch (RemoteException e) {
-            throw new IllegalStateException( "RemoteException while trying to connect to OLS." );
-        }
-
-        return directChildren;
+        return super.getDirectChildren(term);
     }
 }
