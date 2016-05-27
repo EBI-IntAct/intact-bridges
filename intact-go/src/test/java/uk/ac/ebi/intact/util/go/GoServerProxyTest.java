@@ -19,6 +19,8 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.rmi.RemoteException;
+
 /**
  * TODO comment that class header
  *
@@ -39,7 +41,7 @@ public class GoServerProxyTest {
         Assert.assertEquals("GO:0005575", term.getCategory().getId());
     }
 
-    @Test (expected = GoServerProxy.GoIdNotFoundException.class)
+    @Test (expected = RemoteException.class)
     public void query_notFound() throws Exception {
         GoServerProxy goServerProxy = new GoServerProxy();
         GoTerm term = goServerProxy.query("PleaseDontGO");
