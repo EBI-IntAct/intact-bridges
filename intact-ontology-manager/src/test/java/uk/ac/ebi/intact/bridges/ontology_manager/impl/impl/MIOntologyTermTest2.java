@@ -41,11 +41,11 @@ public class MIOntologyTermTest2 {
 
         Assert.assertEquals("two hybrid", term1.getFullName());
         Assert.assertEquals("2 hybrid", term1.getShortLabel());
-        Assert.assertEquals(8, term1.getAliases().size());
+        Assert.assertEquals(7, term1.getAliases().size());
 
         for (String alias : term1.getAliases()){
             if (!alias.equals("2-hybrid") && !alias.equals("2H") && !alias.equals("2h") && !alias.equals("classical two hybrid")
-                    && !alias.equals("Gal4 transcription regeneration") && !alias.equals("two-hybrid") && !alias.equals("Y2H")
+                    && !alias.equals("Gal4 transcription regeneration") && !alias.equals("two-hybrid")
                     && !alias.equals("yeast two hybrid")){
                 Assert.assertTrue(false);
             }
@@ -122,7 +122,7 @@ public class MIOntologyTermTest2 {
                 }
             }
             else if (annotation.getTopic().equals("search-url") && annotation.getTopicId().equals("MI:0615")){
-                if (!annotation.getDescription().equals("http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&amp;db=PubMed&amp;list_uids=${ac}&amp;dopt=Abstract")){
+                if (!annotation.getDescription().equals("http://europepmc.org/abstract/MED/${ac}")){
                     Assert.assertTrue(false);
                 }
             }
