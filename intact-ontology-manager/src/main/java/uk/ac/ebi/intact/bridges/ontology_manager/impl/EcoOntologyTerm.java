@@ -63,17 +63,19 @@ public class EcoOntologyTerm extends AbstractIntactOntologyTerm{
 
     @Override
     protected void processSynonym(String synonymName, String synonym) {
-        if (synonymName.startsWith(EXACT_SYNONYM_KEY + META_DATA_SEPARATOR) || EXACT_SYNONYM_KEY.equalsIgnoreCase(synonymName)){
-            this.aliases.add(synonym);
-        }
-        else if (synonymName.startsWith(BROAD + META_DATA_SEPARATOR) || BROAD.equalsIgnoreCase(synonymName)){
-            this.aliases.add(synonym);
-        }
-        else if (synonymName.startsWith(RELATED + META_DATA_SEPARATOR) || RELATED.equalsIgnoreCase(synonymName)){
-            this.aliases.add(synonym);
-        }
-        else if (synonymName.startsWith(NARROW + META_DATA_SEPARATOR) || NARROW.equalsIgnoreCase(synonymName)){
-            this.aliases.add(synonym);
+        if(synonymName != null && synonym != null){
+            if (synonymName.startsWith(EXACT_SYNONYM_KEY) || EXACT_SYNONYM_KEY.equalsIgnoreCase(synonymName)){
+                this.aliases.add(synonym);
+            }
+            else if (synonymName.startsWith(BROAD) || BROAD.equalsIgnoreCase(synonymName)){
+                this.aliases.add(synonym);
+            }
+            else if (synonymName.startsWith(RELATED) || RELATED.equalsIgnoreCase(synonymName)){
+                this.aliases.add(synonym);
+            }
+            else if (synonymName.startsWith(NARROW) || NARROW.equalsIgnoreCase(synonymName)){
+                this.aliases.add(synonym);
+            }
         }
     }
 
