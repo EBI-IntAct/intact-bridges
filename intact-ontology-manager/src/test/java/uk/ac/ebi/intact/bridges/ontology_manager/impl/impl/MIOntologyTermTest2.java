@@ -131,8 +131,8 @@ public class MIOntologyTermTest2 {
             }
         }
 
-        Assert.assertEquals("http://www.ncbi.nlm.nih.gov/entrez/query.fcgi", term1.getURL());
-        Assert.assertEquals("PubMed is designed to provide access to citations from biomedical literature.", term1.getDefinition());
+        Assert.assertEquals("http://europepmc.org", term1.getURL());
+        Assert.assertEquals("PubMed is designed to provide access to citations from biomedical literature. The data can be found at both NCBI PubMed and Europe PubMed Central.", term1.getDefinition());
     }
 
     @Test
@@ -300,7 +300,7 @@ public class MIOntologyTermTest2 {
 
         Assert.assertEquals("Experimental method used to identify the region of a nucleic acid involved in an interaction with a protein. One sample of a radiolabeled nucleic acid of known sequence is submitted to partial digestion. A second sample is incubated with its interacting partner and then is submitted to the same partial digestion. The two samples are then analyzed in parallel by electrophoresis on a denaturing acrylamide gel. After autoradiography the identification of the bands that correspond to fragments missing from the lane loaded with the second sample reveals the region of the nucleic acid that is protected from nuclease digestion upon binding.\n" +
                 "replace by:MI:0417", term3.getDefinition());
-        Assert.assertEquals("OBSOLETE because redundant with MI:0417 &apos;footprinting&apos; combined with interactor type MI:0319 &apos;DNA&apos; ", term3.getObsoleteMessage());
+        Assert.assertEquals("OBSOLETE because redundant with MI:0417 'footprinting' combined with interactor type MI:0319 'DNA'", term3.getObsoleteMessage());
         Assert.assertEquals(2, term3.getPossibleTermsToRemapTo().size());
         Assert.assertNull(term3.getRemappedTerm());
 
