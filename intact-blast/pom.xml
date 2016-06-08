@@ -23,21 +23,4 @@
         <!--<module>wu-blast</module>-->
         <module>ncbi-blast</module>
     </modules>
-
-    <!-- EBI repositories -->
-    <repositories>
-        <repository>
-            <id>intact.nexus</id>
-            <name>IntAct Nexus</name>
-            <url>http://www.ebi.ac.uk/intact/maven/nexus/content/groups/public</url>
-        </repository>
-    </repositories>
-
-    <distributionManagement>
-        <site>
-            <id>intact-site</id>
-            <name>Intact site</name>
-            <url>${site.remote.basedir}/bridges</url>
-        </site>
-    </distributionManagement>
 </project>

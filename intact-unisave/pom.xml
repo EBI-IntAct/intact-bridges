@@ -1,5 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
     <parent>
         <artifactId>bridges-master</artifactId>
         <groupId>uk.ac.ebi.intact.bridges</groupId>
@@ -24,10 +25,10 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
                 <!--<configuration>-->
-                    <!--<wsdlUrls>-->
-                        <!--<url>http://www.ebi.ac.uk/uniprot/unisave/unisave.wsdl</url>-->
-                    <!--</wsdlUrls>-->
-                    <!--<sei />-->
+                <!--<wsdlUrls>-->
+                <!--<url>http://www.ebi.ac.uk/uniprot/unisave/unisave.wsdl</url>-->
+                <!--</wsdlUrls>-->
+                <!--<sei />-->
                 <!--</configuration>-->
             </plugin>
         </plugins>
@@ -86,15 +87,5 @@
             <artifactId>httpclient</artifactId>
             <version>4.1.1</version>
         </dependency>
-
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>intact.nexus</id>
-            <name>IntAct Nexus</name>
-            <url>http://www.ebi.ac.uk/intact/maven/nexus/content/groups/public</url>
-        </repository>
-    </repositories>
-
 </project>
