@@ -17,8 +17,8 @@ import java.util.regex.Matcher;
  */
 
 public class MiOntologyTerm extends AbstractIntactOntologyTerm {
-    private static final String SHORTLABEL_IDENTIFIER = "PSI-MI-short";
-    private static final String ALIAS_IDENTIFIER = "PSI-MI-alternate";
+    private static final String SHORTLABEL_IDENTIFIER = "Unique short label curated by PSI-MI";
+    private static final String ALIAS_IDENTIFIER = "Alternate label curated by PSI-MI";
 
     private static final String PMID_APPLICATION = "PMID for application instance";
 
@@ -145,14 +145,12 @@ public class MiOntologyTerm extends AbstractIntactOntologyTerm {
             for (TermSynonym synonym : synonyms) {
                 Term synonymType = synonym.getSynonymType();
                 //PSI-MOD-label for MOD
-                if (synonymType.getIdentifier() != null && synonymType.getIdentifier().contains(":")) {
-                    String identifier = synonymType.getIdentifier().split(":")[1];
-                    if (identifier == null || !identifier.isEmpty()) {
-                        if (SHORTLABEL_IDENTIFIER.equalsIgnoreCase(identifier)) {
-                            this.shortLabel = synonym.getSynonym().toLowerCase();
-                        } else if (ALIAS_IDENTIFIER.equalsIgnoreCase(identifier) || EXACT_KEY.equalsIgnoreCase(identifier)) {
-                            this.aliases.add(synonym.getSynonym());
-                        }
+                if (synonymType != null) {
+                    if (SHORTLABEL_IDENTIFIER.equalsIgnoreCase(synonymType.getName())) {
+                        this.shortLabel = synonym.getSynonym().toLowerCase();
+                    } else if (ALIAS_IDENTIFIER.equalsIgnoreCase(synonymType.getName())
+                            || EXACT_KEY.equalsIgnoreCase(synonymType.getName())) {
+                        this.aliases.add(synonym.getSynonym());
                     }
                 }
             }
