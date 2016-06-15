@@ -24,12 +24,6 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
-                <!--<configuration>-->
-                <!--<wsdlUrls>-->
-                <!--<url>http://www.ebi.ac.uk/uniprot/unisave/unisave.wsdl</url>-->
-                <!--</wsdlUrls>-->
-                <!--<sei />-->
-                <!--</configuration>-->
             </plugin>
         </plugins>
     </build>

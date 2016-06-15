@@ -14,11 +14,6 @@
     <name>IntAct Bridges :: Uniprot</name>
     <description>UniProt Service, will allow IntAct to retreive UniProt protein objects.</description>
 
-    <properties>
-        <spring.version>3.2.9.RELEASE</spring.version>
-    </properties>
-
-
     <build>
         <plugins>
             <plugin>
