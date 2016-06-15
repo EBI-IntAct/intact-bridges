@@ -71,9 +71,9 @@ public class IntactFilterOlsClient extends OlsClient{
     }
 
     @Override
-    public Map getTermChildren(String termAccession, String ontologyId, int level, int[] relationships) throws RemoteException {
+    public Map getTermChildren(String termAccession, String ontologyId, int level) throws RemoteException {
         if (termAccession.startsWith(ontologyId)){
-            Map children = super.getTermChildren(termAccession, ontologyId, level, relationships);
+            Map children = super.getTermChildren(termAccession, ontologyId, level);
 
             Set<Object> keys = new HashSet<Object>(children.keySet());
 

@@ -9,7 +9,10 @@ import uk.ac.ebi.ols.model.interfaces.Annotation;
 import uk.ac.ebi.ols.model.interfaces.DbXref;
 import uk.ac.ebi.ols.model.interfaces.Term;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 /**
@@ -65,6 +68,12 @@ public abstract class AbstractIntactOntologyTerm extends OntologyTermImpl implem
     public final static Pattern MOD_REGEXP = Pattern.compile("MOD:[0-9]{5}+");
     public final static Pattern MI_REGEXP = Pattern.compile("MI:[0-9]{4}+");
     public final static Pattern ECO_REGEXP = Pattern.compile("ECO:[0-9]+");
+
+    private static final String XREF_VALIDATION_REGEXP = "id-validation-regexp";
+    private static final String XREF_VALIDATION_REGEXP_MI_REF = "MI:0628";
+
+    private static final String SEARCH_URL = "search-url";
+    private static final String SEARCH_URL_MI_REF = "MI:0615";
 
     /**
      * Shortlabel of the cv object in intact
@@ -169,8 +178,10 @@ public abstract class AbstractIntactOntologyTerm extends OntologyTermImpl implem
                     this.comments.add(comment);
                 }
                 else {
-                    String synonym = (String) metadata.get(keyName);
-                    processSynonym(keyName, synonym);
+                    Map synonyms = (Map) metadata.get(keyName);
+                    for(Object synonym : synonyms.keySet()){
+                        processSynonym((String)synonyms.get(synonym), (String)synonym);
+                    }
                 }
             }
         }
@@ -216,26 +227,9 @@ public abstract class AbstractIntactOntologyTerm extends OntologyTermImpl implem
                 }
                 else {
                     String xref = (String) xrefs.get(keyName);
-
-                    if (xref.contains(META_XREF_SEPARATOR)){
-                        String [] xrefDef = xref.split(META_XREF_SEPARATOR);
-                        String database = null;
-                        String accession = null;
-
-                        if (xrefDef.length == 2){
-                            database = xrefDef[0];
-                            accession = xrefDef[1].trim();
-                        }
-                        else if (xrefDef.length > 2){
-                            database = xrefDef[0];
-                            accession = xref.substring(database.length() + 1).trim();
-                        }
-
-                        if (database != null && accession != null){
-                            processXref(database, accession);
-                        }
-                    }
-                    else {
+                    if((keyName.startsWith(XREF_VALIDATION_REGEXP) || keyName.startsWith(SEARCH_URL)) && xref != null){
+                        processXref(keyName.replace(":", ""), xref);
+                    } else {
                         processXref(null, xref);
                     }
                 }
@@ -344,6 +338,10 @@ public abstract class AbstractIntactOntologyTerm extends OntologyTermImpl implem
             String[] defArray = definition.split( LINE_BREAK );
 
             String otherInfoString = null;
+
+            for(int i = 0; i < defArray.length; i ++){
+                defArray[i] = defArray[i].trim();
+            }
 
             if ( defArray.length == 2 ) {
                 this.definition = defArray[0];
