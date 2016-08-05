@@ -292,7 +292,7 @@ public class UniprotRemoteServiceTest {
         assertEquals( "Involved in the regulation of actin cytoskeleton", protein.getFunctions().iterator().next() );
 
         // keywords
-        assertEquals( 8, protein.getKeywords().size() );
+        assertEquals( 10, protein.getKeywords().size() );
 
         // cross references
         assertEquals( 11, protein.getCrossReferences().size() );
