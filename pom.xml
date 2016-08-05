@@ -31,7 +31,8 @@
     </scm>
 
     <modules>
-        <module>intact-imexcentral</module>
+        <!--TODO Could not find artifact edu.ucla.mbi.imex:icentral-api:jar:2.0-->
+        <!--<module>intact-imexcentral</module>-->
         <module>intact-picr</module>
         <module>intact-citexplore</module>
         <module>intact-taxonomy</module>
