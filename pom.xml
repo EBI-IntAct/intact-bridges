@@ -24,9 +24,9 @@
     </properties>
 
     <scm>
-        <connection>scm:git:https://bitbucket.org/intact-ebi/intact-bridges-master.git</connection>
-        <developerConnection>scm:git:https://bitbucket.org/intact-ebi/intact-bridges-master.git</developerConnection>
-        <url>https://bitbucket.org/intact-ebi/intact-bridges-master</url>
+        <connection>scm:git:https://github.com/EBI-IntAct/intact-bridges.git</connection>
+        <developerConnection>scm:git:https://github.com/EBI-IntAct/intact-bridges.git</developerConnection>
+        <url>https://github.com/EBI-IntAct/intact-bridges</url>
         <tag>bridges-master-2.1.19</tag>
     </scm>
 
