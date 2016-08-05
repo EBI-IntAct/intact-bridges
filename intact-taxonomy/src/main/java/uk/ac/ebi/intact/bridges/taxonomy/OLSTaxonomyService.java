@@ -72,7 +72,7 @@ public class OLSTaxonomyService implements TaxonomyService {
             String commonName = term.getLabel();
 
             for (Map.Entry<String, String> entry : term.getOboSynonyms().entrySet()) {
-                if (entry.getValue().equals("genbank_common_name")) {
+                if (entry.getValue().equals("genbank common name")) {
                     commonName = WordUtils.capitalize(entry.getKey());
                 }
             }
