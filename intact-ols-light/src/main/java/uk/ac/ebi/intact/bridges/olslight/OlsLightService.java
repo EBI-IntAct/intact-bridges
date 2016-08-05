@@ -39,7 +39,7 @@ public class OlsLightService implements OntologyService {
                                                  final boolean includeParent ) throws OntologyServiceException {
 
         Map<String, String> id2nameMap = new HashMap<String, String>();
-        final String jsonQuery = "http://www.ebi.ac.uk/ontology-lookup/json/termchildren?termId=" + parentTerm + "&ontology=" + ontologyId.getId() + "&depth=" + depth;
+        final String jsonQuery = "http://www.ebi.ac.uk/ontology-lookup/v2/json/termchildren?termId=" + parentTerm + "&ontology=" + ontologyId.getId() + "&depth=" + depth;
 
         String jsonData = getJsonData( jsonQuery );
 
