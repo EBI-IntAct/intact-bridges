@@ -42,7 +42,6 @@
         <module>intact-go</module>
         <module>intact-google</module>
         <module>intact-ontologies</module>
-        <module>intact-ols-light</module>
         <module>intact-ontology-manager</module>
     </modules>
 
