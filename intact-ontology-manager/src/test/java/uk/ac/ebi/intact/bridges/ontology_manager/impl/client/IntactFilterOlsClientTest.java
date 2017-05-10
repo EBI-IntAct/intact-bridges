@@ -36,13 +36,13 @@ public class IntactFilterOlsClientTest {
     public void test_filter_children() throws RemoteException {
         Map children = olsClient.getTermChildren("MI:0252", "MI", 1);
 
-        Assert.assertEquals(7, children.size());
+        Assert.assertEquals(8, children.size());
 
         for (Object key : children.keySet()){
             String id = (String) key;
 
             if (!id.equals("MI:0117") && !id.equals("MI:0118") && !id.equals("MI:0828") && !id.equals("MI:1175") && !id.equals("MI:1241")
-                    && !id.equals("MI:2201") && !id.equals("MI:2202")){
+                    && !id.equals("MI:2201") && !id.equals("MI:2202") && !id.equals("MI:2276")){
                 Assert.assertFalse(true);
             }
         }

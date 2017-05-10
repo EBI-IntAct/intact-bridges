@@ -33,7 +33,7 @@ public class CitexploreClient {
     private WSCitationImplService service;
 
     public CitexploreClient(){
-        this("http://www.ebi.ac.uk/europepmc/webservices/soap?wsdl");
+        this("https://www.ebi.ac.uk/europepmc/webservices/soap?wsdl");
     }
 
     public CitexploreClient(String wsdlUrl){
@@ -65,8 +65,7 @@ public class CitexploreClient {
             // ex : extId1 coresponds to 2 publication in citexplore one from medline, one from CiteSeer.
             // Putting : core allow to get a lighter object just with the title, authors name...
             // we can choose between metadata for citations or full text for full text searches
-            ResponseWrapper wrapper = getPort().searchPublications(query, "core", 0, "1000", false, "intact-dev@ebi.ac.uk");
-
+            ResponseWrapper wrapper = getPort().searchPublications(query, "core", "*", "1000", "", false, "intact-dev@ebi.ac.uk");
             return  wrapper.getResultList();//"core"
         } catch (QueryException_Exception e) {
             throw new CitexploreClientException("Problem fetching query: "+query, e);

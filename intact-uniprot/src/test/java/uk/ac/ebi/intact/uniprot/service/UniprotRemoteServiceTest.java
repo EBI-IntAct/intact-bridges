@@ -295,7 +295,7 @@ public class UniprotRemoteServiceTest {
         assertEquals( 10, protein.getKeywords().size() );
 
         // cross references
-        assertEquals( 11, protein.getCrossReferences().size() );
+        assertEquals( 14, protein.getCrossReferences().size() );
 
         // splice variants
         assertEquals( 0, protein.getSpliceVariants().size() );
@@ -515,7 +515,7 @@ public class UniprotRemoteServiceTest {
 
         List<UniprotSpliceVariant> uniprotSpliceVariants = new ArrayList<UniprotSpliceVariant>(prot.getSpliceVariants());
 
-        Assert.assertEquals(8, uniprotSpliceVariants.size());
+        Assert.assertEquals(9, uniprotSpliceVariants.size());
 
         for (UniprotSpliceVariant usv : uniprotSpliceVariants) {
             Assert.assertNotNull("Sequence for "+usv.getPrimaryAc()+" must not be null", usv.getSequence());

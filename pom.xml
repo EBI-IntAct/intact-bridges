@@ -12,7 +12,7 @@
     <groupId>uk.ac.ebi.intact.bridges</groupId>
     <artifactId>bridges-master</artifactId>
     <packaging>pom</packaging>
-    <version>2.1.20</version>
+    <version>2.1.21</version>
 
     <name>IntAct Bridges</name>
     <description>Bridges Master POM</description>
@@ -42,7 +42,6 @@
         <module>intact-go</module>
         <module>intact-google</module>
         <module>intact-ontologies</module>
-        <module>intact-ols-light</module>
         <module>intact-ontology-manager</module>
     </modules>
 
@@ -175,8 +174,9 @@
 
     <repositories>
         <repository>
-            <id>nexus-ebi-repo-old</id>
-            <url>http://www.ebi.ac.uk/intact/maven/nexus/content/repositories/ebi-repo/</url>
+            <id>ebi-repo</id>
+            <name>ebi-repo</name>
+            <url>http://www.ebi.ac.uk/~maven/m2repo</url>
         </repository>
         <repository>
             <id>nexus-ebi-release-repo</id>
