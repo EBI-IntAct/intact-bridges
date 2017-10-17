@@ -19,7 +19,6 @@
     </properties>
 
     <modules>
-        <!--<module>wu-blast</module>-->
         <module>ncbi-blast</module>
     </modules>
 </project>
