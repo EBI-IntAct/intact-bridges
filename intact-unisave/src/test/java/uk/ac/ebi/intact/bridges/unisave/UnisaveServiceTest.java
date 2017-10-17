@@ -1,7 +1,5 @@
 package uk.ac.ebi.intact.bridges.unisave;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -177,72 +175,90 @@ public class UnisaveServiceTest {
         Assert.assertNotNull( sv );
         Assert.assertNotNull( sv.getSequence() );
         Assert.assertEquals( "MALLHSARVLSGVASAFHPGLAAAASARASSWWAHVEMGPPDPILGVTEAYKRDTNSKKMNLGVGAYRDDNGKPYVLPSVRKAEAQIAAKGLDKEYLPIGGLAEFCRASAELALGENSEVVKSGRFVTVQTISGTGALRIGASFLQRFFKFSRDVFLPKPSWGNHTPIFRDAGMQLQSYRYYDPKTCGFDFTGALEDISKIPEQSVLLLHACAHNPTGVDPRPEQWKEIATVVKKRNLFAFFDMAYQGFASGDGDKDAWAVRHFIEQGINVCLCQSYAKNMGLYGERVGAFTVICKDADEAKRVESQLKILIRPMYSNPPIHGARIASTILTSPDLRKQWLQEVKGMADRIIGMRTQLVSNLKKEGSTHSWQHITDQIGMFCFTGLKPEQVERLTKEFSIYMTKDGRISVAGVTSGNVGYLAHAIHQVTK", sv.getSequence().getSequence() );
-        Assert.assertEquals( "FT   TRANSIT       1     29       Mitochondrion.\n" +
-                "FT   CHAIN        30    430       Aspartate aminotransferase,\n" +
-                "FT                                mitochondrial.\n" +
-                "FT                                /FTId=PRO_0000123886.\n" +
-                "FT   BINDING      65     65       Substrate; via amide nitrogen (By\n" +
-                "FT                                similarity).\n" +
-                "FT   BINDING     162    162       Substrate (By similarity).\n" +
-                "FT   BINDING     215    215       Substrate (By similarity).\n" +
-                "FT   BINDING     407    407       Substrate (By similarity).\n" +
-                "FT   MOD_RES      59     59       N6-acetyllysine (By similarity).\n" +
-                "FT   MOD_RES      73     73       N6-acetyllysine; alternate (By\n" +
-                "FT                                similarity).\n" +
-                "FT   MOD_RES      73     73       N6-succinyllysine; alternate (By\n" +
-                "FT                                similarity).\n" +
-                "FT   MOD_RES      82     82       N6-acetyllysine (By similarity).\n" +
-                "FT   MOD_RES      90     90       N6-acetyllysine; alternate (By\n" +
-                "FT                                similarity).\n" +
-                "FT   MOD_RES      90     90       N6-succinyllysine; alternate (By\n" +
-                "FT                                similarity).\n" +
-                "FT   MOD_RES      96     96       Nitrated tyrosine (By similarity).\n" +
-                "FT   MOD_RES     122    122       N6-acetyllysine; alternate (By\n" +
-                "FT                                similarity).\n" +
-                "FT   MOD_RES     122    122       N6-succinyllysine; alternate (By\n" +
-                "FT                                similarity).\n" +
-                "FT   MOD_RES     159    159       N6-acetyllysine; alternate (By\n" +
-                "FT                                similarity).\n" +
-                "FT   MOD_RES     159    159       N6-succinyllysine; alternate (By\n" +
-                "FT                                similarity).\n" +
-                "FT   MOD_RES     185    185       N6-acetyllysine; alternate (By\n" +
-                "FT                                similarity).\n" +
-                "FT   MOD_RES     185    185       N6-succinyllysine; alternate (By\n" +
-                "FT                                similarity).\n" +
-                "FT   MOD_RES     227    227       N6-succinyllysine (By similarity).\n" +
-                "FT   MOD_RES     234    234       N6-acetyllysine (By similarity).\n" +
-                "FT   MOD_RES     279    279       N6-(pyridoxal phosphate)lysine; alternate\n" +
-                "FT                                (By similarity).\n" +
-                "FT   MOD_RES     279    279       N6-acetyllysine; alternate (By\n" +
-                "FT                                similarity).\n" +
-                "FT   MOD_RES     296    296       N6-acetyllysine; alternate (By\n" +
-                "FT                                similarity).\n" +
-                "FT   MOD_RES     296    296       N6-succinyllysine; alternate (By\n" +
-                "FT                                similarity).\n" +
-                "FT   MOD_RES     302    302       N6-acetyllysine (By similarity).\n" +
-                "FT   MOD_RES     309    309       N6-acetyllysine; alternate (By\n" +
-                "FT                                similarity).\n" +
-                "FT   MOD_RES     309    309       N6-succinyllysine; alternate (By\n" +
-                "FT                                similarity).\n" +
-                "FT   MOD_RES     338    338       N6-acetyllysine; alternate (By\n" +
-                "FT                                similarity).\n" +
-                "FT   MOD_RES     338    338       N6-succinyllysine; alternate (By\n" +
-                "FT                                similarity).\n" +
-                "FT   MOD_RES     345    345       N6-acetyllysine (By similarity).\n" +
-                "FT   MOD_RES     363    363       N6-acetyllysine; alternate (By\n" +
-                "FT                                similarity).\n" +
-                "FT   MOD_RES     363    363       N6-succinyllysine; alternate (By\n" +
-                "FT                                similarity).\n" +
-                "FT   MOD_RES     364    364       N6-acetyllysine (By similarity).\n" +
-                "FT   MOD_RES     387    387       N6-acetyllysine (By similarity).\n" +
-                "FT   MOD_RES     396    396       N6-acetyllysine; alternate (By\n" +
-                "FT                                similarity).\n" +
-                "FT   MOD_RES     396    396       N6-succinyllysine; alternate (By\n" +
-                "FT                                similarity).\n" +
-                "FT   MOD_RES     404    404       N6-acetyllysine; alternate (By\n" +
-                "FT                                similarity).\n" +
-                "FT   MOD_RES     404    404       N6-succinyllysine; alternate (By\n" +
-                "FT                                similarity).", sv.getSequence().getHeader() );
+        Assert.assertEquals("FT   TRANSIT       1     29       Mitochondrion.\n" +
+                        "FT                                {ECO:0000269|PubMed:4030726}.\n" +
+                        "FT   CHAIN        30    430       Aspartate aminotransferase,\n" +
+                        "FT                                mitochondrial.\n" +
+                        "FT                                /FTId=PRO_0000123886.\n" +
+                        "FT   BINDING      65     65       Substrate; via amide nitrogen.\n" +
+                        "FT                                {ECO:0000250}.\n" +
+                        "FT   BINDING     162    162       Substrate. {ECO:0000250}.\n" +
+                        "FT   BINDING     215    215       Substrate. {ECO:0000250}.\n" +
+                        "FT   BINDING     407    407       Substrate. {ECO:0000250}.\n" +
+                        "FT   MOD_RES      48     48       Phosphothreonine.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P00505}.\n" +
+                        "FT   MOD_RES      59     59       N6-acetyllysine.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES      73     73       N6-acetyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P00505}.\n" +
+                        "FT   MOD_RES      73     73       N6-succinyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES      82     82       N6-acetyllysine.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES      90     90       N6-acetyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P00505}.\n" +
+                        "FT   MOD_RES      90     90       N6-succinyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES      96     96       Nitrated tyrosine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES      96     96       Phosphotyrosine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P00505}.\n" +
+                        "FT   MOD_RES     122    122       N6-acetyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES     122    122       N6-succinyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES     143    143       Phosphoserine.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P00505}.\n" +
+                        "FT   MOD_RES     159    159       N6-acetyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P00505}.\n" +
+                        "FT   MOD_RES     159    159       N6-succinyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES     185    185       N6-acetyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES     185    185       N6-succinyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES     227    227       N6-succinyllysine.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES     234    234       N6-acetyllysine.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P00505}.\n" +
+                        "FT   MOD_RES     279    279       N6-(pyridoxal phosphate)lysine;\n" +
+                        "FT                                alternate. {ECO:0000250}.\n" +
+                        "FT   MOD_RES     279    279       N6-acetyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES     296    296       N6-acetyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P00505}.\n" +
+                        "FT   MOD_RES     296    296       N6-succinyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES     302    302       N6-acetyllysine.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES     309    309       N6-acetyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES     309    309       N6-succinyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P12344}.\n" +
+                        "FT   MOD_RES     313    313       Asymmetric dimethylarginine.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES     338    338       N6-acetyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES     338    338       N6-succinyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES     345    345       N6-acetyllysine.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES     363    363       N6-acetyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES     363    363       N6-succinyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES     364    364       N6-acetyllysine.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES     387    387       N6-acetyllysine.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES     396    396       N6-acetyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P00505}.\n" +
+                        "FT   MOD_RES     396    396       N6-succinyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.\n" +
+                        "FT   MOD_RES     404    404       N6-acetyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P00505}.\n" +
+                        "FT   MOD_RES     404    404       N6-succinyllysine; alternate.\n" +
+                        "FT                                {ECO:0000250|UniProtKB:P05202}.", sv.getSequence().getHeader() );
         Assert.assertEquals( 2, sv.getVersion() );
     }
 
@@ -262,7 +278,7 @@ public class UnisaveServiceTest {
         Assert.assertNotNull( sv );
         Assert.assertNotNull( sv.getSequence() );
         Assert.assertEquals( "VPFLSKAVRCGPVIPFVIHHFNFRRVTTTKRRRNKYVLVPGYGWVLQDDYLVNSVKMTGENDLPPNQLPHDDDLLFTYAKILLYDYISYFPKFRHNNPDLLDHKTELELFPLKADSAARNKANFYARTLWNDTITDKSAFKPGTYNDTVAGLLLWQQCALMWSLPKSVINRTISGVCDALTNRTSLTLLKRISDWLKQLGLACSPIHRLFIELPTLLGRGAIPGDADKDIKHRLAFDPSITVDVPKEQLHLLIYRLLSRNLNITKVNSFEHHLEERLLWSKSGSHYYPDDKINELLPPQPTRKEFLDVVTTEYIKECKPQVFIRQSRKLEHGKERFIYNCDTVSYVYFDFILKLFETGWQDSEAILSPGDYTSERLHAKISSYKYKAMLDYTDFNSQHTIQSMRLIFETMKELLPPEATFALDWCIASFDNMQTSDGLKWMATLPSGHRATTFINTVLNWCYTQMVGLKFDSFMCAGDDVILMSQQPISLAPILTSHFKFNPSKQSTGTRGEFLRKHYSEAGVFAYPCRAIASLVSGNWLSQSLRENTPILVPIQNGIDRLRSRAGLLGVPWKLGLSELIEREAIPKEVGMALLNSHAAGPGLITRDYSSFTVTPKPPKLSSTLEYTATRYGLQDLSKHVPWKQLTTVESDKLSRQIKKISYRHCSQAKITYNCTYEVFKPRGLPTVLSGSSQPSLSMLWWQAMLKQAIQDDSTKKIDARMFAANACTSSVSGDAFLRANASMAGVLITSLITSSS", sv.getSequence().getSequence() );
-        Assert.assertEquals( "FT   NON_TER       1      1", sv.getSequence().getHeader() );
+        Assert.assertEquals( "FT   NON_TER       1      1       {ECO:0000313|EMBL:AAC55469.2}.", sv.getSequence().getHeader() );
         Assert.assertEquals( 2, sv.getVersion() );
 
         sv = updateIterator.next();

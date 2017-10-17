@@ -63,11 +63,12 @@ public class UniprotTaxonomyService implements TaxonomyService {
                 String replacedByTaxidStr = replacedUri.replaceAll(UNIPROT_TAXONOMY_NS, "");
                 int replacledByTaxid = Integer.parseInt(replacedByTaxidStr);
 
-                if( log.isInfoEnabled() )
-                    log.info( "WARNING - the taxid replacement for " + taxid + " is " + replacledByTaxid );
-
                 term = buildTerm(replacledByTaxid);
                 term.setObsoleteTaxid(taxid);
+
+                if( log.isInfoEnabled() ) {
+                    log.info("WARNING - the taxid replacement for " + taxid + " is " + replacledByTaxid);
+                }
 
             } else {
                 term = new TaxonomyTerm( taxid );

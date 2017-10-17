@@ -12,7 +12,7 @@
     <groupId>uk.ac.ebi.intact.bridges</groupId>
     <artifactId>bridges-master</artifactId>
     <packaging>pom</packaging>
-    <version>2.1.21</version>
+    <version>2.1.22</version>
 
     <name>IntAct Bridges</name>
     <description>Bridges Master POM</description>
@@ -21,6 +21,10 @@
     <properties>
         <currentVersion>${version}</currentVersion>
         <spring.version>3.2.9.RELEASE</spring.version>
+        <!--be carefull with the ols-client version that ontology-manager pulls-->
+        <ontology.manager.version>2.0.8</ontology.manager.version>
+        <uniprot.japi.version>1.0.15</uniprot.japi.version>
+        <ols.client.version>2.10</ols.client.version>
     </properties>
 
     <scm>
@@ -30,8 +34,6 @@
     </scm>
 
     <modules>
-        <!--TODO Could not find artifact edu.ucla.mbi.imex:icentral-api:jar:2.0-->
-        <!--<module>intact-imexcentral</module>-->
         <module>intact-picr</module>
         <module>intact-citexplore</module>
         <module>intact-taxonomy</module>
@@ -82,6 +84,8 @@
 
                 </plugin>
                 <plugin>
+                    <!--To avoid problems run with: -->
+                    <!--mvn jgitflow:release-finish -Djava.net.preferIPv4Stack=true -Dmaven.javadoc.skip=true-->
                     <groupId>external.atlassian.jgitflow</groupId>
                     <artifactId>jgitflow-maven-plugin</artifactId>
                     <version>1.0-m5.1</version>
@@ -176,7 +180,7 @@
         <repository>
             <id>ebi-repo</id>
             <name>ebi-repo</name>
-            <url>http://www.ebi.ac.uk/~maven/m2repo</url>
+            <url>http://www.ebi.ac.uk/intact/maven/nexus/content/repositories/ebi-repo/</url>
         </repository>
         <repository>
             <id>nexus-ebi-release-repo</id>
