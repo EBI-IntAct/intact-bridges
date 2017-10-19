@@ -56,7 +56,7 @@ public class BlastResultFilterTest {
             System.out.println(prot.getAccession());
             System.out.println(prot.getIdentity());
         }
-        Assert.assertEquals(21, filteredResults.size());
+        Assert.assertEquals(25, filteredResults.size());
     }
 
     @Test
@@ -72,7 +72,7 @@ public class BlastResultFilterTest {
             System.out.println(prot.getAccession());
             System.out.println(prot.getIdentity());
         }
-        Assert.assertEquals(2, filteredResults.size());
+        Assert.assertEquals(3, filteredResults.size());
     }
 
     @Test
@@ -88,7 +88,7 @@ public class BlastResultFilterTest {
             System.out.println(prot.getAccession());
             System.out.println(prot.getIdentity());
         }
-        Assert.assertEquals(2, filteredResults.size());
+        Assert.assertEquals(3, filteredResults.size());
     }
 
     @Test
@@ -99,19 +99,19 @@ public class BlastResultFilterTest {
         List<BlastProtein> filteredResultsOnIdentity = filter.filterMappingEntriesWithIdentity((float)100);
 
         Assert.assertEquals(false, filteredResultsOnIdentity.isEmpty());
-        Assert.assertEquals(21, filteredResultsOnIdentity.size());
+        Assert.assertEquals(25, filteredResultsOnIdentity.size());
 
         List<BlastProtein> filteredResultsOnOrganism = filter.filterMappingEntriesWithOrganism("7227");
 
         Assert.assertEquals(false, filteredResultsOnOrganism.isEmpty());
-        Assert.assertEquals(2, filteredResultsOnOrganism.size());
+        Assert.assertEquals(3, filteredResultsOnOrganism.size());
 
         List<BlastProtein> filteredResultsOnOrganismAndIdentity = filter.filterMappingEntriesWithIdentityAndOrganism((float)100, "7227");
 
         Assert.assertEquals(false, filteredResultsOnOrganismAndIdentity.isEmpty());
-        Assert.assertEquals(2, filteredResultsOnOrganismAndIdentity.size());
+        Assert.assertEquals(3, filteredResultsOnOrganismAndIdentity.size());
 
         List<BlastProtein> filteredResultsWithTotalAlignment = BlastResultFilter.collectMappingEntriesWithTotalAlignment(filteredResultsOnIdentity, this.sequence.length());
-        Assert.assertEquals(12, filteredResultsWithTotalAlignment.size());
+        Assert.assertEquals(16, filteredResultsWithTotalAlignment.size());
     }
 }
