@@ -9,10 +9,6 @@
     <artifactId>intact-picr</artifactId>
     <name>IntAct Bridges :: PICR</name>
 
-    <properties>
-        <maven.test.failure.ignore>true</maven.test.failure.ignore>
-    </properties>
-
     <build>
         <pluginManagement>
             <plugins>
