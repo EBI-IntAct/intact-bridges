@@ -49,6 +49,28 @@
 
 
     <build>
+        <plugins>
+            <plugin>
+                <!--To avoid problems run with: -->
+                <!--mvn jgitflow:release-finish -Djava.net.preferIPv4Stack=true -Dmaven.javadoc.skip=true-->
+                <groupId>external.atlassian.jgitflow</groupId>
+                <artifactId>jgitflow-maven-plugin</artifactId>
+                <version>1.0-m5.1</version>
+                <configuration>
+                    <flowInitContext>
+                        <masterBranchName>master</masterBranchName>
+                        <developBranchName>develop</developBranchName>
+                        <featureBranchPrefix>feature-</featureBranchPrefix>
+                        <releaseBranchPrefix>release-</releaseBranchPrefix>
+                        <hotfixBranchPrefix>hotfix-</hotfixBranchPrefix>
+                        <versionTagPrefix>${project.artifactId}-</versionTagPrefix>
+                    </flowInitContext>
+                    <!-- see goals wiki page for configuration options -->
+                    <allowUntracked>true</allowUntracked>
+                </configuration>
+            </plugin>
+        </plugins>
+
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -82,25 +104,6 @@
                         </dependency>
                     </dependencies>
 
-                </plugin>
-                <plugin>
-                    <!--To avoid problems run with: -->
-                    <!--mvn jgitflow:release-finish -Djava.net.preferIPv4Stack=true -Dmaven.javadoc.skip=true-->
-                    <groupId>external.atlassian.jgitflow</groupId>
-                    <artifactId>jgitflow-maven-plugin</artifactId>
-                    <version>1.0-m5.1</version>
-                    <configuration>
-                        <flowInitContext>
-                            <masterBranchName>master</masterBranchName>
-                            <developBranchName>develop</developBranchName>
-                            <featureBranchPrefix>feature-</featureBranchPrefix>
-                            <releaseBranchPrefix>release-</releaseBranchPrefix>
-                            <hotfixBranchPrefix>hotfix-</hotfixBranchPrefix>
-                            <versionTagPrefix>${project.artifactId}-</versionTagPrefix>
-                        </flowInitContext>
-                        <!-- see goals wiki page for configuration options -->
-                        <allowUntracked>true</allowUntracked>
-                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
