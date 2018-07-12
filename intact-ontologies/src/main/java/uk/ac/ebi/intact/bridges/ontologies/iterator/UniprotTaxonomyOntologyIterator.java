@@ -24,14 +24,14 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 /**
- * Example URL: http://www.uniprot.org/taxonomy/?query=*&limit=10&format=list
+ * Example URL: https://www.uniprot.org/taxonomy/?query=*&limit=10&format=list
  *
  * @author Bruno Aranda (baranda@ebi.ac.uk)
  * @version $Id$
  */
 public class UniprotTaxonomyOntologyIterator extends LineOntologyIterator {
 
-    private static String BASE_URL = "http://www.uniprot.org/taxonomy/?format=tab&query=";
+    private static String BASE_URL = "https://www.uniprot.org/taxonomy/?format=tab&query=";
 
     public UniprotTaxonomyOntologyIterator(URL url) throws IOException {
         super(url);

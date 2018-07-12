@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
 
 /**
  * Uniprot Taxonomy access via their RDF download.
- * <p>Example: http://www.uniprot.org/taxonomy/9615.rdf</p>
+ * <p>Example: https://www.uniprot.org/taxonomy/9615.rdf</p>
  *
  * @author Samuel Kerrien (skerrien@ebi.ac.uk)
  * @version $Id$
@@ -30,12 +30,13 @@ public class UniprotTaxonomyService implements TaxonomyService {
 
     private static final String UNIPROT_NS = "http://purl.uniprot.org/core/";
     private static final String UNIPROT_TAXONOMY_NS = "http://purl.uniprot.org/taxonomy/";
+    private static final String UNIPROT_TAXONOMY_URL = "https://www.uniprot.org/taxonomy/";
 
     public UniprotTaxonomyService() {
     }
 
     private InputStream getInputStream( int taxid ) throws IOException {
-        String urlStr = UNIPROT_TAXONOMY_NS + taxid + ".rdf";
+        String urlStr = UNIPROT_TAXONOMY_URL + taxid + ".rdf";
         URL url = new URL( urlStr );
         return url.openStream();
     }
@@ -46,7 +47,7 @@ public class UniprotTaxonomyService implements TaxonomyService {
         TaxonomyTerm term = null;
         try{
             Model model = ModelFactory.createDefaultModel();
-            model.read(is, null);
+            model.read(is, UNIPROT_NS);
 
 //        model.write(System.out);
 
