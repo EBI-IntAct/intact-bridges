@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='ISO-8859-1'?>
 <EBIApplicationResult xmlns="http://www.ebi.ac.uk/schema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.ebi.ac.uk/Tools/common/schema/ApplicationResult.xsd">
  <Header>
-  <program name="blastp" version="BLASTP 2.2.29+"/>
-  <commandLine command="/ebi/extserv/bin/ncbi-blast-2.2.29+/bin/blastp -db &quot;uniprotkb&quot; -query ncbiblast-S20170509-162117-0501-23522924-es.sequence  -num_threads 16 -outfmt 11 -out ncbiblast-S20170509-162117-0501-23522924-es.archive -matrix BLOSUM62 -num_alignments 50 -evalue 10 -gapopen 11 -gapextend 1 -seg no -comp_based_stats F"/>
+  <program name="blastp" version="BLASTP 2.7.1+"/>
+  <commandLine command="/nfs/public/ro/es/appbin-hxwp/linux-x86_64/ncbi-blast-2.7.1+/bin/blastp -db &quot;uniprotkb&quot; -query ncbiblast-S20180712-151745-0917-54360613-p2m.sequence  -num_threads 32 -outfmt 11 -out ncbiblast-S20180712-151745-0917-54360613-p2m.archive -matrix BLOSUM62 -num_alignments 50 -evalue 10 -gapopen 11 -gapextend 1 -seg no -comp_based_stats F"/>
   <parameters>
    <sequences total="1">
     <sequence number="1" name="EMBOSS_001" type="PROTEIN" length="81"/>
    </sequences>
-   <databases total="1" sequences="85421349" letters="28723285596">
-    <database number="1" name="uniprotkb" type="PROTEIN" created="2017-04-19T10:23:00+01:00"/>
+   <databases total="1" sequences="116276174" letters="39206496439">
+    <database number="1" name="uniprotkb" type="PROTEIN" created="2018-05-22T04:44:00+01:00"/>
    </databases>
    <alignments>50</alignments>
    <expectationUpper>10.0</expectationUpper>
@@ -18,16 +18,16 @@
    <matrix>BLOSUM62</matrix>
    <scores>100</scores>
   </parameters>
-  <timeInfo start="2017-05-09T16:21:17+01:00" end="2017-05-09T16:21:44+01:00" search="P0Y0M0DT0H0M27.000S"/>
+  <timeInfo start="2018-07-12T15:17:47+01:00" end="2018-07-12T15:18:22+01:00" search="P0Y0M0DT0H0M35.000S"/>
  </Header>
  <SequenceSimilaritySearchResult>
   <hits total="50">
-   <hit number="1" database="TR" id="B3MP38_DROAN" ac="B3MP38" length="81" description="Uncharacterized protein, isoform A OS=Drosophila ananassae GN=Dana\GF15244 PE=4 SV=1">
+   <hit number="1" database="TR" id="A0A1W4UUJ4_DROFC" ac="A0A1W4UUJ4" length="81" description="protein drumstick OS=Drosophila ficusphila OX=30025 GN=LOC108092522 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>466</score>
       <bits>184.111</bits>
-      <expectation>5.5E-58</expectation>
+      <expectation>2.3E-59</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -38,12 +38,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="2" database="TR" id="A0A0L0BZ91_LUCCU" ac="A0A0L0BZ91" length="81" description="Protein drumstick OS=Lucilia cuprina GN=FF38_07578 PE=4 SV=1">
+   <hit number="2" database="TR" id="B4LRT9_DROVI" ac="B4LRT9" length="81" description="Uncharacterized protein, isoform A OS=Drosophila virilis OX=7244 GN=Dvir\GJ21080 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>466</score>
       <bits>184.111</bits>
-      <expectation>5.5E-58</expectation>
+      <expectation>2.3E-59</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -54,12 +54,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="3" database="TR" id="B4I307_DROSE" ac="B4I307" length="81" description="GM18422 OS=Drosophila sechellia GN=Dsec\GM18422 PE=4 SV=1">
+   <hit number="3" database="TR" id="Q29MD4_DROPS" ac="Q29MD4" length="81" description="Uncharacterized protein, isoform A OS=Drosophila pseudoobscura pseudoobscura OX=46245 GN=Dpse\GA10010 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>466</score>
       <bits>184.111</bits>
-      <expectation>5.5E-58</expectation>
+      <expectation>2.3E-59</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -70,12 +70,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="4" database="TR" id="B4JQG9_DROGR" ac="B4JQG9" length="81" description="GH13695 OS=Drosophila grimshawi GN=Dgri\GH13695 PE=4 SV=1">
+   <hit number="4" database="TR" id="B4G9E9_DROPE" ac="B4G9E9" length="81" description="GL18663 OS=Drosophila persimilis OX=7234 GN=Dper\GL18663 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>466</score>
       <bits>184.111</bits>
-      <expectation>5.5E-58</expectation>
+      <expectation>2.3E-59</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -86,12 +86,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="5" database="TR" id="B3N342_DROER" ac="B3N342" length="81" description="Uncharacterized protein, isoform A OS=Drosophila erecta GN=Dere\GG24954 PE=4 SV=1">
+   <hit number="5" database="TR" id="A0A1B2AJP0_DROME" ac="A0A1B2AJP0" length="81" description="GEO12316p1 (Fragment) OS=Drosophila melanogaster OX=7227 PE=2 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>466</score>
       <bits>184.111</bits>
-      <expectation>5.5E-58</expectation>
+      <expectation>2.3E-59</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -102,12 +102,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="6" database="TR" id="Q29MD4_DROPS" ac="Q29MD4" length="81" description="Uncharacterized protein, isoform A OS=Drosophila pseudoobscura pseudoobscura GN=Dpse\GA10010 PE=4 SV=1">
+   <hit number="6" database="TR" id="B4NXY8_DROYA" ac="B4NXY8" length="81" description="Uncharacterized protein, isoform A OS=Drosophila yakuba OX=7245 GN=Dyak\GE18245 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>466</score>
       <bits>184.111</bits>
-      <expectation>5.5E-58</expectation>
+      <expectation>2.3E-59</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -118,12 +118,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="7" database="TR" id="B4G9E9_DROPE" ac="B4G9E9" length="81" description="GL18663 OS=Drosophila persimilis GN=Dper\GL18663 PE=4 SV=1">
+   <hit number="7" database="TR" id="B3MP38_DROAN" ac="B3MP38" length="81" description="Uncharacterized protein, isoform A OS=Drosophila ananassae OX=7217 GN=Dana\GF15244 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>466</score>
       <bits>184.111</bits>
-      <expectation>5.5E-58</expectation>
+      <expectation>2.3E-59</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -134,12 +134,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="8" database="TR" id="A0A1B2AJP0_DROME" ac="A0A1B2AJP0" length="81" description="GEO12316p1 (Fragment) OS=Drosophila melanogaster PE=2 SV=1">
+   <hit number="8" database="TR" id="A0A0L0BZ91_LUCCU" ac="A0A0L0BZ91" length="81" description="Protein drumstick OS=Lucilia cuprina OX=7375 GN=FF38_07578 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>466</score>
       <bits>184.111</bits>
-      <expectation>5.5E-58</expectation>
+      <expectation>2.3E-59</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -150,12 +150,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="9" database="TR" id="B4NXY8_DROYA" ac="B4NXY8" length="81" description="Uncharacterized protein, isoform A OS=Drosophila yakuba GN=Dyak\GE18245 PE=4 SV=1">
+   <hit number="9" database="TR" id="B4I307_DROSE" ac="B4I307" length="81" description="GM18422 OS=Drosophila sechellia OX=7238 GN=Dsec\GM18422 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>466</score>
       <bits>184.111</bits>
-      <expectation>5.5E-58</expectation>
+      <expectation>2.3E-59</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -166,12 +166,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="10" database="TR" id="B4LRT9_DROVI" ac="B4LRT9" length="81" description="Uncharacterized protein, isoform A OS=Drosophila virilis GN=Dvir\GJ21080 PE=4 SV=1">
+   <hit number="10" database="TR" id="B4JQG9_DROGR" ac="B4JQG9" length="81" description="GH13695 OS=Drosophila grimshawi OX=7222 GN=Dgri\GH13695 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>466</score>
       <bits>184.111</bits>
-      <expectation>5.5E-58</expectation>
+      <expectation>2.3E-59</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -182,12 +182,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="11" database="TR" id="A0A1I8NBQ0_MUSDO" ac="A0A1I8NBQ0" length="81" description="Uncharacterized protein OS=Musca domestica GN=101899628 PE=4 SV=1">
+   <hit number="11" database="TR" id="B3N342_DROER" ac="B3N342" length="81" description="Uncharacterized protein, isoform A OS=Drosophila erecta OX=7220 GN=Dere\GG24954 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>466</score>
       <bits>184.111</bits>
-      <expectation>5.5E-58</expectation>
+      <expectation>2.3E-59</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -198,12 +198,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="12" database="TR" id="B4KK85_DROMO" ac="B4KK85" length="81" description="Uncharacterized protein, isoform A OS=Drosophila mojavensis GN=Dmoj\GI23833 PE=4 SV=1">
+   <hit number="12" database="TR" id="B4Q9M3_DROSI" ac="B4Q9M3" length="81" description="GD23242 OS=Drosophila simulans OX=7240 GN=Dsim\GD23242 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>466</score>
       <bits>184.111</bits>
-      <expectation>5.5E-58</expectation>
+      <expectation>2.3E-59</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -214,12 +214,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="13" database="TR" id="A0A1I8NLS2_STOCA" ac="A0A1I8NLS2" length="81" description="Uncharacterized protein OS=Stomoxys calcitrans GN=106081123 PE=4 SV=1">
+   <hit number="13" database="TR" id="B4KK85_DROMO" ac="B4KK85" length="81" description="Uncharacterized protein, isoform A OS=Drosophila mojavensis OX=7230 GN=Dmoj\GI23833 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>466</score>
       <bits>184.111</bits>
-      <expectation>5.5E-58</expectation>
+      <expectation>2.3E-59</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -230,12 +230,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="14" database="TR" id="B4Q9M3_DROSI" ac="B4Q9M3" length="81" description="GD23242 OS=Drosophila simulans GN=Dsim\GD23242 PE=4 SV=1">
+   <hit number="14" database="TR" id="A0A1I8NBQ0_MUSDO" ac="A0A1I8NBQ0" length="81" description="Uncharacterized protein OS=Musca domestica OX=7370 GN=101899628 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>466</score>
       <bits>184.111</bits>
-      <expectation>5.5E-58</expectation>
+      <expectation>2.3E-59</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -246,12 +246,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="15" database="SP" id="DRM_DROME" ac="Q9VQS6" length="81" description="Protein drumstick OS=Drosophila melanogaster GN=drm PE=1 SV=2">
+   <hit number="15" database="TR" id="A0A1I8NLS2_STOCA" ac="A0A1I8NLS2" length="81" description="Uncharacterized protein OS=Stomoxys calcitrans OX=35570 GN=106081123 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>466</score>
       <bits>184.111</bits>
-      <expectation>5.5E-58</expectation>
+      <expectation>2.3E-59</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -262,12 +262,28 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="16" database="TR" id="A0A0A1WLT9_BACCU" ac="A0A0A1WLT9" length="111" description="Protein drumstick OS=Bactrocera cucurbitae GN=drm_1 PE=4 SV=1">
+   <hit number="16" database="SP" id="DRM_DROME" ac="Q9VQS6" length="81" description="Protein drumstick OS=Drosophila melanogaster OX=7227 GN=drm PE=1 SV=2">
+    <alignments total="1">
+     <alignment number="1">
+      <score>466</score>
+      <bits>184.111</bits>
+      <expectation>2.3E-59</expectation>
+      <identity>100.0</identity>
+      <positives>100.0</positives>
+      <gaps>0</gaps>
+      <strand>none/none</strand>
+      <querySeq start="1" end="81">MFAVMRIDNDDCRSDFRRKMRPKCEFICKYCQRRFTKPYNLMIHERTHKSPEITYSCEVCGKYFKQRDNLRQHRCSQCVWR</querySeq>
+      <pattern>MFAVMRIDNDDCRSDFRRKMRPKCEFICKYCQRRFTKPYNLMIHERTHKSPEITYSCEVCGKYFKQRDNLRQHRCSQCVWR</pattern>
+      <matchSeq start="1" end="81">MFAVMRIDNDDCRSDFRRKMRPKCEFICKYCQRRFTKPYNLMIHERTHKSPEITYSCEVCGKYFKQRDNLRQHRCSQCVWR</matchSeq>
+     </alignment>
+    </alignments>
+   </hit>
+   <hit number="17" database="TR" id="A0A0A1WLT9_ZEUCU" ac="A0A0A1WLT9" length="111" description="Protein drumstick OS=Zeugodacus cucurbitae OX=28588 GN=drm_1 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>461</score>
       <bits>182.185</bits>
-      <expectation>7.7E-57</expectation>
+      <expectation>3.4E-58</expectation>
       <identity>98.8</identity>
       <positives>98.8</positives>
       <gaps>0</gaps>
@@ -278,12 +294,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="17" database="TR" id="U5EVP7_9DIPT" ac="U5EVP7" length="81" description="Putative c2h2-type zn-finger protein OS=Corethrella appendiculata PE=2 SV=1">
+   <hit number="18" database="TR" id="U5EVP7_9DIPT" ac="U5EVP7" length="81" description="Putative c2h2-type zn-finger protein OS=Corethrella appendiculata OX=1370023 PE=2 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>436</score>
       <bits>172.555</bits>
-      <expectation>1.9E-53</expectation>
+      <expectation>8.9E-55</expectation>
       <identity>90.1</identity>
       <positives>98.8</positives>
       <gaps>0</gaps>
@@ -294,12 +310,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="18" database="SP" id="DRM_ANOGA" ac="Q7PN68" length="81" description="Protein drumstick OS=Anopheles gambiae GN=drm PE=3 SV=1">
+   <hit number="19" database="SP" id="DRM_ANOGA" ac="Q7PN68" length="81" description="Protein drumstick OS=Anopheles gambiae OX=7165 GN=drm PE=3 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>431</score>
       <bits>170.629</bits>
-      <expectation>1.1E-52</expectation>
+      <expectation>5.1E-54</expectation>
       <identity>88.9</identity>
       <positives>97.5</positives>
       <gaps>0</gaps>
@@ -310,12 +326,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="19" database="TR" id="A0A1Q3FZP6_CULTA" ac="A0A1Q3FZP6" length="97" description="Putative odd skipped OS=Culex tarsalis PE=4 SV=1">
+   <hit number="20" database="TR" id="A0A1Q3FZP6_CULTA" ac="A0A1Q3FZP6" length="97" description="Putative odd skipped OS=Culex tarsalis OX=7177 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>432</score>
       <bits>171.014</bits>
-      <expectation>1.2E-52</expectation>
+      <expectation>5.9E-54</expectation>
       <identity>90.1</identity>
       <positives>97.5</positives>
       <gaps>0</gaps>
@@ -326,12 +342,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="20" database="TR" id="A0A182F0T1_ANOAL" ac="A0A182F0T1" length="81" description="Uncharacterized protein OS=Anopheles albimanus PE=4 SV=1">
+   <hit number="21" database="TR" id="A0A182F0T1_ANOAL" ac="A0A182F0T1" length="81" description="Uncharacterized protein OS=Anopheles albimanus OX=7167 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>427</score>
       <bits>169.088</bits>
-      <expectation>4.5E-52</expectation>
+      <expectation>2.1E-53</expectation>
       <identity>87.7</identity>
       <positives>97.5</positives>
       <gaps>0</gaps>
@@ -342,12 +358,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="21" database="TR" id="B4MVD5_DROWI" ac="B4MVD5" length="74" description="Uncharacterized protein OS=Drosophila willistoni GN=Dwil\GK14638 PE=4 SV=2">
+   <hit number="22" database="TR" id="A0A0M4E4L8_DROBS" ac="A0A0M4E4L8" length="74" description="Drm OS=Drosophila busckii OX=30019 GN=Dbus_chr2Lg931 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>419</score>
       <bits>166.007</bits>
-      <expectation>6.0E-51</expectation>
+      <expectation>2.8E-52</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -358,12 +374,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="22" database="TR" id="A0A0M4E4L8_DROBS" ac="A0A0M4E4L8" length="74" description="Drm OS=Drosophila busckii GN=Dbus_chr2Lg931 PE=4 SV=1">
+   <hit number="23" database="TR" id="B4MVD5_DROWI" ac="B4MVD5" length="74" description="Uncharacterized protein OS=Drosophila willistoni OX=7260 GN=Dwil\GK14638 PE=4 SV=2">
     <alignments total="1">
      <alignment number="1">
       <score>419</score>
       <bits>166.007</bits>
-      <expectation>6.0E-51</expectation>
+      <expectation>2.8E-52</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -374,12 +390,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="23" database="TR" id="A0A0Q9WAN8_DROVI" ac="A0A0Q9WAN8" length="87" description="Uncharacterized protein, isoform B OS=Drosophila virilis GN=Dvir\GJ21080 PE=4 SV=1">
+   <hit number="24" database="TR" id="A0A0Q9WAN8_DROVI" ac="A0A0Q9WAN8" length="87" description="Uncharacterized protein, isoform B OS=Drosophila virilis OX=7244 GN=Dvir\GJ21080 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>419</score>
       <bits>166.007</bits>
-      <expectation>8.6E-51</expectation>
+      <expectation>4.2E-52</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -390,12 +406,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="24" database="TR" id="X2JD31_DROME" ac="X2JD31" length="88" description="Drumstick, isoform C OS=Drosophila melanogaster GN=drm PE=4 SV=1">
+   <hit number="25" database="TR" id="X2JD31_DROME" ac="X2JD31" length="88" description="Drumstick, isoform C OS=Drosophila melanogaster OX=7227 GN=drm PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>419</score>
       <bits>166.007</bits>
-      <expectation>8.8E-51</expectation>
+      <expectation>4.3E-52</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -406,12 +422,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="25" database="TR" id="A0A0N8NZ40_DROAN" ac="A0A0N8NZ40" length="88" description="Uncharacterized protein, isoform B OS=Drosophila ananassae GN=Dana\GF15244 PE=4 SV=1">
+   <hit number="26" database="TR" id="A0A0J9TEX6_DROSI" ac="A0A0J9TEX6" length="88" description="Uncharacterized protein, isoform C OS=Drosophila simulans OX=7240 GN=Dsim\GD23242 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>419</score>
       <bits>166.007</bits>
-      <expectation>8.8E-51</expectation>
+      <expectation>4.3E-52</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -422,12 +438,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="26" database="TR" id="A0A0Q5W8Z1_DROER" ac="A0A0Q5W8Z1" length="88" description="Uncharacterized protein, isoform B OS=Drosophila erecta GN=Dere\GG24954 PE=4 SV=1">
+   <hit number="27" database="TR" id="A0A0Q5W8Z1_DROER" ac="A0A0Q5W8Z1" length="88" description="Uncharacterized protein, isoform B OS=Drosophila erecta OX=7220 GN=Dere\GG24954 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>419</score>
       <bits>166.007</bits>
-      <expectation>8.8E-51</expectation>
+      <expectation>4.3E-52</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -438,12 +454,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="27" database="TR" id="A0A0R1DJ92_DROYA" ac="A0A0R1DJ92" length="88" description="Uncharacterized protein, isoform B OS=Drosophila yakuba GN=Dyak\GE18245 PE=4 SV=1">
+   <hit number="28" database="TR" id="A0A0R3NYE7_DROPS" ac="A0A0R3NYE7" length="88" description="Uncharacterized protein, isoform B OS=Drosophila pseudoobscura pseudoobscura OX=46245 GN=Dpse\GA10010 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>419</score>
       <bits>166.007</bits>
-      <expectation>8.8E-51</expectation>
+      <expectation>4.3E-52</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -454,12 +470,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="28" database="TR" id="A0A0R3NYE7_DROPS" ac="A0A0R3NYE7" length="88" description="Uncharacterized protein, isoform B OS=Drosophila pseudoobscura pseudoobscura GN=Dpse\GA10010 PE=4 SV=1">
+   <hit number="29" database="TR" id="A0A0N8NZ40_DROAN" ac="A0A0N8NZ40" length="88" description="Uncharacterized protein, isoform B OS=Drosophila ananassae OX=7217 GN=Dana\GF15244 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>419</score>
       <bits>166.007</bits>
-      <expectation>8.8E-51</expectation>
+      <expectation>4.3E-52</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -470,12 +486,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="29" database="TR" id="A0A0J9TEX6_DROSI" ac="A0A0J9TEX6" length="88" description="Uncharacterized protein, isoform C OS=Drosophila simulans GN=Dsim\GD23242 PE=4 SV=1">
+   <hit number="30" database="TR" id="A0A0R1DJ92_DROYA" ac="A0A0R1DJ92" length="88" description="Uncharacterized protein, isoform B OS=Drosophila yakuba OX=7245 GN=Dyak\GE18245 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>419</score>
       <bits>166.007</bits>
-      <expectation>8.8E-51</expectation>
+      <expectation>4.3E-52</expectation>
       <identity>100.0</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -486,12 +502,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="30" database="TR" id="A0A1A9WI09_9MUSC" ac="A0A1A9WI09" length="75" description="Uncharacterized protein OS=Glossina brevipalpis PE=4 SV=1">
+   <hit number="31" database="TR" id="A0A1A9WI09_9MUSC" ac="A0A1A9WI09" length="75" description="Uncharacterized protein OS=Glossina brevipalpis OX=37001 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>407</score>
       <bits>161.384</bits>
-      <expectation>4.0E-49</expectation>
+      <expectation>2.0E-50</expectation>
       <identity>97.3</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -502,12 +518,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="31" database="TR" id="A0A1B0EY85_PHLPP" ac="A0A1B0EY85" length="74" description="Uncharacterized protein OS=Phlebotomus papatasi PE=4 SV=1">
+   <hit number="32" database="TR" id="A0A1B0EY85_PHLPP" ac="A0A1B0EY85" length="74" description="Uncharacterized protein OS=Phlebotomus papatasi OX=29031 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>406</score>
       <bits>160.999</bits>
-      <expectation>5.5E-49</expectation>
+      <expectation>2.7E-50</expectation>
       <identity>94.6</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -518,12 +534,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="32" database="TR" id="A0A1B0CB92_LUTLO" ac="A0A1B0CB92" length="98" description="Uncharacterized protein OS=Lutzomyia longipalpis PE=4 SV=1">
+   <hit number="33" database="TR" id="A0A1B0CB92_LUTLO" ac="A0A1B0CB92" length="98" description="Uncharacterized protein OS=Lutzomyia longipalpis OX=7200 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>407</score>
       <bits>161.384</bits>
-      <expectation>7.7E-49</expectation>
+      <expectation>4.0E-50</expectation>
       <identity>89.9</identity>
       <positives>94.9</positives>
       <gaps>0</gaps>
@@ -534,12 +550,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="33" database="TR" id="A0A1A9V065_GLOAU" ac="A0A1A9V065" length="105" description="Uncharacterized protein OS=Glossina austeni PE=4 SV=1">
+   <hit number="34" database="TR" id="A0A1A9V065_GLOAU" ac="A0A1A9V065" length="105" description="Uncharacterized protein OS=Glossina austeni OX=7395 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>407</score>
       <bits>161.384</bits>
-      <expectation>9.5E-49</expectation>
+      <expectation>4.9E-50</expectation>
       <identity>97.3</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -550,12 +566,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="34" database="TR" id="A0A1L8DA15_9DIPT" ac="A0A1L8DA15" length="73" description="Protein drumstick (Fragment) OS=Nyssomyia neivai PE=4 SV=1">
+   <hit number="35" database="TR" id="A0A1L8DA15_9DIPT" ac="A0A1L8DA15" length="73" description="Protein drumstick (Fragment) OS=Nyssomyia neivai OX=330878 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>401</score>
       <bits>159.073</bits>
-      <expectation>3.1E-48</expectation>
+      <expectation>1.5E-49</expectation>
       <identity>94.5</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -566,12 +582,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="35" database="TR" id="A0A1B0AZ94_9MUSC" ac="A0A1B0AZ94" length="251" description="Galactosylgalactosylxylosylprotein 3-beta-glucuronosyltransferase OS=Glossina palpalis gambiensis PE=3 SV=1">
+   <hit number="36" database="TR" id="A0A1B0AZ94_9MUSC" ac="A0A1B0AZ94" length="251" description="Galactosylgalactosylxylosylprotein 3-beta-glucuronosyltransferase OS=Glossina palpalis gambiensis OX=67801 PE=3 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>412</score>
       <bits>163.31</bits>
-      <expectation>1.1E-47</expectation>
+      <expectation>7.2E-49</expectation>
       <identity>97.3</identity>
       <positives>100.0</positives>
       <gaps>0</gaps>
@@ -582,12 +598,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="36" database="TR" id="B0WZC5_CULQU" ac="B0WZC5" length="81" description="Putative uncharacterized protein OS=Culex quinquefasciatus GN=CpipJ_CPIJ012039 PE=4 SV=1">
+   <hit number="37" database="TR" id="B0WZC5_CULQU" ac="B0WZC5" length="81" description="uncharacterized protein OS=Culex quinquefasciatus OX=7176 GN=6045361 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>388</score>
       <bits>154.066</bits>
-      <expectation>3.6E-46</expectation>
+      <expectation>1.9E-47</expectation>
       <identity>90.5</identity>
       <positives>97.3</positives>
       <gaps>0</gaps>
@@ -598,12 +614,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="37" database="TR" id="A0A1J1I4H4_9DIPT" ac="A0A1J1I4H4" length="94" description="CLUMA_CG006823, isoform A OS=Clunio marinus GN=putative Protein drumstick PE=4 SV=1">
+   <hit number="38" database="TR" id="A0A1J1I4H4_9DIPT" ac="A0A1J1I4H4" length="94" description="CLUMA_CG006823, isoform A OS=Clunio marinus OX=568069 GN=putative Protein drumstick PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>388</score>
       <bits>154.066</bits>
-      <expectation>5.1E-46</expectation>
+      <expectation>2.8E-47</expectation>
       <identity>89.2</identity>
       <positives>98.6</positives>
       <gaps>0</gaps>
@@ -614,12 +630,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="38" database="TR" id="A0A1B0ELV9_ANOST" ac="A0A1B0ELV9" length="74" description="Uncharacterized protein OS=Anopheles stephensi PE=4 SV=1">
+   <hit number="39" database="TR" id="A0A182PD09_9DIPT" ac="A0A182PD09" length="74" description="Uncharacterized protein OS=Anopheles epiroticus OX=199890 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>385</score>
       <bits>152.91</bits>
-      <expectation>8.3E-46</expectation>
+      <expectation>4.4E-47</expectation>
       <identity>89.2</identity>
       <positives>97.3</positives>
       <gaps>0</gaps>
@@ -630,12 +646,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="39" database="TR" id="A0A182PD09_9DIPT" ac="A0A182PD09" length="74" description="Uncharacterized protein OS=Anopheles epiroticus PE=4 SV=1">
+   <hit number="40" database="TR" id="A0A084WH85_ANOSI" ac="A0A084WH85" length="74" description="Uncharacterized protein OS=Anopheles sinensis OX=74873 GN=ZHAS_00017590 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>385</score>
       <bits>152.91</bits>
-      <expectation>8.3E-46</expectation>
+      <expectation>4.4E-47</expectation>
       <identity>89.2</identity>
       <positives>97.3</positives>
       <gaps>0</gaps>
@@ -646,12 +662,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="40" database="TR" id="A0A084WH85_ANOSI" ac="A0A084WH85" length="74" description="Uncharacterized protein OS=Anopheles sinensis GN=ZHAS_00017590 PE=4 SV=1">
+   <hit number="41" database="TR" id="A0A182WT38_ANOQN" ac="A0A182WT38" length="74" description="Uncharacterized protein OS=Anopheles quadriannulatus OX=34691 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>385</score>
       <bits>152.91</bits>
-      <expectation>8.3E-46</expectation>
+      <expectation>4.4E-47</expectation>
       <identity>89.2</identity>
       <positives>97.3</positives>
       <gaps>0</gaps>
@@ -662,12 +678,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="41" database="TR" id="A0A182WT38_ANOQN" ac="A0A182WT38" length="74" description="Uncharacterized protein OS=Anopheles quadriannulatus PE=4 SV=1">
+   <hit number="42" database="TR" id="A0A182RJA3_ANOFN" ac="A0A182RJA3" length="74" description="Uncharacterized protein OS=Anopheles funestus OX=62324 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>385</score>
       <bits>152.91</bits>
-      <expectation>8.3E-46</expectation>
+      <expectation>4.4E-47</expectation>
       <identity>89.2</identity>
       <positives>97.3</positives>
       <gaps>0</gaps>
@@ -678,12 +694,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="42" database="TR" id="A0A182RJA3_ANOFN" ac="A0A182RJA3" length="74" description="Uncharacterized protein OS=Anopheles funestus PE=4 SV=1">
+   <hit number="43" database="TR" id="A0A182W7H2_9DIPT" ac="A0A182W7H2" length="77" description="Uncharacterized protein OS=Anopheles minimus OX=112268 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>385</score>
       <bits>152.91</bits>
-      <expectation>8.3E-46</expectation>
+      <expectation>4.8E-47</expectation>
       <identity>89.2</identity>
       <positives>97.3</positives>
       <gaps>0</gaps>
@@ -694,28 +710,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="43" database="TR" id="A0A182W7H2_9DIPT" ac="A0A182W7H2" length="77" description="Uncharacterized protein OS=Anopheles minimus PE=4 SV=1">
-    <alignments total="1">
-     <alignment number="1">
-      <score>385</score>
-      <bits>152.91</bits>
-      <expectation>9.0E-46</expectation>
-      <identity>89.2</identity>
-      <positives>97.3</positives>
-      <gaps>0</gaps>
-      <strand>none/none</strand>
-      <querySeq start="1" end="74">MFAVMRIDNDDCRSDFRRKMRPKCEFICKYCQRRFTKPYNLMIHERTHKSPEITYSCEVCGKYFKQRDNLRQHR</querySeq>
-      <pattern>MFAVMRIDNDD R+DFRRKMRPKCEF+CKYCQRRFTKPYNLMIHERTHKSPE+T+SCEVCGKYFK++DNLR HR</pattern>
-      <matchSeq start="1" end="74">MFAVMRIDNDDRRADFRRKMRPKCEFVCKYCQRRFTKPYNLMIHERTHKSPEVTFSCEVCGKYFKRQDNLRSHR</matchSeq>
-     </alignment>
-    </alignments>
-   </hit>
-   <hit number="44" database="TR" id="W5J4P3_ANODA" ac="W5J4P3" length="126" description="Protein drumstick (Fragment) OS=Anopheles darlingi GN=AND_010595 PE=4 SV=1">
+   <hit number="44" database="TR" id="W5J4P3_ANODA" ac="W5J4P3" length="126" description="Protein drumstick (Fragment) OS=Anopheles darlingi OX=43151 GN=AND_010595 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>387</score>
       <bits>153.68</bits>
-      <expectation>1.9E-45</expectation>
+      <expectation>1.1E-46</expectation>
       <identity>84.8</identity>
       <positives>93.7</positives>
       <gaps>0</gaps>
@@ -726,12 +726,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="45" database="TR" id="A0A087ZMC8_ANODA" ac="A0A087ZMC8" length="131" description="Uncharacterized protein OS=Anopheles darlingi PE=4 SV=1">
+   <hit number="45" database="TR" id="A0A087ZMC8_ANODA" ac="A0A087ZMC8" length="131" description="Putative c2h2-type zn-finger protein OS=Anopheles darlingi OX=43151 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>387</score>
       <bits>153.68</bits>
-      <expectation>2.2E-45</expectation>
+      <expectation>1.2E-46</expectation>
       <identity>84.8</identity>
       <positives>93.7</positives>
       <gaps>0</gaps>
@@ -742,12 +742,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="46" database="TR" id="S4P5M0_9NEOP" ac="S4P5M0" length="80" description="Drumstick OS=Pararge aegeria PE=4 SV=1">
+   <hit number="46" database="TR" id="S4P5M0_9NEOP" ac="S4P5M0" length="80" description="Drumstick OS=Pararge aegeria OX=116150 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>381</score>
       <bits>151.369</bits>
-      <expectation>4.0E-45</expectation>
+      <expectation>2.1E-46</expectation>
       <identity>81.5</identity>
       <positives>92.6</positives>
       <gaps>1</gaps>
@@ -758,12 +758,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="47" database="TR" id="I4DRW3_PAPPL" ac="I4DRW3" length="80" description="Drumstick OS=Papilio polytes PE=2 SV=1">
+   <hit number="47" database="TR" id="I4DRW3_PAPPL" ac="I4DRW3" length="80" description="Drumstick OS=Papilio polytes OX=76194 PE=2 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>380</score>
       <bits>150.984</bits>
-      <expectation>5.6E-45</expectation>
+      <expectation>3.0E-46</expectation>
       <identity>81.5</identity>
       <positives>91.4</positives>
       <gaps>1</gaps>
@@ -774,12 +774,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="48" database="TR" id="A0A182JRY9_9DIPT" ac="A0A182JRY9" length="110" description="Uncharacterized protein OS=Anopheles christyi PE=4 SV=1">
+   <hit number="48" database="TR" id="A0A182JRY9_9DIPT" ac="A0A182JRY9" length="110" description="Uncharacterized protein OS=Anopheles christyi OX=43041 PE=4 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>382</score>
       <bits>151.754</bits>
-      <expectation>6.6E-45</expectation>
+      <expectation>3.7E-46</expectation>
       <identity>86.8</identity>
       <positives>94.7</positives>
       <gaps>0</gaps>
@@ -790,28 +790,12 @@
      </alignment>
     </alignments>
    </hit>
-   <hit number="49" database="TR" id="A0A182U5I6_9DIPT" ac="A0A182U5I6" length="115" description="Uncharacterized protein OS=Anopheles melas PE=4 SV=1">
-    <alignments total="1">
-     <alignment number="1">
-      <score>380</score>
-      <bits>150.984</bits>
-      <expectation>1.5E-44</expectation>
-      <identity>89.0</identity>
-      <positives>97.3</positives>
-      <gaps>0</gaps>
-      <strand>none/none</strand>
-      <querySeq start="1" end="73">MFAVMRIDNDDCRSDFRRKMRPKCEFICKYCQRRFTKPYNLMIHERTHKSPEITYSCEVCGKYFKQRDNLRQH</querySeq>
-      <pattern>MFAVMRIDNDD R+DFRRKMRPKCEF+CKYCQRRFTKPYNLMIHERTHKSPE+T+SCEVCGKYFK++DNLR H</pattern>
-      <matchSeq start="1" end="73">MFAVMRIDNDDRRADFRRKMRPKCEFVCKYCQRRFTKPYNLMIHERTHKSPEVTFSCEVCGKYFKRQDNLRSH</matchSeq>
-     </alignment>
-    </alignments>
-   </hit>
-   <hit number="50" database="TR" id="A0A0U2UL64_BOMMO" ac="A0A0U2UL64" length="80" description="Drm protein OS=Bombyx mori GN=drm PE=2 SV=1">
+   <hit number="49" database="TR" id="A0A0U2UL64_BOMMO" ac="A0A0U2UL64" length="80" description="Drm protein OS=Bombyx mori OX=7091 GN=drm PE=2 SV=1">
     <alignments total="1">
      <alignment number="1">
       <score>377</score>
       <bits>149.828</bits>
-      <expectation>1.6E-44</expectation>
+      <expectation>8.7E-46</expectation>
       <identity>80.2</identity>
       <positives>92.6</positives>
       <gaps>1</gaps>
@@ -819,6 +803,22 @@
       <querySeq start="1" end="81">MFAVMRIDNDDCRSDFRRKMRPKCEFICKYCQRRFTKPYNLMIHERTHKSPEITYSCEVCGKYFKQRDNLRQHRCSQCVWR</querySeq>
       <pattern>MFAVM+ID +  R DFRRK+RPKCEF+CKYCQRRFTK YNLMIHERTHKSPE+++SCEVCGK FK++DNLRQHRCSQC+WR</pattern>
       <matchSeq start="1" end="80">MFAVMQIDEEHTR-DFRRKLRPKCEFVCKYCQRRFTKSYNLMIHERTHKSPELSFSCEVCGKSFKRQDNLRQHRCSQCLWR</matchSeq>
+     </alignment>
+    </alignments>
+   </hit>
+   <hit number="50" database="TR" id="A0A182U5I6_9DIPT" ac="A0A182U5I6" length="115" description="Uncharacterized protein OS=Anopheles melas OX=34690 PE=4 SV=1">
+    <alignments total="1">
+     <alignment number="1">
+      <score>380</score>
+      <bits>150.984</bits>
+      <expectation>8.8E-46</expectation>
+      <identity>89.0</identity>
+      <positives>97.3</positives>
+      <gaps>0</gaps>
+      <strand>none/none</strand>
+      <querySeq start="1" end="73">MFAVMRIDNDDCRSDFRRKMRPKCEFICKYCQRRFTKPYNLMIHERTHKSPEITYSCEVCGKYFKQRDNLRQH</querySeq>
+      <pattern>MFAVMRIDNDD R+DFRRKMRPKCEF+CKYCQRRFTKPYNLMIHERTHKSPE+T+SCEVCGKYFK++DNLR H</pattern>
+      <matchSeq start="1" end="73">MFAVMRIDNDDRRADFRRKMRPKCEFVCKYCQRRFTKPYNLMIHERTHKSPEVTFSCEVCGKYFKRQDNLRSH</matchSeq>
      </alignment>
     </alignments>
    </hit>
