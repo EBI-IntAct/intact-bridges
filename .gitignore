@@ -52,3 +52,5 @@ local.properties
 .DS_Store
 intact-blast/ncbi-blast/test1.xml
 intact-blast/ncbi-blast/test.xml
+/intact-blast/ncbi-blast/test.xml
+/intact-blast/ncbi-blast/test1.xml
