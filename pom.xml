@@ -22,8 +22,8 @@
         <currentVersion>${version}</currentVersion>
         <spring.version>3.2.9.RELEASE</spring.version>
         <!--be careful with the ols-client version that ontology-manager pulls-->
-        <ontology.manager.version>2.0.9</ontology.manager.version>
-        <uniprot.japi.version>1.0.19</uniprot.japi.version>
+        <ontology.manager.version>2.0.10</ontology.manager.version>
+        <uniprot.japi.version>1.0.22</uniprot.japi.version>
         <ols.client.version>2.11</ols.client.version>
     </properties>
 
