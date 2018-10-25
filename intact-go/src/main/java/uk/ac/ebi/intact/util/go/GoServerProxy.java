@@ -8,7 +8,6 @@ package uk.ac.ebi.intact.util.go;
 
 import psidev.psi.tools.ontology_manager.client.OlsClient;
 
-import javax.xml.rpc.ServiceException;
 import java.net.MalformedURLException;
 import java.rmi.RemoteException;
 import java.util.Map;
@@ -58,10 +57,9 @@ public class GoServerProxy {
      *
      * @throws GoIdNotFoundException thrown when the server fails to find a response for GO id.
      * @throws java.rmi.RemoteException
-     * @throws javax.xml.rpc.ServiceException
      */
     public GoTerm query( String goId )
-            throws RemoteException, ServiceException, GoIdNotFoundException, MalformedURLException {
+            throws RemoteException, GoIdNotFoundException, MalformedURLException {
         if (goId == null) throw new NullPointerException("goId cannot be null");
 
         olsQuery = new OlsClient();
@@ -92,7 +90,7 @@ public class GoServerProxy {
         return term;
     }
 
-    private static String getCategoryForGoId(String goId) throws RemoteException, ServiceException, MalformedURLException {
+    private static String getCategoryForGoId(String goId) throws RemoteException {
         OlsClient olsQuery = new OlsClient();
         Map goIdMap = olsQuery.getTermParents(goId, "GO");
 

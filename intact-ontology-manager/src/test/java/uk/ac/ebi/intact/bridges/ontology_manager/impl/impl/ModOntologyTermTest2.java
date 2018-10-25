@@ -7,8 +7,6 @@ import psidev.psi.tools.ontology_manager.client.OlsClient;
 import uk.ac.ebi.intact.bridges.ontology_manager.TermDbXref;
 import uk.ac.ebi.intact.bridges.ontology_manager.impl.ModOntologyTerm;
 
-import javax.xml.rpc.ServiceException;
-import java.net.MalformedURLException;
 import java.rmi.RemoteException;
 
 /**
@@ -24,7 +22,7 @@ public class ModOntologyTermTest2 {
     private OlsClient olsClient;
 
     @Before
-    public void parseOboTest() throws MalformedURLException, ServiceException {
+    public void parseOboTest() {
         olsClient = new OlsClient();
     }
 

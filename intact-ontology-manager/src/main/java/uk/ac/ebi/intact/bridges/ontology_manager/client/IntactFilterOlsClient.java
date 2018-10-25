@@ -2,8 +2,6 @@ package uk.ac.ebi.intact.bridges.ontology_manager.client;
 
 import psidev.psi.tools.ontology_manager.client.OlsClient;
 
-import javax.xml.rpc.ServiceException;
-import java.net.MalformedURLException;
 import java.rmi.RemoteException;
 import java.util.Collections;
 import java.util.HashSet;
@@ -19,7 +17,7 @@ import java.util.Set;
  */
 
 public class IntactFilterOlsClient extends OlsClient{
-    public IntactFilterOlsClient() throws MalformedURLException, ServiceException {
+    public IntactFilterOlsClient() {
         super();
     }
 

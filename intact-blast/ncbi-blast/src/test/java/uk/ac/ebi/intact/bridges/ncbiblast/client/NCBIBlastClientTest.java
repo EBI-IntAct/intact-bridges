@@ -23,7 +23,7 @@ import java.io.File;
 public class NCBIBlastClientTest {
 
     private NCBIBlastClient bc;
-    private static final String email = "marine@ebi.ac.uk";
+    private static final String email = "ntoro@ebi.ac.uk";
 
     public NCBIBlastClientTest() {
         bc = new NCBIBlastClient();

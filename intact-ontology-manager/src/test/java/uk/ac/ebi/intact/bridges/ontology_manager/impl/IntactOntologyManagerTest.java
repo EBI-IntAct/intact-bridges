@@ -11,10 +11,8 @@ import uk.ac.ebi.intact.bridges.ontology_manager.impl.local.IntactLocalOntology;
 import uk.ac.ebi.intact.bridges.ontology_manager.impl.ols.IntactOlsOntology;
 import uk.ac.ebi.intact.bridges.ontology_manager.interfaces.IntactOntologyTermI;
 
-import javax.xml.rpc.ServiceException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 
 /**
  * Unit tester of the IntactOntologyManager
@@ -29,7 +27,7 @@ public class IntactOntologyManagerTest {
     private OlsClient olsClient;
 
     @Before
-    public void parseOboTest() throws MalformedURLException, ServiceException {
+    public void parseOboTest() {
         olsClient = new OlsClient();
     }
 

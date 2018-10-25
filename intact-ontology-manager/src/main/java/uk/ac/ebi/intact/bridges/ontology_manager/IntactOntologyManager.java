@@ -10,9 +10,7 @@ import uk.ac.ebi.intact.bridges.ontology_manager.impl.ols.IntactOlsOntology;
 import uk.ac.ebi.intact.bridges.ontology_manager.interfaces.IntactOntologyAccess;
 import uk.ac.ebi.intact.bridges.ontology_manager.interfaces.IntactOntologyTermI;
 
-import javax.xml.rpc.ServiceException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -97,12 +95,6 @@ public class IntactOntologyManager extends OntologyManagerTemplate<IntactOntolog
             } catch (IllegalAccessException e) {
                 throw new ClassNotFoundException("Impossible to instantiate " + builderClass, e);
             } catch (OntologyLoaderException e) {
-                e.printStackTrace();
-                return null;
-            } catch (ServiceException e) {
-                e.printStackTrace();
-                return null;
-            } catch (MalformedURLException e) {
                 e.printStackTrace();
                 return null;
             }

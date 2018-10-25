@@ -9,8 +9,6 @@ import uk.ac.ebi.intact.bridges.ontology_manager.TermDbXref;
 import uk.ac.ebi.intact.bridges.ontology_manager.client.IntactFilterOlsClient;
 import uk.ac.ebi.intact.bridges.ontology_manager.impl.MiOntologyTerm;
 
-import javax.xml.rpc.ServiceException;
-import java.net.MalformedURLException;
 import java.rmi.RemoteException;
 
 /**
@@ -26,7 +24,7 @@ public class MIOntologyTermTest2 {
     private OlsClient olsClient;
 
     @Before
-    public void parseOboTest() throws MalformedURLException, ServiceException {
+    public void parseOboTest() {
         olsClient = new IntactFilterOlsClient();
     }
 

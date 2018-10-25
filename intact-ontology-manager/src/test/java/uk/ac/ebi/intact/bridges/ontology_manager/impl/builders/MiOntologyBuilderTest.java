@@ -14,8 +14,6 @@ import uk.ac.ebi.intact.bridges.ontology_manager.impl.local.IntactOntology;
 import uk.ac.ebi.intact.bridges.ontology_manager.impl.local.MIOboLoader;
 import uk.ac.ebi.intact.bridges.ontology_manager.interfaces.IntactOntologyTermI;
 
-import javax.xml.rpc.ServiceException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.rmi.RemoteException;
 
@@ -85,7 +83,7 @@ public class MiOntologyBuilderTest {
         Assert.assertEquals("The classical two-hybrid system is a method that uses transcriptional activity as a measure of protein-protein interaction. It relies on the modular nature of many site-specific transcriptional activators (GAL 4) , which consist of a DNA-binding domain and a transcriptional activation domain. The DNA-binding domain serves to target the activator to the specific genes that will be expressed, and the activation domain contacts other proteins of the transcriptional machinery to enable transcription to occur. The two-hybrid system is based on the observation that the two domains of the activator need to be non-covalently brought together by the interaction of any two proteins. The application of this system requires the expression of two hybrid. Generally this assay is performed in yeast cell, but it can also be carried out in other organism. The bait protein is fused to the DNA binding molecule, the prey to the transcriptional activator.", term1.getDefinition());
     }
 
-    public void test_createFromOls() throws OntologyLoaderException, MalformedURLException, ServiceException, RemoteException {
+    public void test_createFromOls() throws RemoteException {
 
         OlsClient olsClient = new IntactFilterOlsClient();
 
