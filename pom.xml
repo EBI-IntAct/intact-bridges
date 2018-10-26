@@ -74,7 +74,6 @@
                     <pushReleases>true</pushReleases>
                     <pushHotfixes>true</pushHotfixes>
                     <pushFeatures>true</pushFeatures>
-                    <noDeploy>true</noDeploy>
                 </configuration>
             </plugin>
         </plugins>
