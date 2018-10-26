@@ -13,8 +13,6 @@ import uk.ac.ebi.intact.bridges.ontology_manager.impl.local.IntactOboLoader;
 import uk.ac.ebi.intact.bridges.ontology_manager.impl.local.IntactOntology;
 import uk.ac.ebi.intact.bridges.ontology_manager.interfaces.IntactOntologyTermI;
 
-import javax.xml.rpc.ServiceException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.rmi.RemoteException;
 
@@ -81,7 +79,7 @@ public class ModOntologyTermBuilderTest {
         Assert.assertEquals("A protein modification that effectively removes oxygen atoms from a residue without the removal of hydrogen atoms.", term1.getDefinition());
     }
 
-    public void test_createFromOls() throws OntologyLoaderException, MalformedURLException, ServiceException, RemoteException {
+    public void test_createFromOls() throws RemoteException {
 
         OlsClient olsClient = new IntactFilterOlsClient();
 

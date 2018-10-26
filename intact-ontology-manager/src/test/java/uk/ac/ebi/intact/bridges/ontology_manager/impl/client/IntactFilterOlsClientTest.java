@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 import uk.ac.ebi.intact.bridges.ontology_manager.client.IntactFilterOlsClient;
 
-import javax.xml.rpc.ServiceException;
 import java.net.MalformedURLException;
 import java.rmi.RemoteException;
 import java.util.Map;
@@ -23,7 +22,7 @@ public class IntactFilterOlsClientTest {
     private IntactFilterOlsClient olsClient;
 
     @Before
-    public void initializeOlsClient() throws MalformedURLException, ServiceException {
+    public void initializeOlsClient() throws MalformedURLException {
         olsClient = new IntactFilterOlsClient();
     }
 
@@ -36,13 +35,13 @@ public class IntactFilterOlsClientTest {
     public void test_filter_children() throws RemoteException {
         Map children = olsClient.getTermChildren("MI:0252", "MI", 1);
 
-        Assert.assertEquals(8, children.size());
+        Assert.assertEquals(9, children.size());
 
         for (Object key : children.keySet()){
             String id = (String) key;
 
             if (!id.equals("MI:0117") && !id.equals("MI:0118") && !id.equals("MI:0828") && !id.equals("MI:1175") && !id.equals("MI:1241")
-                    && !id.equals("MI:2201") && !id.equals("MI:2202") && !id.equals("MI:2276")){
+                    && !id.equals("MI:2201") && !id.equals("MI:2202") && !id.equals("MI:2276") && !id.equals("MI:2308")){
                 Assert.assertFalse(true);
             }
         }

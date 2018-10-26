@@ -1,9 +1,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
-       <groupId>uk.ac.ebi.intact.bridges</groupId>
-       <artifactId>bridges-master</artifactId>
-        <version>2.1.24</version>
+        <groupId>uk.ac.ebi.intact.bridges</groupId>
+        <artifactId>bridges-master</artifactId>
+        <version>2.1.25</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -12,6 +12,30 @@
 
     <name>IntAct Bridges :: GO (OLS Based)</name>
     <description>IntAct access to GO</description>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--Add it to dependency management to have the same of
+            com.fasterxml.jackson in japi and ols-client (inside ontology-manager).
+            It could be removed in the future if both libraries share a common
+            version. This version solved a known security vulnerabilities -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.9.4</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>2.9.5</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>2.9.5</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>

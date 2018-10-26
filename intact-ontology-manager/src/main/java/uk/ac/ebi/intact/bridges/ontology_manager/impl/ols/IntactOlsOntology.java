@@ -9,7 +9,6 @@ import uk.ac.ebi.intact.bridges.ontology_manager.builders.IntactOntologyTermBuil
 import uk.ac.ebi.intact.bridges.ontology_manager.interfaces.IntactOntologyAccess;
 import uk.ac.ebi.intact.bridges.ontology_manager.interfaces.IntactOntologyTermI;
 
-import javax.xml.rpc.ServiceException;
 import java.rmi.RemoteException;
 import java.util.*;
 import java.util.regex.Pattern;
