@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <parent>
         <artifactId>bridges-master</artifactId>
         <groupId>uk.ac.ebi.intact.bridges</groupId>
@@ -21,11 +22,6 @@
             </plugins>
         </pluginManagement>
         <plugins>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>jaxws-maven-plugin</artifactId>
-            </plugin>
             <!-- Conversion of XML Schema into Java source code using JAXB-XJC -->
             <plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
@@ -47,28 +43,17 @@
             <plugin>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-codegen-plugin</artifactId>
-                <version>2.7.5</version>
-                <executions>
-                    <execution>
-                        <id>generate-sources</id>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                            <wsdlOptions>
-                                <wsdlOption>
-                                    <wsdl>src/main/wsdl/PicrService.wsdl</wsdl>
-                                    <extraargs>
-                                        <extraarg>-nexclude</extraarg>
-                                        <extraarg>NameSpaceOfxsd</extraarg>
-                                    </extraargs>
-
-                                </wsdlOption>
-                            </wsdlOptions>
-                        </configuration>
-                        <goals>
-                            <goal>wsdl2java</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <configuration>
+                    <wsdlOptions>
+                        <wsdlOption>
+                            <wsdl>src/main/wsdl/PicrService.wsdl</wsdl>
+                            <extraargs>
+                                <extraarg>-nexclude</extraarg>
+                                <extraarg>NameSpaceOfxsd</extraarg>
+                            </extraargs>
+                        </wsdlOption>
+                    </wsdlOptions>
+                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -79,12 +64,6 @@
             <groupId>uk.ac.ebi.intact.bridges</groupId>
             <artifactId>intact-uniprot</artifactId>
             <version>${project.version}</version>
-        </dependency>
-
-        <!-- JAX-WS -->
-        <dependency>
-            <groupId>com.sun.xml.ws</groupId>
-            <artifactId>jaxws-tools</artifactId>
         </dependency>
 
         <!-- 3rd party -->
