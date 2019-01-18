@@ -186,8 +186,8 @@ public class UniprotRemoteServiceTest {
         assertEquals( protein.getSequence().length(), protein.getSequenceLength() );
 
         assertEquals( 4, protein.getCrossReferences().size() );
-        assertTrue( protein.getCrossReferences().contains( new UniprotXref( "GO:0005515", "Go" ) ) );
-        assertTrue( protein.getCrossReferences().contains( new UniprotXref( "GO:0006979", "Go" ) ) );
+        assertTrue( protein.getCrossReferences().contains( new UniprotXref( "GO:0005515", "GO" ) ) );
+        assertTrue( protein.getCrossReferences().contains( new UniprotXref( "GO:0006979", "GO" ) ) );
         assertTrue( protein.getCrossReferences().contains( new UniprotXref( "CG6544", "Ensembl" ) ) );
         assertTrue( protein.getCrossReferences().contains( new UniprotXref( "FBgn0020439", "FlyBase" ) ) );
 
@@ -531,7 +531,7 @@ public class UniprotRemoteServiceTest {
             }
 
             public List<String> getFilteredDatabases() {
-                return Arrays.asList("PDB", "SGD", "Go", "InterPro");
+                return Arrays.asList("PDB", "SGD", "GO", "InterPro");
             }
 
             public String getMi(String databaseName) {
@@ -555,8 +555,8 @@ public class UniprotRemoteServiceTest {
         assertTrue( protein.getCrossReferences().contains( new UniprotXref( "1TG0", "PDB" ) ) );
         assertTrue( protein.getCrossReferences().contains( new UniprotXref( "1WDX", "PDB" ) ) );
         assertTrue( protein.getCrossReferences().contains( new UniprotXref( "S000003557", "SGD" ) ) );
-        assertTrue( protein.getCrossReferences().contains( new UniprotXref( "GO:0030479", "Go" ) ) );
-        assertTrue( protein.getCrossReferences().contains( new UniprotXref( "GO:0030036", "Go" ) ) );
+        assertTrue( protein.getCrossReferences().contains( new UniprotXref( "GO:0030479", "GO" ) ) );
+        assertTrue( protein.getCrossReferences().contains( new UniprotXref( "GO:0030036", "GO" ) ) );
         assertTrue( protein.getCrossReferences().contains( new UniprotXref( "IPR001452", "InterPro" ) ) );
     }
 
