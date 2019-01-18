@@ -12,7 +12,7 @@
     <groupId>uk.ac.ebi.intact.bridges</groupId>
     <artifactId>bridges-master</artifactId>
     <packaging>pom</packaging>
-    <version>2.1.27-SNAPSHOT</version>
+    <version>2.1.27</version>
 
     <name>IntAct Bridges</name>
     <description>Bridges Master POM</description>
@@ -21,10 +21,7 @@
     <properties>
         <currentVersion>${version}</currentVersion>
         <spring.version>3.2.9.RELEASE</spring.version>
-        <!--be careful with the ols-client version that ontology-manager pulls-->
-        <ontology.manager.version>2.0.10</ontology.manager.version>
-        <uniprot.japi.version>1.0.22</uniprot.japi.version>
-        <ols.client.version>2.11</ols.client.version>
+        <uniprot.japi.version>1.0.23</uniprot.japi.version>
     </properties>
 
     <scm>
@@ -34,17 +31,13 @@
     </scm>
 
     <modules>
-        <module>intact-picr</module>
         <module>intact-citexplore</module>
-        <module>intact-taxonomy</module>
         <module>intact-uniprot</module>
         <module>intact-unisave</module>
         <module>blast-mapping-parser</module>
         <module>intact-blast</module>
-        <module>intact-go</module>
         <module>intact-google</module>
         <module>intact-ontologies</module>
-        <module>intact-ontology-manager</module>
     </modules>
 
 
