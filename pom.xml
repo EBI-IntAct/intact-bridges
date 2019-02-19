@@ -21,7 +21,7 @@
     <properties>
         <currentVersion>${version}</currentVersion>
         <spring.version>3.2.9.RELEASE</spring.version>
-        <uniprot.japi.version>1.0.23</uniprot.japi.version>
+        <uniprot.japi.version>1.0.25</uniprot.japi.version>
     </properties>
 
     <scm>
@@ -93,6 +93,28 @@
 
     <dependencyManagement>
         <dependencies>
+
+            <!--Add it to have the same version of
+            com.fasterxml.jackson in japi and ols-client (inside ontology-manager).
+            It could be removed in the future if both libraries share a common
+            version. This version solved a known security vulnerability -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.9.8</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>2.9.8</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>2.9.8</version>
+            </dependency>
 
             <dependency>
                 <groupId>log4j</groupId>

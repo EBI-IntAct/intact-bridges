@@ -34,20 +34,11 @@
     </build>
 
     <dependencies>
+        <!-- uniprot -->
         <dependency>
             <groupId>uk.ac.ebi.uniprot</groupId>
             <artifactId>japi</artifactId>
             <version>${uniprot.japi.version}</version>
-        </dependency>
-
-        <!--Add it to have the same version of
-        com.fasterxml.jackson in japi and ols-client (inside ontology-manager).
-        It could be removed in the future if both libraries share a common
-        version. This version solved a known security vulnerability -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.9.5</version>
         </dependency>
 
         <dependency>
