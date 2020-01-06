@@ -292,10 +292,10 @@ public class UniprotRemoteServiceTest {
         assertEquals( "Involved in the regulation of actin cytoskeleton", protein.getFunctions().iterator().next() );
 
         // keywords
-        assertEquals( 10, protein.getKeywords().size() );
+        assertEquals( 9, protein.getKeywords().size() );
 
         // cross references
-        assertEquals( 16, protein.getCrossReferences().size() );
+        assertEquals( 22, protein.getCrossReferences().size() );
 
         // splice variants
         assertEquals( 0, protein.getSpliceVariants().size() );
@@ -550,7 +550,7 @@ public class UniprotRemoteServiceTest {
 
         // check that we have not so many cross references
         // cross references
-        assertEquals( 13, protein.getCrossReferences().size() );
+        assertEquals( 19, protein.getCrossReferences().size() );
 
         assertTrue( protein.getCrossReferences().contains( new UniprotXref( "1TG0", "PDB" ) ) );
         assertTrue( protein.getCrossReferences().contains( new UniprotXref( "1WDX", "PDB" ) ) );
