@@ -21,7 +21,7 @@
     <properties>
         <currentVersion>${version}</currentVersion>
         <spring.version>3.2.9.RELEASE</spring.version>
-        <uniprot.japi.version>1.0.36</uniprot.japi.version>
+        <uniprot.japi.version>1.0.37</uniprot.japi.version>
     </properties>
 
     <scm>
