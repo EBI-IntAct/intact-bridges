@@ -44,22 +44,30 @@ public class DefaultCrossReferenceFilter implements CrossReferenceFilter {
      * might be an entry point for the a user to get in Intact. (A user could search in IntAct with and ac from sgd db).
      */
     public DefaultCrossReferenceFilter() {
-        db2mi.put( format( "go" ), "MI:0448");
-        db2mi.put( format( "interpro" ), "MI:0449");
-        db2mi.put( format( "pdb" ), "MI:0460");
-        db2mi.put( format( "dip" ), "MI:0465");
-        db2mi.put( format( "mint" ), "MI:0471");
-        db2mi.put( format( "cygd"), "MI:0464");
-        db2mi.put( format("reactome"), "MI:0467");
-        db2mi.put( format( "ensembl"), "MI:0476");
-        db2mi.put( format( "wormbase"), "MI:0487" );
-        db2mi.put( format( "flybase"), "MI:0478" );
-        db2mi.put( format( "refseq"), "MI:0481" );
-        db2mi.put( format( "rgd"), "MI:0483" );
-        db2mi.put( format( "sgd" ), "MI:0484" );
-        db2mi.put( format( "uniprotkb"), "MI:0486" );
-        db2mi.put( format( "ipi"), "MI:0675" );
-        db2mi.put( format( "dictybase"), "MI:1015" );
+        db2mi.put(format("go"), "MI:0448");
+        db2mi.put(format("interpro"), "MI:0449");
+        db2mi.put(format("pdb"), "MI:0460");
+        db2mi.put(format("dip"), "MI:0465");
+        db2mi.put(format("mint"), "MI:0471");
+        db2mi.put(format("cygd"), "MI:0464");
+        db2mi.put(format("reactome"), "MI:0467");
+        db2mi.put(format("ensembl"), "MI:0476");
+        // Is it enough with ensemblGenomes to retrive the ensembl protein identifiers?
+        // Do we need to request the children to MI?
+        db2mi.put(format("ensemblgenomes"), "MI:1013");
+        db2mi.put(format("ensemblbacteria"), "");
+        db2mi.put(format("ensemblfungi"), "");
+        db2mi.put(format("ensemblmetazoa"), "");
+        db2mi.put(format("ensemblplants"), "");
+        db2mi.put(format("ensemblprotists"), "");
+        db2mi.put(format("wormbase"), "MI:0487");
+        db2mi.put(format("flybase"), "MI:0478");
+        db2mi.put(format("refseq"), "MI:0481");
+        db2mi.put(format("rgd"), "MI:0483");
+        db2mi.put(format("sgd"), "MI:0484");
+        db2mi.put(format("uniprotkb"), "MI:0486");
+        db2mi.put(format("ipi"), "MI:0675");
+        db2mi.put(format("dictybase"), "MI:1015");
     }
 
     private String format( String s ) {

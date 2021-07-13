@@ -35,4 +35,8 @@ public interface UniprotProteinTranscript extends UniprotProteinLike {
     public UniprotProtein getMasterProtein();
 
     public void setMasterProtein(UniprotProtein uniprotProtein);
+
+    public Collection<UniprotXref> getCrossReferences();
+
+    public void setCrossReferences(Collection<UniprotXref> crossReferences);
 }
