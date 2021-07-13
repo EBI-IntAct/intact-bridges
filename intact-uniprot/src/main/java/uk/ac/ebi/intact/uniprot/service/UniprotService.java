@@ -39,8 +39,6 @@ public interface UniprotService {
 
     public Collection<UniprotProtein> retrieve( String ac, boolean processSpliceVars );
 
-    @Deprecated
-    public Collection<UniprotProtein> retreive( String ac );
 
     /**
      * Retreive a set of Uniprot proteins based on their ID, AC or splice variant ID.
@@ -54,9 +52,6 @@ public interface UniprotService {
     public Map<String, Collection<UniprotProtein>> retrieve( Collection<String> acs );
 
     public Map<String, Collection<UniprotProtein>> retrieve( Collection<String> acs, boolean processSpliceVars );
-
-    @Deprecated
-    public Map<String, Collection<UniprotProtein>> retreive( Collection<String> acs );
 
     /**
      * Error messages encountered during retreival of proteins.

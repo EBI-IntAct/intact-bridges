@@ -2,10 +2,8 @@ package uk.ac.ebi.intact.uniprot.service;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import uk.ac.ebi.intact.uniprot.model.*;
 import uk.ac.ebi.intact.uniprot.model.Organism;
-import uk.ac.ebi.intact.uniprot.service.crossRefAdapter.ReflectionCrossReferenceBuilder;
-import uk.ac.ebi.intact.uniprot.service.crossRefAdapter.UniprotCrossReference;
+import uk.ac.ebi.intact.uniprot.model.*;
 import uk.ac.ebi.intact.uniprot.service.referenceFilter.CrossReferenceFilter;
 import uk.ac.ebi.kraken.interfaces.uniprot.*;
 import uk.ac.ebi.kraken.interfaces.uniprot.comments.*;
@@ -205,16 +203,6 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
         return results;
     }
 
-    @Deprecated
-    public Collection<UniprotProtein> retreive( String ac ) {
-        return retrieve(ac);
-    }
-
-    @Deprecated
-    public Map<String, Collection<UniprotProtein>> retreive( Collection<String> acs ) {
-        return retrieve(acs);
-    }
-
     //////////////////////////
     // private methods
 
@@ -228,6 +216,7 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
             // we only use this search for splice variants
 //            Query query = UniProtQueryBuilder.id(upperCaseAc);
             CommentType ccType = CommentType.ALTERNATIVE_PRODUCTS;
+            //TODO Can ge infer here which isoform is the canonical? display=true
             Query query = UniProtQueryBuilder.comments(ccType, upperCaseAc);
             try {
                 iterator = uniProtQueryService.getEntries(query);
@@ -284,14 +273,15 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
 
     public static void main(String[] args) throws ServiceException {
         final UniProtService uniProtQueryService = Client.getServiceFactoryInstance().getUniProtQueryService();
-//        final EntryIterator<UniProtEntry> iterator = uniProtQueryService.getEntryIterator(UniProtQueryBuilder.buildQuery("P43063"));
-        final Query query = UniProtQueryBuilder.accession("P43063");
-        final QueryResult<UniProtEntry> iterator = uniProtQueryService.getEntries(query);
+        uniProtQueryService.start();
 
+        final Query query = UniProtQueryBuilder.accession("Q9C5U0");
+        final QueryResult<UniProtEntry> iterator = uniProtQueryService.getEntries(query);
 
         for (UniProtEntry protEntry : iterator.getCurrentPage().getResults()) {
             System.out.println(protEntry.getPrimaryUniProtAccession().getValue());
         }
+        uniProtQueryService.stop();
     }
 
     protected UniprotProtein buildUniprotProtein( UniProtEntry uniProtEntry, boolean fetchSpliceVariants ) {
@@ -373,9 +363,6 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
             uniprotProtein.getKeywords().add( keyword.getValue() );
         }
 
-        // Cross references
-        processCrossReference( uniProtEntry, uniprotProtein );
-
         // sequence
         uniprotProtein.setSequence( uniProtEntry.getSequence().getValue() );
         uniprotProtein.setSequenceLength( uniProtEntry.getSequence().getLength() );
@@ -394,6 +381,11 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
             // feature pro-peptides to be processed as feature chains
             processFeatureProPeptide(uniProtEntry, uniprotProtein);
         }
+
+        // We process the cross references at the end to assigned the xrefs to the correct splice variant (if we have that information)
+        // For the time being only emsembl* xrefs are propagated form the canonical to the isoforms. It takes care too of the exceptional case where
+        // xrefs are coming from an external entry
+        processCrossReference(uniProtEntry, uniprotProtein);
 
         return uniprotProtein;
     }
@@ -599,69 +591,112 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
         }
     }
 
-    protected Collection<UniprotCrossReference> convert( Collection<DatabaseCrossReference> refs ) {
-        Collection<UniprotCrossReference> convertedRefs = new ArrayList<UniprotCrossReference>();
-        ReflectionCrossReferenceBuilder builder = new ReflectionCrossReferenceBuilder();
+    //TODO REVIEW
+    protected void processCrossReference(UniProtEntry uniProtEntry, UniprotProtein protein ) {
+
+        Collection<UniprotXref> propagateToMasterXref = new HashSet<>();
+
+        Collection<UniprotXref> xrefs = convert(uniProtEntry.getDatabaseCrossReferences());
+        for (Iterator<UniprotXref> iterator = xrefs.iterator(); iterator.hasNext(); ) {
+            UniprotXref xref = iterator.next();
+            for (UniprotSpliceVariant spliceVariant : protein.getSpliceVariants()) {
+                if (spliceVariant.getId().equalsIgnoreCase(xref.getIsoformId())) {
+                    spliceVariant.getCrossReferences().add(xref);
+                    if (spliceVariant.isCanonical()) {
+                        propagateToMasterXref.add(xref);
+                    }
+                    iterator.remove();
+                }
+            }
+        }
+
+        protein.getCrossReferences().addAll(xrefs);
+        protein.getCrossReferences().addAll(propagateToMasterXref);
+    }
+
+    protected Collection<UniprotXref> convert(Collection<DatabaseCrossReference> refs) {
+        // TODO There is so far no straight forward way to process all cross reference and extract descriptions.
+        // We could at least provide specific handlers in case we know we need to process specific databases.
+        Collection<UniprotXref> convertedRefs = new HashSet<>();
+
         for ( DatabaseCrossReference ref : refs ) {
             String db = ref.getDatabase().getName();
             if ( getCrossReferenceSelector() != null && !getCrossReferenceSelector().isSelected( db ) ) {
                 log.trace( getCrossReferenceSelector().getClass().getSimpleName() + " filtered out database: '" + db + "'." );
                 continue;
             }
-
-            for (UniprotCrossReference xref : builder.build(ref)) {
-
-                if (xref != null){
-                    convertedRefs.add( xref );
-                }
-            }
-
+            convertedRefs.addAll(build(ref));
         }
         return convertedRefs;
     }
 
-    protected void processCrossReference( UniProtEntry uniProtEntry, UniprotProtein protein ) {
-        Collection<DatabaseCrossReference> databaseCrossReferences = uniProtEntry.getDatabaseCrossReferences();
-        Collection<UniprotCrossReference> xrefs = convert( databaseCrossReferences );
+    /**
+     * Convert an implementation of DatabaseCrossReference into a UniprotXref
+     * @param crossRef the cross reference to convert.
+     *
+     * @return a collection of UniprotXrefs or null if it could not be created.
+     */
+    //TODO add testing
+    protected <T extends DatabaseCrossReference> Collection<UniprotXref> build(T crossRef) {
 
-        for ( UniprotCrossReference xref : xrefs ) {
+        Collection<UniprotXref> references = new HashSet<>();
+        String desc = null;
+        String db = crossRef.getDatabase().getName();
 
-            String ac = xref.getAccessionNumber();
+        if (log.isDebugEnabled()) {
+            log.debug("Converting " + crossRef.getClass().getName() + " into a UniprotXref");
+        }
 
-            if (ac == null) {
-                log.error("No AC could be found for xref: "+xref);
-                continue;
+        // We treat the same way every possible ensembl cross ref to be able to map UniprotIds to EnsemblProteins
+        // Related to INVAR and genome coordinates mapping project
+        if (!db.contains("Ensembl")) {
+            String id = crossRef.getPrimaryId().getValue();
+            if (id == null) {
+                throw new IllegalArgumentException("Cannot get id from cross reference: " + crossRef.getClass().getSimpleName() + " [ " + crossRef + " ]");
             }
 
-            String db = xref.getDatabase();
-
-            String desc = xref.getDescription(); // TODO There is so far no straight forward way to process all cross refrence and extract descriptions. We could at least provide specific handlers in case we know we need to process specific databases.
-
-            protein.getCrossReferences().add( new UniprotXref( ac, db, desc ) );
-
-            // handles HUGE cross references (stored as gene name or synonym and start with KIAA)
-            if ( getCrossReferenceSelector() != null &&
-                    ( getCrossReferenceSelector().isSelected( "HUGE" ) || getCrossReferenceSelector().isSelected( "KIAA" ) ) ) {
-
-                // we only do this if the filter requires it explicitely.
-                List<Gene> genes = uniProtEntry.getGenes();
-                for ( Gene gene : genes ) {
-
-                    String geneName = gene.getGeneName().getValue();
-                    if ( geneName.startsWith( "KIAA" ) ) {
-                        protein.getCrossReferences().add( new UniprotXref( geneName, "HUGE" ) );
-                    }
-
-                    List<GeneNameSynonym> synonyms = gene.getGeneNameSynonyms();
-                    for ( GeneNameSynonym synonym : synonyms ) {
-                        String syn = synonym.getValue();
-                        if ( syn.startsWith( "KIAA" ) ) {
-                            protein.getCrossReferences().add( new UniprotXref( syn, "HUGE" ) );
-                        }
+            if (db.equalsIgnoreCase("go") && crossRef.getDescription() != null && !crossRef.getDescription().getValue().trim().isEmpty()) {
+                desc = crossRef.getDescription().getValue();
+                if (!desc.isEmpty()) {
+                    int index = desc.indexOf(':');
+                    if (index != -1) {
+                        desc = desc.substring(index + 1);
                     }
                 }
             }
-        } // for Cross Ref
+            // Build the Generic Cross reference
+            references.add(new UniprotXref(id, db, desc));
+        } else { // We treat ensembl in a different way to extract different Ensembl Xrefs reported in Uniprot simultaneously
+            String isoformId = null;
+
+            if (crossRef.getIsoformId() != null && !crossRef.getIsoformId().getValue().trim().isEmpty()) {
+                isoformId = crossRef.getIsoformId().getValue().trim();
+            }
+
+            if (crossRef.getPrimaryId() != null && !crossRef.getPrimaryId().getValue().trim().isEmpty()) {
+                // Ensembl Transcript
+                String ensemblT = crossRef.getPrimaryId().getValue().trim();
+                references.add(new UniprotXref(ensemblT, db, "transcript", isoformId));
+            }
+            if (crossRef.getDescription() != null && !crossRef.getDescription().getValue().trim().isEmpty()) {
+                // Ensembl Protein
+                String ensemblP = crossRef.getDescription().getValue().trim();
+                references.add(new UniprotXref(ensemblP, db, "protein", isoformId));
+            }
+            if (crossRef.getThird() != null && !crossRef.getThird().getValue().trim().isEmpty()) {
+                // Ensembl Gene
+                String ensemblG = crossRef.getThird().getValue().trim();
+                UniprotXref isoXref = new UniprotXref(ensemblG, db, "gene", isoformId);
+                references.add(isoXref);
+            }
+
+            // crossRef.getFourth not used in Ensembl for now
+        }
+
+        // TODO 2006-10-24: how to retreive a description ?!?!
+        // TODO > so far we cannot, the UniProt Team is going to provide a tool to replace this Builder soon.
+        // TODO 2021-06-30 Noe: We can consider GO as a special case to retrieve the description of the GO term
+        return references;
     }
 
     protected void processSpliceVariants( UniProtEntry uniProtEntry, UniprotProtein protein ) {
@@ -674,6 +709,7 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
         protein.getSpliceVariants().addAll( spliceVariants );
     }
 
+    //TODO Noe: I don't see the need of the map becasue I can't find any place in the code where it is getting updated. Remove it?
     protected List<UniprotSpliceVariant> findSpliceVariants(UniProtEntry uniProtEntry, Organism organism, Map<String, String> seqMap) {
         if (log.isDebugEnabled()) {
             log.debug("Finding splice variants for: " + uniProtEntry.getPrimaryUniProtAccession().getValue());
@@ -687,12 +723,15 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
 
             for ( AlternativeProductsIsoform isoform : isoforms ) {
 
+                boolean canonical = false;
+                String sequence = null;
+                String spliceVarId = null;
                 List<String> ids = new ArrayList<String>();
+                Collection<DatabaseCrossReference> databaseCrossReferences = new ArrayList<>();
 
                 List<IsoformId> isoIDs = isoform.getIds();
                 for ( IsoformId isoID : isoIDs ) {
                     //System.out.println("isoID  : " + isoID.getValue());
-
 
                     // TODO remove this once the API is fixed, currently when multiple ids are present they are returned as a comma separated value :(
                     for ( int i = 0; i < isoID.getValue().split( "," ).length; i++ ) {
@@ -705,9 +744,7 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
                 }
 
                 // process alternative sequence
-                String spliceVarId = ids.get(0);
-
-                String sequence = null;
+                spliceVarId = ids.get(0);
 
                 if (seqMap.containsKey(spliceVarId)) {
                     sequence = seqMap.get(spliceVarId);
@@ -723,12 +760,13 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
 
                     switch (isoform.getIsoformSequenceStatus()) {
                         case NOT_DESCRIBED:
-                            //log.error("According to uniprot the splice variant " + spliceVarId + " has no sequence (status = NOT_DESCRIBED)");
+                            log.warn("According to uniprot the splice variant " + spliceVarId + " has no sequence (status = NOT_DESCRIBED)");
                         case DESCRIBED:
                             sequence = uniProtEntry.getSplicedSequence(isoform.getName().getValue());
                             break;
                         case DISPLAYED:
                             sequence = uniProtEntry.getSplicedSequence(isoform.getName().getValue());
+                            canonical = true;
                             break;
                         case EXTERNAL:
                             // then we need to load an external protein entry
@@ -757,6 +795,7 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
                                 } else {
                                     numberOfEntryInIterator++;
                                     sequence = uniprotEntryParentProtein.getSplicedSequence(isoform.getName().getValue());
+                                    databaseCrossReferences = uniprotEntryParentProtein.getDatabaseCrossReferences();
 
                                     if (sequence == null || sequence.length() == 0 ) {
                                         for (UniprotSpliceVariant uniprotSpliceVariant : findSpliceVariants(uniprotEntryParentProtein, organism, seqMap)) {
@@ -797,6 +836,13 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
                 }
                 sv.setNote(stringBuffer.toString());
 
+                // canonical isoform
+                sv.setCanonical(canonical);
+
+                // process xrefs (at this point they are coming from an external parent entry/canonical)
+                processSpliceVariantsCrossReferences(databaseCrossReferences, sv);
+
+                // process
                 spliceVariants.add(sv);
             } // for isoform
         } // for comments
@@ -806,6 +852,20 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
         }
 
         return spliceVariants;
+    }
+
+    private void processSpliceVariantsCrossReferences(Collection<DatabaseCrossReference> databaseCrossReferences, UniprotSpliceVariant sv) {
+
+        //Attempts to bring for now ensembl* xref from the external entry to avoid loosing them
+        Collection<UniprotXref> xrefs = convert(databaseCrossReferences);
+        for (UniprotXref xref : xrefs) {
+            if (sv.getPrimaryAc().equalsIgnoreCase(xref.getIsoformId())) {
+                // Avoid repetitions because it is not a set
+                if (!sv.getCrossReferences().contains(xref)) {
+                    sv.getCrossReferences().add(xref);
+                }
+            }
+        }
     }
 
     protected String getUniProtAccFromSpliceVariantId( String svId ) {

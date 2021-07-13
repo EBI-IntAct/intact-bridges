@@ -1,6 +1,8 @@
 package uk.ac.ebi.intact.uniprot.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * TODO comment this
@@ -40,6 +42,12 @@ public abstract class UniprotProteinTranscriptImpl implements UniprotProteinTran
     private Integer end;
 
     private UniprotProtein masterProtein;
+
+    /**
+     * Collection of cross references.
+     */
+    private Collection<UniprotXref> crossReferences;
+
 
     public UniprotProteinTranscriptImpl(String primaryAc, Organism organism, String sequence){
         this.id = primaryAc;
@@ -116,6 +124,17 @@ public abstract class UniprotProteinTranscriptImpl implements UniprotProteinTran
             }
         }
         this.end = end;
+    }
+
+    public Collection<UniprotXref> getCrossReferences() {
+        if ( crossReferences == null ) {
+            crossReferences = new ArrayList<UniprotXref>();
+        }
+        return crossReferences;
+    }
+
+    public void setCrossReferences(Collection<UniprotXref> crossReferences) {
+        this.crossReferences = crossReferences;
     }
 
     @Override
