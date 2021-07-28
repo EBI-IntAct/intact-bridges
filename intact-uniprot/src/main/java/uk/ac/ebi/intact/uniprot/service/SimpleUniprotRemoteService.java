@@ -591,12 +591,11 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
         }
     }
 
-    //TODO REVIEW
     protected void processCrossReference(UniProtEntry uniProtEntry, UniprotProtein protein ) {
 
         Collection<UniprotXref> propagateToMasterXref = new HashSet<>();
 
-        Collection<UniprotXref> xrefs = convert(uniProtEntry.getDatabaseCrossReferences());
+        Collection<UniprotXref> xrefs = convertCrossReferenceToUniprotXref(uniProtEntry.getDatabaseCrossReferences());
         for (Iterator<UniprotXref> iterator = xrefs.iterator(); iterator.hasNext(); ) {
             UniprotXref xref = iterator.next();
             for (UniprotSpliceVariant spliceVariant : protein.getSpliceVariants()) {
@@ -614,7 +613,7 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
         protein.getCrossReferences().addAll(propagateToMasterXref);
     }
 
-    protected Collection<UniprotXref> convert(Collection<DatabaseCrossReference> refs) {
+    protected Collection<UniprotXref> convertCrossReferenceToUniprotXref(Collection<DatabaseCrossReference> refs) {
         // TODO There is so far no straight forward way to process all cross reference and extract descriptions.
         // We could at least provide specific handlers in case we know we need to process specific databases.
         Collection<UniprotXref> convertedRefs = new HashSet<>();
@@ -625,7 +624,7 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
                 log.trace( getCrossReferenceSelector().getClass().getSimpleName() + " filtered out database: '" + db + "'." );
                 continue;
             }
-            convertedRefs.addAll(build(ref));
+            convertedRefs.addAll(buildDatabaseCrossReference(ref));
         }
         return convertedRefs;
     }
@@ -636,8 +635,7 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
      *
      * @return a collection of UniprotXrefs or null if it could not be created.
      */
-    //TODO add testing
-    protected <T extends DatabaseCrossReference> Collection<UniprotXref> build(T crossRef) {
+    protected <T extends DatabaseCrossReference> Collection<UniprotXref> buildDatabaseCrossReference(T crossRef) {
 
         Collection<UniprotXref> references = new HashSet<>();
         String desc = null;
@@ -856,7 +854,7 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
     private void processSpliceVariantsCrossReferences(Collection<DatabaseCrossReference> databaseCrossReferences, UniprotSpliceVariant sv) {
 
         //Attempts to bring for now ensembl* xref from the external entry to avoid loosing them
-        Collection<UniprotXref> xrefs = convert(databaseCrossReferences);
+        Collection<UniprotXref> xrefs = convertCrossReferenceToUniprotXref(databaseCrossReferences);
         for (UniprotXref xref : xrefs) {
             if (sv.getPrimaryAc().equalsIgnoreCase(xref.getIsoformId())) {
                 // Avoid repetitions because it is not a set
