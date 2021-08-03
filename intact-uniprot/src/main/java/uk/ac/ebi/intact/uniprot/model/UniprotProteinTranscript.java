@@ -35,4 +35,5 @@ public interface UniprotProteinTranscript extends UniprotProteinLike {
     public UniprotProtein getMasterProtein();
 
     public void setMasterProtein(UniprotProtein uniprotProtein);
+
 }

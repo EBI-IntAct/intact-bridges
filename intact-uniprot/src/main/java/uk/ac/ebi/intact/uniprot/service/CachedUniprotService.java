@@ -79,16 +79,6 @@ public class CachedUniprotService extends AbstractUniprotService implements Unip
         }
     }
 
-    @Deprecated
-    public Collection<UniprotProtein> retreive( String ac ) {
-        return retrieve(ac);
-    }
-
-    @Deprecated
-    public Map<String, Collection<UniprotProtein>> retreive( Collection<String> acs ) {
-        return retrieve(acs);
-    }
-
     public Collection<UniprotProtein> retrieve( String ac ) {
 
         Collection<UniprotProtein> proteins = getFromCache( ac );

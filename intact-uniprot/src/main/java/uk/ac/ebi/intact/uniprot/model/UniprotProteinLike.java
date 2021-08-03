@@ -1,6 +1,7 @@
 package uk.ac.ebi.intact.uniprot.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -28,4 +29,7 @@ public interface UniprotProteinLike extends Serializable {
     String getSequence();
 
     void setSequence(String sequence);
+
+    Collection<UniprotXref> getCrossReferences();
+
 }

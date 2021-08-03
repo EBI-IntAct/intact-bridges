@@ -6,6 +6,7 @@
 package uk.ac.ebi.intact.uniprot.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Cross reference of a UniProt protein.
@@ -20,7 +21,7 @@ public class UniprotXref implements Serializable {
     // Instance attributes
 
     private static final long serialVersionUID = -3414917566136587359L;
-    
+
     /**
      * Accession number of the cross reference.
      */
@@ -36,46 +37,43 @@ public class UniprotXref implements Serializable {
      */
     private String description;
 
+    /**
+     * Isoform specific information (if available)
+     */
+    private String isoformId;
+
     //////////////////////
     // Constructor
+    public UniprotXref(String ac, String db, String description, String isoformId) {
 
-    public UniprotXref( String ac, String db, String description ) {
-
-        if ( ac == null ) {
-            throw new IllegalArgumentException( "A cross reference's AC cannot be null." );
+        if ( ac == null || ac.trim().isEmpty()) {
+            throw new IllegalArgumentException( "A cross reference's AC cannot be null or empty." );
         }
         this.accession = ac;
 
-        if ( db == null ) {
-            throw new IllegalArgumentException( "A cross reference's database cannot be null." );
+        if ( db == null || db.trim().isEmpty()) {
+            throw new IllegalArgumentException( "A cross reference's database cannot be null or empty." );
         }
         this.database = db;
-
         this.description = description;
+        this.isoformId = isoformId;
+    }
+
+    public UniprotXref(String ac, String db, String description) {
+        this(ac, db, description, null);
     }
 
     public UniprotXref( String ac, String db ) {
-        setAccession( ac );
-        setDatabase( db );
+        this(ac, db, null);
     }
 
     ///////////////////////////
     // Getters and Setters
 
-    /**
-     * Returns accession number of the cross reference.
-     *
-     * @return accession number of the cross reference.
-     */
     public String getAccession() {
         return accession;
     }
 
-    /**
-     * Sets accession number of the cross reference.
-     *
-     * @param accession accession number of the cross reference.
-     */
     public void setAccession( String accession ) {
         if ( accession == null ) {
             throw new IllegalArgumentException( "An Xref must have a non null accession." );
@@ -86,20 +84,10 @@ public class UniprotXref implements Serializable {
         this.accession = accession;
     }
 
-    /**
-     * Returns database of the cross reference.
-     *
-     * @return database of the cross reference.
-     */
     public String getDatabase() {
         return database;
     }
 
-    /**
-     * Sets database of the cross reference.
-     *
-     * @param database database of the cross reference.
-     */
     public void setDatabase( String database ) {
         if ( database == null ) {
             throw new IllegalArgumentException( "An Xref must have a non null database." );
@@ -110,64 +98,45 @@ public class UniprotXref implements Serializable {
         this.database = database;
     }
 
-    /**
-     * Returns additional description of the cross reference.
-     *
-     * @return additional description of the cross reference.
-     */
     public String getDescription() {
         return description;
     }
 
-    /**
-     * Sets additional description of the cross reference.
-     *
-     * @param description additional description of the cross reference.
-     */
     public void setDescription( String description ) {
         this.description = description;
+    }
+
+    public String getIsoformId() {
+        return isoformId;
+    }
+
+    public void setIsoformId(String isoformId) {
+        this.isoformId = isoformId;
     }
 
     ////////////////////////////
     // Object's override
 
     @Override
-    public boolean equals( Object o ) {
-        if ( this == o ) {
-            return true;
-        }
-        if ( o == null || getClass() != o.getClass() ) {
-            return false;
-        }
-
-        final UniprotXref that = (UniprotXref) o;
-
-        if ( !accession.equals( that.accession ) ) {
-            return false;
-        }
-        if ( !database.equals( that.database ) ) {
-            return false;
-        }
-
-        return true;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UniprotXref xref = (UniprotXref) o;
+        return accession.equals(xref.accession) && database.equals(xref.database) && Objects.equals(description, xref.description) && Objects.equals(isoformId, xref.isoformId);
     }
 
     @Override
     public int hashCode() {
-        int result;
-        result = accession.hashCode();
-        result = 29 * result + database.hashCode();
-        return result;
+        return Objects.hash(accession, database, description, isoformId);
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append( "UniprotXref" );
-        sb.append( "{ac='" ).append( accession ).append( '\'' );
-        sb.append( ", db='" ).append( database ).append( '\'' );
-        sb.append( ", description='" ).append( description ).append( '\'' );
-        sb.append( '}' );
-        return sb.toString();
+        return "UniprotXref{" +
+                "accession='" + accession + '\'' +
+                ", database='" + database + '\'' +
+                ", description='" + description + '\'' +
+                ", isoformId='" + isoformId + '\'' +
+                '}';
     }
 }

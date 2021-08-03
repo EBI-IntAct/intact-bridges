@@ -1,4 +1,4 @@
-/*
+ /*
  * Copyright (c) 2002 The European Bioinformatics Institute, and others.
  * All rights reserved. Please see the file LICENSE
  * in the root directory of this distribution.
@@ -22,7 +22,7 @@ public class UniprotSpliceVariant extends UniprotProteinTranscriptImpl{
     /////////////////////////
     // instance attributes
     private static final long serialVersionUID = 4864882167147206959L;
-    
+
     /**
      * Secondary accession number of the splice variant.
      */
@@ -39,14 +39,10 @@ public class UniprotSpliceVariant extends UniprotProteinTranscriptImpl{
     private String note;
 
     /**
-     * The parent XRef qualifier is isoform-parent
+     * True if the splice variant is the one representing the canonical sequence (ususally P12345-1)
+     * (sequence display - true)
      */
-    private final String parentXRefQualifier = "MI:0243";
-
-    /**
-     * A splice variant must have a non null sequence
-     */
-    private final boolean isNullSequenceAllowed = false;
+    private boolean canonical = false;
 
     ////////////////////////
     // Constructor
@@ -105,15 +101,15 @@ public class UniprotSpliceVariant extends UniprotProteinTranscriptImpl{
      * @return always false because a splice variant must have a sequence
      */
     public boolean isNullSequenceAllowed() {
-        return isNullSequenceAllowed;
+        return false;
     }
 
     /**
      *
-     * @return  the MI identifier of 'isoform-parent'
+     * @return  the MI identifier of 'isoform-parent' "MI:0243"
      */
     public String getParentXRefQualifier() {
-        return this.parentXRefQualifier;
+        return "MI:0243";
     }
 
     /**
@@ -156,6 +152,14 @@ public class UniprotSpliceVariant extends UniprotProteinTranscriptImpl{
     }
 
     public void setDescription(String description) {
+    }
+
+    public boolean isCanonical() {
+        return canonical;
+    }
+
+    public void setCanonical(boolean canonical) {
+        this.canonical = canonical;
     }
 
     //////////////////////////
