@@ -52,8 +52,7 @@ public class DefaultCrossReferenceFilter implements CrossReferenceFilter {
         db2mi.put(format("cygd"), "MI:0464");
         db2mi.put(format("reactome"), "MI:0467");
         db2mi.put(format("ensembl"), "MI:0476");
-        // Is it enough with ensemblGenomes to retrive the ensembl protein identifiers?
-        // Do we need to request the children to MI?
+        // Do we need to request the ensemblGenomes children to MI?
         db2mi.put(format("ensemblgenomes"), "MI:1013");
         db2mi.put(format("ensemblbacteria"), "IA:3511");
         db2mi.put(format("ensemblfungi"), "IA:3512");
