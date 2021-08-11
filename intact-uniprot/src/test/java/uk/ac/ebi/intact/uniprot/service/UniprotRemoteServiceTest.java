@@ -552,9 +552,9 @@ public class UniprotRemoteServiceTest {
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("2DYF", "PDB", null)));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("DIP-6279N", "DIP", null)));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("P47068", "MINT", null)));
-        assertTrue(protein.getCrossReferences().contains(new UniprotXref("YJL020C_mRNA", "EnsemblFungi", "transcript")));
-        assertTrue(protein.getCrossReferences().contains(new UniprotXref("YJL020C", "EnsemblFungi", "protein")));
-        assertTrue(protein.getCrossReferences().contains(new UniprotXref("YJL020C", "EnsemblFungi", "gene")));
+        assertTrue(protein.getCrossReferences().contains(new UniprotXref("YJL020C_mRNA", "EnsemblFungi", null,"transcript")));
+        assertTrue(protein.getCrossReferences().contains(new UniprotXref("YJL020C", "EnsemblFungi", null, "identity")));
+        assertTrue(protein.getCrossReferences().contains(new UniprotXref("YJL020C", "EnsemblFungi", null, "gene")));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("S000003557", "SGD", null)));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("GO:0030479", "GO", "actin cortical patch")));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("GO:0051015", "GO", "actin filament binding")));
@@ -616,63 +616,63 @@ public class UniprotRemoteServiceTest {
                 case "P04637-1":
                     assertTrue(spliceVariant.isCanonical());
                     assertEquals(5, spliceVariant.getCrossReferences().size());
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSG00000141510", "Ensembl", "gene", "P04637-1")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000269305", "Ensembl", "transcript", "P04637-1")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000445888", "Ensembl", "transcript", "P04637-1")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000391478", "Ensembl", "protein", "P04637-1")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000391478", "Ensembl", "protein", "P04637-1")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSG00000141510", "Ensembl", null, "gene", "P04637-1")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000269305", "Ensembl", null, "transcript", "P04637-1")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000445888", "Ensembl", null, "transcript", "P04637-1")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000391478", "Ensembl", null, "identity", "P04637-1")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000391478", "Ensembl", null, "identity", "P04637-1")));
                     break;
                 case "P04637-2":
                     assertEquals(3, spliceVariant.getCrossReferences().size());
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSG00000141510", "Ensembl", "gene", "P04637-2")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000420246", "Ensembl", "transcript", "P04637-2")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000391127", "Ensembl", "protein", "P04637-2")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSG00000141510", "Ensembl", null, "gene", "P04637-2")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000420246", "Ensembl", null, "transcript", "P04637-2")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000391127", "Ensembl", null, "identity", "P04637-2")));
                     break;
                 case "P04637-3":
                     assertEquals(3, spliceVariant.getCrossReferences().size());
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSG00000141510", "Ensembl", "gene", "P04637-3")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000455263", "Ensembl", "transcript", "P04637-3")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000398846", "Ensembl", "protein", "P04637-3")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSG00000141510", "Ensembl", null, "gene", "P04637-3")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000455263", "Ensembl", null, "transcript", "P04637-3")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000398846", "Ensembl", null, "identity", "P04637-3")));
                     break;
                 case "P04637-4":
                     assertEquals(7, spliceVariant.getCrossReferences().size());
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSG00000141510", "Ensembl", "gene", "P04637-4")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000610292", "Ensembl", "transcript", "P04637-4")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000619485", "Ensembl", "transcript", "P04637-4")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000620739", "Ensembl", "transcript", "P04637-4")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000478219", "Ensembl", "protein", "P04637-4")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000482537", "Ensembl", "protein", "P04637-4")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000481638", "Ensembl", "protein", "P04637-4")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSG00000141510", "Ensembl", null, "gene", "P04637-4")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000610292", "Ensembl", null, "transcript", "P04637-4")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000619485", "Ensembl", null, "transcript", "P04637-4")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000620739", "Ensembl", null, "transcript", "P04637-4")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000478219", "Ensembl", null, "identity", "P04637-4")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000482537", "Ensembl", null, "identity", "P04637-4")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000481638", "Ensembl", null, "identity", "P04637-4")));
                     break;
                 case "P04637-5":
                     assertEquals(3, spliceVariant.getCrossReferences().size());
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSG00000141510", "Ensembl", "gene", "P04637-5")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000622645", "Ensembl", "transcript", "P04637-5")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000482222", "Ensembl", "protein", "P04637-5")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSG00000141510", "Ensembl", null, "gene", "P04637-5")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000622645", "Ensembl", null, "transcript", "P04637-5")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000482222", "Ensembl", null, "identity", "P04637-5")));
                     break;
                 case "P04637-6":
                     assertEquals(3, spliceVariant.getCrossReferences().size());
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSG00000141510", "Ensembl", "gene", "P04637-6")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000610538", "Ensembl", "transcript", "P04637-6")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000480868", "Ensembl", "protein", "P04637-6")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSG00000141510", "Ensembl", null, "gene", "P04637-6")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000610538", "Ensembl", null, "transcript", "P04637-6")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000480868", "Ensembl", null, "identity", "P04637-6")));
                     break;
                 case "P04637-7":
                     assertEquals(3, spliceVariant.getCrossReferences().size());
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSG00000141510", "Ensembl", "gene", "P04637-7")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000504937", "Ensembl", "transcript", "P04637-7")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000481179", "Ensembl", "protein", "P04637-7")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSG00000141510", "Ensembl", null, "gene", "P04637-7")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000504937", "Ensembl", null, "transcript", "P04637-7")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000481179", "Ensembl", null, "identity", "P04637-7")));
                     break;
                 case "P04637-8":
                     assertEquals(3, spliceVariant.getCrossReferences().size());
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSG00000141510", "Ensembl", "gene", "P04637-8")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000510385", "Ensembl", "transcript", "P04637-8")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000478499", "Ensembl", "protein", "P04637-8")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSG00000141510", "Ensembl", null, "gene", "P04637-8")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000510385", "Ensembl", null, "transcript", "P04637-8")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000478499", "Ensembl", null, "identity", "P04637-8")));
                     break;
                 case "P04637-9":
                     assertEquals(3, spliceVariant.getCrossReferences().size());
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSG00000141510", "Ensembl", "gene", "P04637-9")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000504290", "Ensembl", "transcript", "P04637-9")));
-                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000484409", "Ensembl", "protein", "P04637-9")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSG00000141510", "Ensembl", null, "gene", "P04637-9")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENST00000504290", "Ensembl", null, "transcript", "P04637-9")));
+                    assertTrue(spliceVariant.getCrossReferences().contains(new UniprotXref("ENSP00000484409", "Ensembl", null, "identity", "P04637-9")));
                     break;
                 default:
                     //Thrown error

@@ -674,17 +674,17 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
             if (crossRef.getPrimaryId() != null && !crossRef.getPrimaryId().getValue().trim().isEmpty()) {
                 // Ensembl Transcript
                 String ensemblT = crossRef.getPrimaryId().getValue().trim();
-                references.add(new UniprotXref(ensemblT, db, "transcript", isoformId));
+                references.add(new UniprotXref(ensemblT, db, null, "transcript", isoformId));
             }
             if (crossRef.getDescription() != null && !crossRef.getDescription().getValue().trim().isEmpty()) {
                 // Ensembl Protein
                 String ensemblP = crossRef.getDescription().getValue().trim();
-                references.add(new UniprotXref(ensemblP, db, "protein", isoformId));
+                references.add(new UniprotXref(ensemblP, db, null,"identity", isoformId));
             }
             if (crossRef.getThird() != null && !crossRef.getThird().getValue().trim().isEmpty()) {
                 // Ensembl Gene
                 String ensemblG = crossRef.getThird().getValue().trim();
-                references.add(new UniprotXref(ensemblG, db, "gene", isoformId));
+                references.add(new UniprotXref(ensemblG, db, null,"gene", isoformId));
             }
 
             // crossRef.getFourth not used in Ensembl for now
