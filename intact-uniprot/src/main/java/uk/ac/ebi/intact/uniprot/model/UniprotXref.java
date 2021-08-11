@@ -38,13 +38,18 @@ public class UniprotXref implements Serializable {
     private String description;
 
     /**
+     * Context of the type of identifier (it helps in case of ambiguity e.g. transcript and protein identifiers are the same.
+     */
+    private String qualifier;
+
+    /**
      * Isoform specific information (if available)
      */
     private String isoformId;
 
     //////////////////////
     // Constructor
-    public UniprotXref(String ac, String db, String description, String isoformId) {
+    public UniprotXref(String ac, String db, String description, String qualifier, String isoformId) {
 
         if ( ac == null || ac.trim().isEmpty()) {
             throw new IllegalArgumentException( "A cross reference's AC cannot be null or empty." );
@@ -56,7 +61,12 @@ public class UniprotXref implements Serializable {
         }
         this.database = db;
         this.description = description;
+        this.qualifier = qualifier;
         this.isoformId = isoformId;
+    }
+
+    public UniprotXref(String ac, String db, String description, String qualifier) {
+        this(ac, db, description, qualifier, null);
     }
 
     public UniprotXref(String ac, String db, String description) {
@@ -106,6 +116,14 @@ public class UniprotXref implements Serializable {
         this.description = description;
     }
 
+    public String getQualifier() {
+        return qualifier;
+    }
+
+    public void setQualifier(String qualifier) {
+        this.qualifier = qualifier;
+    }
+
     public String getIsoformId() {
         return isoformId;
     }
@@ -121,13 +139,13 @@ public class UniprotXref implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UniprotXref xref = (UniprotXref) o;
-        return accession.equals(xref.accession) && database.equals(xref.database) && Objects.equals(description, xref.description) && Objects.equals(isoformId, xref.isoformId);
+        UniprotXref that = (UniprotXref) o;
+        return accession.equals(that.accession) && database.equals(that.database) && Objects.equals(description, that.description) && Objects.equals(qualifier, that.qualifier) && Objects.equals(isoformId, that.isoformId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(accession, database, description, isoformId);
+        return Objects.hash(accession, database, description, qualifier, isoformId);
     }
 
     @Override
@@ -136,6 +154,7 @@ public class UniprotXref implements Serializable {
                 "accession='" + accession + '\'' +
                 ", database='" + database + '\'' +
                 ", description='" + description + '\'' +
+                ", qualifier='" + qualifier + '\'' +
                 ", isoformId='" + isoformId + '\'' +
                 '}';
     }
