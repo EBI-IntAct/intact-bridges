@@ -19,9 +19,9 @@
     <url>http://www.ebi.ac.uk/~intact/devsite/bridges</url>
 
     <properties>
-        <currentVersion>${version}</currentVersion>
+        <currentVersion>${project.version}</currentVersion>
         <spring.version>3.2.9.RELEASE</spring.version>
-        <uniprot.japi.version>1.0.37</uniprot.japi.version>
+        <uniprot.japi.version>1.1.1</uniprot.japi.version>
     </properties>
 
     <scm>
@@ -165,6 +165,11 @@
             <id>ebi-repo</id>
             <name>ebi-repo</name>
             <url>http://www.ebi.ac.uk/intact/maven/nexus/content/repositories/ebi-repo/</url>
+        </repository>
+        <repository>
+            <id>ebi-repo2</id>
+            <name>ebi-repo</name>
+            <url>http://www.ebi.ac.uk/~maven/m2repo</url>
         </repository>
         <repository>
             <id>nexus-ebi-release-repo</id>

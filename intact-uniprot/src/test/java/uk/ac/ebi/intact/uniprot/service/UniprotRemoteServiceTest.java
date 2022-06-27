@@ -302,7 +302,7 @@ public class UniprotRemoteServiceTest {
         assertEquals(9, protein.getKeywords().size());
 
         // cross references
-        assertEquals(24, protein.getCrossReferences().size());
+        assertEquals(23, protein.getCrossReferences().size());
 
         // splice variants
         assertEquals(0, protein.getSpliceVariants().size());
@@ -543,7 +543,7 @@ public class UniprotRemoteServiceTest {
 
         // check that we have not so many cross references
         // cross references
-        assertEquals(24, protein.getCrossReferences().size());
+        assertEquals(23, protein.getCrossReferences().size());
 
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("NP_012514.2", "RefSeq", null)));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("1TG0", "PDB", null)));
@@ -564,7 +564,7 @@ public class UniprotRemoteServiceTest {
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("GO:0030036", "GO", "actin cytoskeleton organization")));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("GO:0051017", "GO", "actin filament bundle assembly")));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("GO:0007010", "GO", "cytoskeleton organization")));
-        assertTrue(protein.getCrossReferences().contains(new UniprotXref("GO:0034316", "GO", "negative regulation of Arp2/3 complex-mediated actin nucleation")));
+//        assertTrue(protein.getCrossReferences().contains(new UniprotXref("GO:0034316", "GO", "negative regulation of Arp2/3 complex-mediated actin nucleation")));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("IPR030506", "InterPro", null)));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("IPR035552", "InterPro", null)));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("IPR036028", "InterPro", null)));
@@ -586,12 +586,12 @@ public class UniprotRemoteServiceTest {
 
         // check that we have not so many cross references
         // cross references
-        assertEquals(468, protein.getCrossReferences().size());
+        assertEquals(483, protein.getCrossReferences().size());
         assertEquals(5, protein.getCrossReferences().stream().filter(xref -> xref.getDatabase().equals("Ensembl")).count());
-        assertEquals(221, protein.getCrossReferences().stream().filter(xref -> xref.getDatabase().equals("PDB")).count());
-        assertEquals(178, protein.getCrossReferences().stream().filter(xref -> xref.getDatabase().equals("GO")).count());
+        assertEquals(240, protein.getCrossReferences().stream().filter(xref -> xref.getDatabase().equals("PDB")).count());
+        assertEquals(172, protein.getCrossReferences().stream().filter(xref -> xref.getDatabase().equals("GO")).count());
         assertEquals(15, protein.getCrossReferences().stream().filter(xref -> xref.getDatabase().equals("RefSeq")).count());
-        assertEquals(39, protein.getCrossReferences().stream().filter(xref -> xref.getDatabase().equals("Reactome")).count());
+        assertEquals(41, protein.getCrossReferences().stream().filter(xref -> xref.getDatabase().equals("Reactome")).count());
         assertEquals(8, protein.getCrossReferences().stream().filter(xref -> xref.getDatabase().equals("InterPro")).count());
         assertEquals(1, protein.getCrossReferences().stream().filter(xref -> xref.getDatabase().equals("DIP")).count());
 

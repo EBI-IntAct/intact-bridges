@@ -15,7 +15,7 @@
     <description>Blast Master POM</description>
 
     <properties>
-        <currentVersion>${version}</currentVersion>
+        <currentVersion>${project.version}</currentVersion>
     </properties>
 
     <modules>
