@@ -16,8 +16,9 @@
 package uk.ac.ebi.intact.bridges.unisave;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
@@ -44,7 +45,7 @@ public class UnisaveService {
     private static final Log log = LogFactory.getLog( UnisaveService.class );
 
     private String unisaveUrlRestJson = "http://www.ebi.ac.uk/uniprot/unisave/rest";
-    private DefaultHttpClient httpClient = new DefaultHttpClient();
+    private HttpClient httpClient = HttpClientBuilder.create().build();
 
     public UnisaveService() {
 
