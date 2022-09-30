@@ -23,6 +23,7 @@ import java.io.Reader;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.NoSuchElementException;
 
 /**
  * Example URL: https://www.uniprot.org/taxonomy/?query=*&limit=10&format=list
@@ -44,8 +45,10 @@ public class UniprotTaxonomyOntologyIterator extends LineOntologyIterator {
 
     public UniprotTaxonomyOntologyIterator(URL url) throws IOException {
         super(url);
-        String link = this.header.get("Link").get(0);
-        this.nextUrl = new URL(link.substring(link.indexOf("<") + 1, link.indexOf(">")));
+        if (this.header != null && this.header.containsKey("Link")) {
+            String link = this.header.get("Link").get(0);
+            this.nextUrl = new URL(link.substring(link.indexOf("<") + 1, link.indexOf(">")));
+        }
     }
 
     public UniprotTaxonomyOntologyIterator(InputStream is) {
@@ -58,6 +61,10 @@ public class UniprotTaxonomyOntologyIterator extends LineOntologyIterator {
 
     public UniprotTaxonomyOntologyIterator() throws IOException {
         this("*", -1);
+    }
+
+    public UniprotTaxonomyOntologyIterator(String query) throws IOException {
+        this(query, -1);
     }
 
     public UniprotTaxonomyOntologyIterator(int limit) throws IOException {
@@ -75,8 +82,13 @@ public class UniprotTaxonomyOntologyIterator extends LineOntologyIterator {
                 (limit < 0 ? "" : String.format("&size=%d", limit))));
     }
 
-    public UniprotTaxonomyOntologyIterator nextPage() throws IOException {
-        return new UniprotTaxonomyOntologyIterator(nextUrl);
+    public UniprotTaxonomyOntologyIterator nextPage() throws NoSuchElementException, IOException {
+        if (hasNextPage()) return new UniprotTaxonomyOntologyIterator(nextUrl);
+        else throw new NoSuchElementException("The previous page received was the last");
+    }
+
+    public boolean hasNextPage() {
+        return this.nextUrl != null;
     }
 
     @Override

@@ -40,9 +40,16 @@ public class UniprotTaxonomyOntologyIteratorTest {
                 Assert.assertNotNull(document);
                 documents.add(document);
             }
-            iterator = iterator.nextPage();
+            if (iterator.hasNextPage()) iterator = iterator.nextPage();
         }
         Assert.assertEquals(15, documents.size());
+    }
+
+    @Test
+    public void testStreamOntology() throws Exception {
+        UniprotTaxonomyOntologyIterator iterator = new UniprotTaxonomyOntologyIterator("Homo sapiens");
+        Assert.assertTrue(iterator.hasNext());
+        Assert.assertEquals("Homo sapiens", iterator.next().getChildName());
     }
 
     @Test
