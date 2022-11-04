@@ -56,22 +56,27 @@ public class UniprotTaxonomyOntologyIterator extends LineOntologyIterator {
     }
 
     public UniprotTaxonomyOntologyIterator() throws IOException {
-        this("*", 0, -1);
+        this("*", null, -1);
     }
 
-    public UniprotTaxonomyOntologyIterator(int offset, int limit) throws IOException {
-        this("*", offset, limit);
+    public UniprotTaxonomyOntologyIterator(int limit) throws IOException {
+        this(null, limit);
     }
 
-    public UniprotTaxonomyOntologyIterator(String query, int offset, int limit) throws IOException {
-        this(query, offset, limit, false);
+    public UniprotTaxonomyOntologyIterator(String cursor, int limit) throws IOException {
+        this("*", cursor, limit);
     }
 
-    public UniprotTaxonomyOntologyIterator(String query, int offset, int limit, boolean onlyReviewed) throws IOException {
+    public UniprotTaxonomyOntologyIterator(String query, String cursor, int limit) throws IOException {
+        this(query, cursor, limit, false);
+    }
+
+    public UniprotTaxonomyOntologyIterator(String query, String cursor, int limit, boolean onlyReviewed) throws IOException {
         this(new URL((limit < 0 ? STREAM_URL : PAGINATED_URL) + "?query=" +
-                URLEncoder.encode(query + (onlyReviewed ? " AND reviewed:yes" : ""), StandardCharsets.UTF_8) +
+                URLEncoder.encode(query + (onlyReviewed ? " AND reviewed:true" : ""), StandardCharsets.UTF_8) +
                 Column.columnString() +
-                (limit < 0 ? "" : String.format("&cursor=%d&size=%d", (offset / limit) + 1, limit))));
+                (limit < 0 ? "" : String.format("&size=%d", limit)) +
+                (cursor != null ? "" : String.format("&cursor=%s", cursor))));
     }
 
     @Override
