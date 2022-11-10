@@ -76,7 +76,7 @@ public class UniprotTaxonomyOntologyIterator extends LineOntologyIterator {
                 URLEncoder.encode(query + (onlyReviewed ? " AND reviewed:true" : ""), StandardCharsets.UTF_8) +
                 Column.columnString() +
                 (limit < 0 ? "" : String.format("&size=%d", limit)) +
-                (cursor != null ? "" : String.format("&cursor=%s", cursor))));
+                (cursor == null ? "" : String.format("&cursor=%s", cursor))));
     }
 
     @Override
