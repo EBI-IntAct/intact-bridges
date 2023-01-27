@@ -24,6 +24,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
+import java.net.URLConnection;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Ontology iterator that gets the documents from lines;
@@ -33,12 +36,18 @@ import java.net.URL;
  */
 public abstract class LineOntologyIterator implements OntologyIterator{
 
+    protected Map<String, List<String>> header;
     private LineIterator lineIterator;
     private String currentLine;
     private Reader reader;
 
     public LineOntologyIterator(URL url) throws IOException {
-        this(url.openStream());
+        this(url.openConnection());
+    }
+
+    private LineOntologyIterator(URLConnection connection) throws IOException {
+        this(connection.getInputStream());
+        this.header = connection.getHeaderFields();
     }
 
     public LineOntologyIterator(InputStream is) {
