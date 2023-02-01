@@ -1,5 +1,6 @@
 package uk.ac.ebi.intact.bridges.ontologies.iterator;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
@@ -46,7 +47,13 @@ enum Column { // Order of declaration will be order in the result of the query
     }
 
     public static String columnString() {
-        if (columnString == null) columnString = "&format=tsv&fields=" + URLEncoder.encode(Column.columnList().stream().map(column -> column.name).collect(Collectors.joining(",")), StandardCharsets.UTF_8);
+        if (columnString == null) {
+            try {
+                columnString = "&format=tsv&fields=" + URLEncoder.encode(Column.columnList().stream().map(column -> column.name).collect(Collectors.joining(",")), StandardCharsets.UTF_8.name());
+            } catch (UnsupportedEncodingException e) {
+                throw new RuntimeException(e);
+            }
+        }
         return columnString;
     }
 }
