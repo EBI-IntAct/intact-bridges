@@ -302,7 +302,7 @@ public class UniprotRemoteServiceTest {
         assertEquals(9, protein.getKeywords().size());
 
         // cross references
-        assertEquals(23, protein.getCrossReferences().size());
+        assertEquals(22, protein.getCrossReferences().size());
 
         // splice variants
         assertEquals(0, protein.getSpliceVariants().size());
@@ -543,7 +543,7 @@ public class UniprotRemoteServiceTest {
 
         // check that we have not so many cross references
         // cross references
-        assertEquals(23, protein.getCrossReferences().size());
+        assertEquals(22, protein.getCrossReferences().size());
 
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("NP_012514.2", "RefSeq", null)));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("1TG0", "PDB", null)));
@@ -564,7 +564,6 @@ public class UniprotRemoteServiceTest {
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("GO:0030036", "GO", "actin cytoskeleton organization")));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("GO:0051017", "GO", "actin filament bundle assembly")));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("GO:0007010", "GO", "cytoskeleton organization")));
-        assertTrue(protein.getCrossReferences().contains(new UniprotXref("IPR030506", "InterPro", null)));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("IPR035552", "InterPro", null)));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("IPR036028", "InterPro", null)));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("IPR001452", "InterPro", null)));
