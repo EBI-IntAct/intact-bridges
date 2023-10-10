@@ -1,12 +1,12 @@
 /**
  * Copyright 2009 The European Bioinformatics Institute, and others.
- *
+ * <p>
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -21,12 +21,36 @@ import uk.ac.ebi.intact.bridges.ontologies.OntologyDocument;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Bruno Aranda (baranda@ebi.ac.uk)
  * @version $Id$
  */
 public class UniprotTaxonomyOntologyIteratorTest {
+
+    @Test
+    public void testPaginatedOntology() throws Exception {
+        UniprotTaxonomyOntologyIterator iterator = new UniprotTaxonomyOntologyIterator(5);
+        List<OntologyDocument> documents = new ArrayList<>();
+        for (int page = 0; page < 3; page++) {
+            while (iterator.hasNext()) {
+                OntologyDocument document = iterator.next();
+                Assert.assertNotNull(document);
+                documents.add(document);
+            }
+            if (iterator.hasNextPage()) iterator = iterator.nextPage();
+        }
+        Assert.assertEquals(15, documents.size());
+    }
+
+    @Test
+    public void testStreamOntology() throws Exception {
+        UniprotTaxonomyOntologyIterator iterator = new UniprotTaxonomyOntologyIterator("Homo sapiens");
+        Assert.assertTrue(iterator.hasNext());
+        Assert.assertEquals("Homo sapiens", iterator.next().getChildName());
+    }
 
     @Test
     public void testProcessLine() throws Exception {
@@ -54,7 +78,7 @@ public class UniprotTaxonomyOntologyIteratorTest {
             OntologyDocument ontologyDocument = iterator.next();
             count++;
         }
-        
+
         Assert.assertEquals(117, count);
     }
 
@@ -62,22 +86,22 @@ public class UniprotTaxonomyOntologyIteratorTest {
     public void testProcessEmptyFile() throws Exception {
         String line = "Taxon\tMnemonic\tScientific Name\tCommon Name\tSynonym\tOther Names\tReviewed\tRank\tLineage\tParent";
 
-         UniprotTaxonomyOntologyIterator iterator = new UniprotTaxonomyOntologyIterator(new ByteArrayInputStream(line.getBytes()));
+        UniprotTaxonomyOntologyIterator iterator = new UniprotTaxonomyOntologyIterator(new ByteArrayInputStream(line.getBytes()));
 
-         Assert.assertFalse(iterator.hasNext());
+        Assert.assertFalse(iterator.hasNext());
 
-     }
+    }
 
     @Test
     public void testProcessEmptyFile2() throws Exception {
-        String line = "Taxon\tMnemonic\tScientific Name\tCommon Name\tSynonym\tOther Names\tReviewed\tRank\tLineage\tParent\n"+
+        String line = "Taxon\tMnemonic\tScientific Name\tCommon Name\tSynonym\tOther Names\tReviewed\tRank\tLineage\tParent\n" +
                 "44433";
 
-         UniprotTaxonomyOntologyIterator iterator = new UniprotTaxonomyOntologyIterator(new ByteArrayInputStream(line.getBytes()));
+        UniprotTaxonomyOntologyIterator iterator = new UniprotTaxonomyOntologyIterator(new ByteArrayInputStream(line.getBytes()));
 
-         Assert.assertFalse(iterator.hasNext());
+        Assert.assertFalse(iterator.hasNext());
 
-     }
+    }
 
     @Test
     public void testProcessLine_onlyTaxon() throws Exception {
@@ -99,7 +123,7 @@ public class UniprotTaxonomyOntologyIteratorTest {
     public void processLine_recursive() throws Exception {
         StringBuilder sb = new StringBuilder();
 
-        for (int i=0; i<100000; i++) {
+        for (int i = 0; i < 100000; i++) {
             sb.append("12345\n");
         }
 

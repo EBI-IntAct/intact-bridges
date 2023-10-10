@@ -122,8 +122,8 @@ public class ProteinNCBIBlastService {
                     log.error(databaseName + " isn't a valid database name. You can only do a wswublast on uniprot, swissprot or intact.");
                 }
 
-                if (job != null){
-                    while ( BlastJobStatus.RUNNING.equals( job.getStatus() ) ) {
+                if (job != null) {
+                    while (job.getStatus() == null || BlastJobStatus.RUNNING.equals(job.getStatus())) {
                         try {
                             Thread.sleep( 5000 );
                         } catch ( InterruptedException e ) {

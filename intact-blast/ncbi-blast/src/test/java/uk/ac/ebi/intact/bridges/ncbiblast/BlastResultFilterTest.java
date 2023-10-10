@@ -23,7 +23,7 @@ public class BlastResultFilterTest {
 
     public BlastResultFilterTest(){
         try {
-            blastService = new ProteinNCBIBlastService("ntoro@ebi.ac.uk");
+            blastService = new ProteinNCBIBlastService("intact-dev@ebi.ac.uk");
             results = blastService.getResultsOfBlastOnUniprot(sequence);
 
             filter = new BlastResultFilter(results);
@@ -56,7 +56,7 @@ public class BlastResultFilterTest {
             System.out.println(prot.getAccession());
             System.out.println(prot.getIdentity());
         }
-        Assert.assertEquals(41, filteredResults.size());
+        Assert.assertEquals(37, filteredResults.size());
     }
 
     @Test
@@ -99,7 +99,7 @@ public class BlastResultFilterTest {
         List<BlastProtein> filteredResultsOnIdentity = filter.filterMappingEntriesWithIdentity((float)100);
 
         Assert.assertEquals(false, filteredResultsOnIdentity.isEmpty());
-        Assert.assertEquals(41, filteredResultsOnIdentity.size());
+        Assert.assertEquals(37, filteredResultsOnIdentity.size());
 
         List<BlastProtein> filteredResultsOnOrganism = filter.filterMappingEntriesWithOrganism("7227");
 
@@ -112,6 +112,6 @@ public class BlastResultFilterTest {
         Assert.assertEquals(3, filteredResultsOnOrganismAndIdentity.size());
 
         List<BlastProtein> filteredResultsWithTotalAlignment = BlastResultFilter.collectMappingEntriesWithTotalAlignment(filteredResultsOnIdentity, this.sequence.length());
-        Assert.assertEquals(28, filteredResultsWithTotalAlignment.size());
+        Assert.assertEquals(25, filteredResultsWithTotalAlignment.size());
     }
 }

@@ -34,7 +34,7 @@ public class NCBIBlastClientTest {
         String sequence = "MFAVMRIDNDDCRSDFRRKMRPKCEFICKYCQRRFTKPYNLMIHERTHKSPEITYSCEVCGKYFKQRDNLRQHRCSQCVWR";
         Job job = bc.blastSequenceInUniprot(email, sequence);
 
-        while ( BlastJobStatus.RUNNING.equals( job.getStatus() ) ) {
+        while (job.getStatus() == null || BlastJobStatus.RUNNING.equals(job.getStatus())) {
             try {
                 Thread.sleep( 5000 );
             } catch ( InterruptedException e ) {
@@ -54,7 +54,7 @@ public class NCBIBlastClientTest {
         String sequence = "MFAVMRIDNDDCRSDFRRKMRPKCEFICKYCQRRFTKPYNLMIHERTHKSPEITYSCEVCGKYFKQRDNLRQHRCSQCVWR";
         Job job = bc.blastSequenceInIntact(email, sequence);
 
-        while ( BlastJobStatus.RUNNING.equals( job.getStatus() ) ) {
+        while (job.getStatus() == null || BlastJobStatus.RUNNING.equals(job.getStatus())) {
             try {
                 Thread.sleep( 5000 );
             } catch ( InterruptedException e ) {
@@ -74,7 +74,7 @@ public class NCBIBlastClientTest {
         String sequence = "MFAVMRIDNDDCRSDFRRKMRPKCEFICKYCQRRFTKPYNLMIHERTHKSPEITYSCEVCGKYFKQRDNLRQHRCSQCVWR";
         Job job = bc.blastSequenceInSwissprot(email, sequence);
 
-        while ( BlastJobStatus.RUNNING.equals( job.getStatus() ) ) {
+        while (job.getStatus() == null || BlastJobStatus.RUNNING.equals(job.getStatus())) {
             try {
                 Thread.sleep( 5000 );
             } catch ( InterruptedException e ) {
@@ -93,7 +93,7 @@ public class NCBIBlastClientTest {
         String sequence = "GTRASKHVFEKNLRPKALKLKNAEHCSIITKETARTVLTIQSYLQSISNPEWAAAIAHKIAQELPTGPDKIHALKFCLHLAEKWKKNVSSENDAHEKADVFIKKLSVQYQRSATENVLITHKLNTPELLKQIGKPANLIVSLYEHSSVEQRIRHPTGRDYPDIHTAAKQISEVNNLNMSKICTLLLEKWICPPAVPQADKNKDVFGDIHGDEDLRRVIYLLQPYPVDYSSRMLYAIATSATS";
         Job job = bc.blastSequenceInUniprot(email, sequence);
 
-        while ( BlastJobStatus.RUNNING.equals( job.getStatus() ) ) {
+        while (job.getStatus() == null || BlastJobStatus.RUNNING.equals(job.getStatus())) {
             try {
                 Thread.sleep( 5000 );
             } catch ( InterruptedException e ) {
