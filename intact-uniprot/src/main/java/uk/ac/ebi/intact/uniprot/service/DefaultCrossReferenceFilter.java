@@ -67,6 +67,8 @@ public class DefaultCrossReferenceFilter implements CrossReferenceFilter {
         db2mi.put(format("uniprotkb"), "MI:0486");
         db2mi.put(format("ipi"), "MI:0675");
         db2mi.put(format("dictybase"), "MI:1015");
+        db2mi.put(format("orphanet"), "MI:1350");
+        db2mi.put(format("efo"), "MI:1337");
     }
 
     private String format( String s ) {
