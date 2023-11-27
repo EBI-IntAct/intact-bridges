@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import static junit.framework.Assert.*;
 
@@ -302,7 +304,7 @@ public class UniprotRemoteServiceTest {
         assertEquals(9, protein.getKeywords().size());
 
         // cross references
-        assertEquals(22, protein.getCrossReferences().size());
+        assertEquals(19, protein.getCrossReferences().size());
 
         // splice variants
         assertEquals(0, protein.getSpliceVariants().size());
@@ -543,7 +545,7 @@ public class UniprotRemoteServiceTest {
 
         // check that we have not so many cross references
         // cross references
-        assertEquals(22, protein.getCrossReferences().size());
+        assertEquals(19, protein.getCrossReferences().size());
 
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("NP_012514.2", "RefSeq", null)));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("1TG0", "PDB", null)));
@@ -557,17 +559,13 @@ public class UniprotRemoteServiceTest {
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("YJL020C", "EnsemblFungi", null, "gene")));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("S000003557", "SGD", null)));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("GO:0030479", "GO", "actin cortical patch")));
-        assertTrue(protein.getCrossReferences().contains(new UniprotXref("GO:0051015", "GO", "actin filament binding")));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("GO:0017024", "GO", "myosin I binding")));
-        assertTrue(protein.getCrossReferences().contains(new UniprotXref("GO:0035091", "GO", "phosphatidylinositol binding")));
-        assertTrue(protein.getCrossReferences().contains(new UniprotXref("GO:0051666", "GO", "actin cortical patch localization")));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("GO:0030036", "GO", "actin cytoskeleton organization")));
-        assertTrue(protein.getCrossReferences().contains(new UniprotXref("GO:0051017", "GO", "actin filament bundle assembly")));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("GO:0007010", "GO", "cytoskeleton organization")));
+        assertTrue(protein.getCrossReferences().contains(new UniprotXref("GO:0005730", "GO", "nucleolus")));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("IPR035552", "InterPro", null)));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("IPR036028", "InterPro", null)));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("IPR001452", "InterPro", null)));
-
     }
 
     @Test
@@ -681,10 +679,37 @@ public class UniprotRemoteServiceTest {
     }
 
     @Test
-    public void xxx() throws Exception {
+    public void retrieveSimpleProteinWithOrphanetCrossReference() {
 
-        UniprotService uniprot = getUniprotService();
-        Collection<UniprotProtein> proteins = uniprot.retrieve("Q0G819");
+        UniprotService uniprot = getUniprotService(new DefaultCrossReferenceFilter());
+        Collection<UniprotProtein> proteins = uniprot.retrieve("P69905");
 
+        assertNotNull(proteins);
+        assertEquals(1, proteins.size());
+        UniprotProtein protein = proteins.iterator().next();
+
+        assertEquals(UniprotProteinType.SWISSPROT, protein.getSource());
+
+        Map<String, List<UniprotXref>> crossReferencesbyDb = protein.getCrossReferences()
+                .stream()
+                .collect(Collectors.groupingBy(UniprotXref::getDatabase));
+
+        assertEquals(9, crossReferencesbyDb.size());
+
+        assertTrue(crossReferencesbyDb.containsKey("RefSeq"));
+        assertTrue(crossReferencesbyDb.containsKey("MINT"));
+        assertTrue(crossReferencesbyDb.containsKey("InterPro"));
+        assertTrue(crossReferencesbyDb.containsKey("GO"));
+        assertTrue(crossReferencesbyDb.containsKey("DIP"));
+        assertTrue(crossReferencesbyDb.containsKey("Ensembl"));
+        assertTrue(crossReferencesbyDb.containsKey("Reactome"));
+        assertTrue(crossReferencesbyDb.containsKey("PDB"));
+        assertTrue(crossReferencesbyDb.containsKey("efo"));
+
+        assertTrue(crossReferencesbyDb.get("efo").contains(new UniprotXref("Orphanet:98791", "efo")));
+        assertTrue(crossReferencesbyDb.get("efo").contains(new UniprotXref("Orphanet:247511", "efo")));
+        assertTrue(crossReferencesbyDb.get("efo").contains(new UniprotXref("Orphanet:163596", "efo")));
+        assertTrue(crossReferencesbyDb.get("efo").contains(new UniprotXref("Orphanet:93616", "efo")));
+        assertTrue(crossReferencesbyDb.get("efo").contains(new UniprotXref("Orphanet:330041", "efo")));
     }
 }

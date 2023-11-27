@@ -647,7 +647,36 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
 
         // We treat the same way every possible ensembl cross ref to be able to map UniprotIds to EnsemblProteins
         // Related to INVAR and genome coordinates mapping project
-        if (!db.contains("Ensembl")) {
+        if (db.contains("Ensembl")) {
+            // We treat ensembl in a different way to extract different Ensembl Xrefs reported in Uniprot simultaneously
+            String isoformId = null;
+
+            if (crossRef.getIsoformId() != null && !crossRef.getIsoformId().getValue().trim().isEmpty()) {
+                isoformId = crossRef.getIsoformId().getValue().trim();
+            }
+
+            if (crossRef.getPrimaryId() != null && !crossRef.getPrimaryId().getValue().trim().isEmpty()) {
+                // Ensembl Transcript
+                String ensemblT = crossRef.getPrimaryId().getValue().trim();
+                references.add(new UniprotXref(ensemblT, db, null, "transcript", isoformId));
+            }
+            if (crossRef.getDescription() != null && !crossRef.getDescription().getValue().trim().isEmpty()) {
+                // Ensembl Protein
+                String ensemblP = crossRef.getDescription().getValue().trim();
+                references.add(new UniprotXref(ensemblP, db, null, "identity", isoformId));
+            }
+            if (crossRef.getThird() != null && !crossRef.getThird().getValue().trim().isEmpty()) {
+                // Ensembl Gene
+                String ensemblG = crossRef.getThird().getValue().trim();
+                references.add(new UniprotXref(ensemblG, db, null, "gene", isoformId));
+            }
+
+            // crossRef.getFourth not used in Ensembl for now
+        } else if (db.equals("Orphanet")) {
+            // We store Orphanet Xrefs as EFO Xrefs, as we want to link them to the EFO url
+            String id = crossRef.getPrimaryId().getValue();
+            references.add(new UniprotXref(String.format("Orphanet:%s", id), "efo"));
+        } else {
             String id = crossRef.getPrimaryId().getValue();
             if (id == null) {
                 throw new IllegalArgumentException("Cannot get id from cross reference: " + crossRef.getClass().getSimpleName() + " [ " + crossRef + " ]");
@@ -664,30 +693,6 @@ public class SimpleUniprotRemoteService extends AbstractUniprotService {
             }
             // Build the Generic Cross reference
             references.add(new UniprotXref(id, db, desc));
-        } else { // We treat ensembl in a different way to extract different Ensembl Xrefs reported in Uniprot simultaneously
-            String isoformId = null;
-
-            if (crossRef.getIsoformId() != null && !crossRef.getIsoformId().getValue().trim().isEmpty()) {
-                isoformId = crossRef.getIsoformId().getValue().trim();
-            }
-
-            if (crossRef.getPrimaryId() != null && !crossRef.getPrimaryId().getValue().trim().isEmpty()) {
-                // Ensembl Transcript
-                String ensemblT = crossRef.getPrimaryId().getValue().trim();
-                references.add(new UniprotXref(ensemblT, db, null, "transcript", isoformId));
-            }
-            if (crossRef.getDescription() != null && !crossRef.getDescription().getValue().trim().isEmpty()) {
-                // Ensembl Protein
-                String ensemblP = crossRef.getDescription().getValue().trim();
-                references.add(new UniprotXref(ensemblP, db, null,"identity", isoformId));
-            }
-            if (crossRef.getThird() != null && !crossRef.getThird().getValue().trim().isEmpty()) {
-                // Ensembl Gene
-                String ensemblG = crossRef.getThird().getValue().trim();
-                references.add(new UniprotXref(ensemblG, db, null,"gene", isoformId));
-            }
-
-            // crossRef.getFourth not used in Ensembl for now
         }
 
         // TODO 2006-10-24: how to retreive a description ?!?!
