@@ -5,7 +5,7 @@
     <parent>
         <groupId>uk.ac.ebi.intact.maven</groupId>
         <artifactId>intact-master</artifactId>
-        <version>25</version>
+        <version>26-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -13,7 +13,7 @@
     <groupId>uk.ac.ebi.intact.bridges</groupId>
     <artifactId>bridges-master</artifactId>
     <packaging>pom</packaging>
-    <version>2.2.2</version>
+    <version>2.2.3-SNAPSHOT</version>
 
     <name>IntAct Bridges</name>
     <description>Bridges Master POM</description>
@@ -201,11 +201,6 @@
     </dependencies>
 
     <repositories>
-        <repository>
-            <id>ebi-repo</id>
-            <name>ebi-repo</name>
-            <url>https://www.ebi.ac.uk/intact/maven/nexus/content/repositories/ebi-repo/</url>
-        </repository>
         <repository>
             <id>nexus-ebi-release-repo</id>
             <url>https://www.ebi.ac.uk/Tools/maven/repos/content/groups/ebi-repo/</url>
