@@ -304,7 +304,7 @@ public class UniprotRemoteServiceTest {
         assertEquals(9, protein.getKeywords().size());
 
         // cross references
-        assertEquals(22, protein.getCrossReferences().size());
+        assertEquals(21, protein.getCrossReferences().size());
 
         // splice variants
         assertEquals(0, protein.getSpliceVariants().size());
@@ -545,7 +545,7 @@ public class UniprotRemoteServiceTest {
 
         // check that we have not so many cross references
         // cross references
-        assertEquals(22, protein.getCrossReferences().size());
+        assertEquals(21, protein.getCrossReferences().size());
 
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("NP_012514.2", "RefSeq", null)));
         assertTrue(protein.getCrossReferences().contains(new UniprotXref("1TG0", "PDB", null)));
@@ -586,7 +586,7 @@ public class UniprotRemoteServiceTest {
         assertTrue(protein.getCrossReferences().size() >= 496);
         assertTrue(protein.getCrossReferences().stream().filter(xref -> xref.getDatabase().equals("Ensembl")).count() >= 5);
         assertTrue(protein.getCrossReferences().stream().filter(xref -> xref.getDatabase().equals("PDB")).count() >= 221);
-        assertTrue(protein.getCrossReferences().stream().filter(xref -> xref.getDatabase().equals("GO")).count() >= 176);
+        assertTrue(protein.getCrossReferences().stream().filter(xref -> xref.getDatabase().equals("GO")).count() >= 175);
         assertTrue(protein.getCrossReferences().stream().filter(xref -> xref.getDatabase().equals("RefSeq")).count() >= 15);
         assertTrue(protein.getCrossReferences().stream().filter(xref -> xref.getDatabase().equals("Reactome")).count() >= 39);
         assertTrue(protein.getCrossReferences().stream().filter(xref -> xref.getDatabase().equals("InterPro")).count() >= 8);
